@@ -1,0 +1,4 @@
+# Sýnidæmi — ekki tilbúið til birtingar.
+# Eyðið þessari skrá þegar síðan fer í loftið.
+User-agent: *
+Disallow: /
