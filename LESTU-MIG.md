@@ -36,18 +36,20 @@ efnið er orðið rétt.
 
 | Hluti | Hvað hann gerir |
 |---|---|
-| **Haus** | Næsti viðburður festur efst, með niðurtalningu og hnapp á miðasölu |
-| **Borði** | Rennandi lína með því sem er í gangi — nýr þáttur, miðasala, nýjar vörur |
-| **Nýjasti þátturinn** | Þáttur vikunnar með spilara og tenglum á Spotify, Apple og mbl.is |
+| **Forsíðuplakat** | Merkið í fullri stærð með hendinni úr cover-artinu |
+| **Miðaborði** | Fullbreiður borði neðst í plakatinu: næsti viðburður, niðurtalning og hnappur á miðasölu |
+| **Þáttur vikunnar** | Nýjasti þátturinn með spilara og tenglum á Spotify, Apple og mbl.is |
 | **Þáttasafn** | Allir þættir, síaðir eftir þáttaröð, með „hlaða fleiri“ |
-| **Viðburðir** | Næsti viðburður stór, svo listi yfir komandi og liðna. Tenglar á Tix |
+| **Viðburðir** | Hver viðburður er miði með rifgati. Tenglar á Tix, og listi yfir liðna viðburði |
 | **Myndir** | Myndanet með stækkunarglugga |
 | **Búðin** | Vörur, stærðarval og karfa sem man sig milli heimsókna |
 | **Um okkur** | Ólöf og Kristín, ásamt tölum um hlaðvarpið |
 | **Póstlisti** | Skráning fyrir tilkynningar um miðasölu |
 
-Síðan virkar í síma, spjaldtölvu og tölvu, og virðir stillinguna „draga úr
-hreyfingu“ í stýrikerfinu.
+Útlitið er hannað fyrir síma fyrst og stækkar upp í spjaldtölvu og skjáborð —
+ekki skjáborðsútlit klemmt saman. Prófað í 320, 360, 430, 768, 1024 og 1440 px
+breidd. Andstæða texta er alls staðar yfir 4,5:1, og stillingin „draga úr
+hreyfingu“ í stýrikerfinu slekkur á öllum hreyfingum.
 
 ## Hvað er raunverulegt og hvað er sett inn til sýnis
 

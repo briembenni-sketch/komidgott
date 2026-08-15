@@ -1,13 +1,13 @@
 /* =============================================================================
-   Komið gott — demo
+   Komið gott
    Gögnin hér að neðan eru sett upp eins og þau kæmu úr vefumsjónarkerfi.
    ============================================================================= */
 
 (function () {
   "use strict";
 
-  /* Kveikir á földu upphafsástandi innkomu-hreyfingarinnar. Sé skriftan
-     ekki keyrð helst allt efni sýnilegt. */
+  /* Kveikir á földu upphafsástandi innkomunnar. Sé skriftan ekki keyrð
+     helst allt efni sýnilegt í stað þess að hverfa. */
   document.documentElement.classList.add("js");
 
   var $  = function (sel, root) { return (root || document).querySelector(sel); };
@@ -19,6 +19,9 @@
   var kr = function (n) {
     return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " kr.";
   };
+
+  var ICON_PLAY  = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
 
   /* ---------------------------------------------------------------- ÞÆTTIR */
 
@@ -32,11 +35,11 @@
       desc: "Fimmta þáttaröðin fer af stað. Farið yfir sumarið, þjóðhátíðina og það sem gerðist á meðan enginn var að fylgjast með." },
 
     { code: "SÉR", season: 0, date: "24. júní 2026", len: "1:13:02",
-      title: "Komið gott x Sólmundur Hólm", guest: "Gestur: Sólmundur Hólm",
+      title: "Komið gott x Sólmundur Hólm", guest: "Sólmundur Hólm",
       desc: "Sérþáttur með gesti sem kann að lesa salinn — og segir samt hlutina hvort eð er." },
 
     { code: "SÉR", season: 0, date: "17. júní 2026", len: "1:04:47",
-      title: "Komið gott x Fiskikóngurinn", guest: "Gestur: Fiskikóngurinn",
+      title: "Komið gott x Fiskikóngurinn", guest: "Fiskikóngurinn",
       desc: "Þjóðhátíðardagurinn tekinn með manni sem hefur skoðun á öllu — sérstaklega því sem er á grillinu." },
 
     { code: "S04E19", season: 4, date: "10. júní 2026", len: "1:16:30",
@@ -52,7 +55,7 @@
       desc: "Uppgjör á uppseldum viðburði í Austurbæ, ásamt því sem ekki komst í loftið." },
 
     { code: "SÉR", season: 0, date: "20. maí 2026", len: "1:09:55",
-      title: "Komið gott x Tyrfingur Tyrfingsson snýr aftur", guest: "Gestur: Tyrfingur Tyrfingsson",
+      title: "Komið gott x Tyrfingur Tyrfingsson snýr aftur", guest: "Tyrfingur Tyrfingsson",
       desc: "Hann kom, hann sagði of mikið, hann var beðinn um að koma aftur." },
 
     { code: "S04E16", season: 4, date: "13. maí 2026", len: "1:05:18",
@@ -114,14 +117,15 @@
 
   var SEASONS = [
     { key: "all", label: "Allt" },
-    { key: "5",   label: "Þáttaröð 5" },
-    { key: "4",   label: "Þáttaröð 4" },
-    { key: "3",   label: "Þáttaröð 3" },
-    { key: "2",   label: "Þáttaröð 2" },
-    { key: "1",   label: "Þáttaröð 1" },
+    { key: "5",   label: "Röð 5" },
+    { key: "4",   label: "Röð 4" },
+    { key: "3",   label: "Röð 3" },
+    { key: "2",   label: "Röð 2" },
+    { key: "1",   label: "Röð 1" },
     { key: "0",   label: "Sérþættir" }
   ];
 
+  var SHOW_URL = "https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj";
   var PAGE = 8;
   var state = { filter: "all", shown: PAGE };
 
@@ -135,23 +139,18 @@
   }
 
   function renderEpisodes() {
-    var rows = filtered().slice(0, state.shown);
-
-    listEl.innerHTML = rows.map(function (e) {
+    listEl.innerHTML = filtered().slice(0, state.shown).map(function (e) {
       return '<li class="ep">' +
           '<span class="ep__no data">' + e.code + '</span>' +
-          '<div>' +
+          '<div class="ep__body">' +
             '<h3 class="ep__title">' + e.title + '</h3>' +
             '<p class="ep__desc">' + e.desc + '</p>' +
-            (e.guest ? '<span class="ep__guest">☞ ' + e.guest + '</span>' : '') +
+            (e.guest ? '<span class="ep__guest micro">☞ Gestur: ' + e.guest + '</span>' : '') +
           '</div>' +
-          '<div class="ep__side">' +
-            '<span>' + e.date + '</span>' +
-            '<span>' + e.len + '</span>' +
-            '<a class="ep__listen" href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener" aria-label="Hlusta á ' + e.code + '">' +
-              '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>' +
-            '</a>' +
-          '</div>' +
+          '<div class="ep__meta"><span>' + e.date + '</span><span>' + e.len + '</span></div>' +
+          '<a class="ep__play" href="' + SHOW_URL + '" target="_blank" rel="noopener" aria-label="Hlusta á ' + e.code + '">' +
+            ICON_PLAY +
+          '</a>' +
         '</li>';
     }).join("");
 
@@ -186,62 +185,64 @@
   /* ----------------------------------------------------------------- BÚÐIN */
 
   var PRODUCTS = [
-    { id: "bolur-svartur", name: "„Komið gott“ bolur", variant: "Svartur, þykkt bómullarefni",
-      price: 7900, sizes: ["XS", "S", "M", "L", "XL"], badge: "Nýtt",
-      art: { bg: "#14121A", fg: "#F3EFE2" } },
+    { id: "bolur", name: "„Komið gott“ bolur", kind: "Bolur",
+      variant: "Svartur · þykkt bómullarefni", price: 7900,
+      sizes: ["XS", "S", "M", "L", "XL"], badge: "Nýtt",
+      art: { bg: "#100E14", fg: "#F4F0E4" } },
 
-    { id: "hettupeysa", name: "Hettupeysa", variant: "Rjómalituð, þung og góð",
-      price: 12900, sizes: ["S", "M", "L", "XL"],
-      art: { bg: "#F3EFE2", fg: "#14121A" } },
+    { id: "hettupeysa", name: "Hettupeysa", kind: "Peysa",
+      variant: "Rjómalituð · þung og góð", price: 12900,
+      sizes: ["S", "M", "L", "XL"],
+      art: { bg: "#F4F0E4", fg: "#100E14" } },
 
-    { id: "taupoki", name: "Taupoki", variant: "Lífræn bómull, langar hankar",
-      price: 3900, sizes: null,
-      art: { bg: "#3F3BEB", fg: "#FFFFFF" } },
+    { id: "taupoki", name: "Taupoki", kind: "Poki",
+      variant: "Lífræn bómull · langar hankar", price: 3900, sizes: null,
+      art: { bg: "#3B37E8", fg: "#FFFFFF" } },
 
-    { id: "derhufa", name: "Derhúfa", variant: "Útsaumað merki, stillanleg",
-      price: 5900, sizes: null, badge: "Fáir eftir",
-      art: { bg: "#F0B429", fg: "#17130A", round: true } },
+    { id: "derhufa", name: "Derhúfa", kind: "Húfa",
+      variant: "Útsaumað merki · stillanleg", price: 5900, sizes: null, badge: "Fáar eftir",
+      art: { bg: "#F5B62B", fg: "#17130A" } },
 
-    { id: "bolli", name: "Kaffibolli", variant: "35 cl, þolir uppþvottavél",
-      price: 4500, sizes: null,
-      art: { bg: "#E8E2D1", fg: "#14121A", round: true } },
+    { id: "bolli", name: "Kaffibolli", kind: "Bolli",
+      variant: "35 cl · þolir uppþvottavél", price: 4500, sizes: null,
+      art: { bg: "#E7E1D0", fg: "#100E14" } },
 
-    { id: "limmidar", name: "Límmiðapakki", variant: "Sex miðar, vatnsheldir",
-      price: 1500, sizes: null,
-      art: { bg: "#17151B", fg: "#F0B429", round: true } },
+    { id: "limmidar", name: "Límmiðapakki", kind: "Límmiðar",
+      variant: "Sex miðar · vatnsheldir", price: 1500, sizes: null,
+      art: { bg: "#191922", fg: "#F5B62B" } },
 
-    { id: "gjafabref", name: "Gjafabréf á viðburð", variant: "Gildir á hvaða viðburð sem er",
-      price: 6900, sizes: null,
-      art: { bg: "#7A77FF", fg: "#FFFFFF" } },
+    { id: "gjafabref", name: "Gjafabréf á viðburð", kind: "Gjafabréf",
+      variant: "Gildir á hvaða viðburð sem er", price: 6900, sizes: null,
+      art: { bg: "#7C79FF", fg: "#0B0A1E" } },
 
-    { id: "sokkar", name: "Sokkar", variant: "Tvö pör, stærð 36–44",
-      price: 3200, sizes: null,
-      art: { bg: "#0C0B0D", fg: "#7A77FF" } }
+    { id: "sokkar", name: "Sokkar", kind: "Sokkar",
+      variant: "Tvö pör · stærð 36–44", price: 3200, sizes: null,
+      art: { bg: "#08070A", fg: "#7C79FF" } }
   ];
 
   var productsEl = $("#products");
 
-  productsEl.innerHTML = PRODUCTS.map(function (p, i) {
-    return '<article class="product rise" data-rise style="--i:' + i + '">' +
+  productsEl.innerHTML = PRODUCTS.map(function (p) {
+    /* Miðstærðin er forvalin — nákvæmlega ein, hvað sem stærðunum líður. */
+    var preset = p.sizes ? Math.floor((p.sizes.length - 1) / 2) : -1;
+
+    return '<article class="product rise" data-rise>' +
         '<div class="product__art">' +
           (p.badge ? '<span class="product__badge">' + p.badge + '</span>' : '') +
-          '<span class="product__mock" style="background:' + p.art.bg + ';color:' + p.art.fg +
-            (p.art.round ? ';--shape:50%' : '') + '">Komið<br>gott.</span>' +
+          '<span class="swatch" style="--bg:' + p.art.bg + ';--fg:' + p.art.fg + '">' +
+            '<span class="swatch__mark">Komið<br>gott.</span>' +
+            '<span class="swatch__kind">' + p.kind + '</span>' +
+          '</span>' +
         '</div>' +
         '<h3 class="product__name">' + p.name + '</h3>' +
-        '<div class="product__meta">' +
-          '<span>' + p.variant + '</span>' +
-          '<span class="product__price">' + kr(p.price) + '</span>' +
-        '</div>' +
+        '<p class="product__variant">' + p.variant + '</p>' +
+        '<p class="product__price">' + kr(p.price) + '</p>' +
         (p.sizes
           ? '<div class="sizes" role="group" aria-label="Stærð">' + p.sizes.map(function (s, j) {
-              /* Miðstærðin er forvalin — nákvæmlega ein, hvað sem
-                 stærðunum líður. */
-              var preset = Math.floor((p.sizes.length - 1) / 2);
               return '<button type="button" data-size="' + s + '" aria-pressed="' + (j === preset) + '">' + s + '</button>';
             }).join("") + '</div>'
           : '') +
-        '<button class="btn btn--ghost btn--block" type="button" data-add="' + p.id + '">Setja í körfu</button>' +
+        '<button class="btn btn--ghost" type="button" data-add="' + p.id + '">Setja í körfu</button>' +
       '</article>';
   }).join("");
 
@@ -267,17 +268,26 @@
   var STORE = "kg-cart-v1";
   var cart = [];
 
+  function product(id) {
+    return PRODUCTS.filter(function (p) { return p.id === id; })[0];
+  }
+
   try {
     var saved = window.localStorage.getItem(STORE);
     if (saved) cart = JSON.parse(saved);
-  } catch (err) { /* file:// eða lokað fyrir vistun — karfan lifir bara í minni */ }
+  } catch (err) { /* lokað fyrir vistun — karfan lifir þá bara í minni */ }
+
+  /* Vörulistinn getur breyst milli heimsókna. Línur sem vísa í vöru sem er
+     ekki lengur til eru hreinsaðar út — annars félli útreikningur á
+     heildarupphæð og tæki alla skriftuna með sér. */
+  if (Array.isArray(cart)) {
+    cart = cart.filter(function (l) { return l && product(l.id) && l.qty > 0; });
+  } else {
+    cart = [];
+  }
 
   function persist() {
     try { window.localStorage.setItem(STORE, JSON.stringify(cart)); } catch (err) {}
-  }
-
-  function product(id) {
-    return PRODUCTS.filter(function (p) { return p.id === id; })[0];
   }
 
   function add(id, size) {
@@ -349,7 +359,6 @@
   function openCart(open) {
     cartEl.dataset.open = String(open);
     cartEl.setAttribute("aria-hidden", String(!open));
-    scrim.hidden = false;
     scrim.dataset.open = String(open);
     document.body.style.overflow = open ? "hidden" : "";
     if (open) $("#cartClose").focus();
@@ -364,10 +373,10 @@
 
   renderCart();
 
-  /* ------------------------------------------------------------ NIÐURTALNING */
+  /* ---------------------------------------------------------- NIÐURTALNING */
 
   var TARGET = new Date("2026-09-25T20:00:00Z").getTime();
-  var cdEls = {
+  var cd = {
     d: $("[data-cd='d']"), h: $("[data-cd='h']"),
     m: $("[data-cd='m']"), s: $("[data-cd='s']")
   };
@@ -377,14 +386,14 @@
   function tick() {
     var left = TARGET - Date.now();
     if (left <= 0) {
-      cdEls.d.textContent = cdEls.h.textContent = cdEls.m.textContent = cdEls.s.textContent = "00";
+      cd.d.textContent = cd.h.textContent = cd.m.textContent = cd.s.textContent = "00";
       return;
     }
     var s = Math.floor(left / 1000);
-    cdEls.d.textContent = pad(Math.floor(s / 86400));
-    cdEls.h.textContent = pad(Math.floor(s / 3600) % 24);
-    cdEls.m.textContent = pad(Math.floor(s / 60) % 60);
-    cdEls.s.textContent = pad(s % 60);
+    cd.d.textContent = pad(Math.floor(s / 86400));
+    cd.h.textContent = pad(Math.floor(s / 3600) % 24);
+    cd.m.textContent = pad(Math.floor(s / 60) % 60);
+    cd.s.textContent = pad(s % 60);
   }
 
   tick();
@@ -395,11 +404,8 @@
   var playBtn  = $("#playBtn");
   var playFill = $("#playFill");
   var playTime = $("#playTime");
-  var LEN = 3624;              // 1:00:24 í sekúndum
+  var LEN = 3624;                 // 1:00:24 í sekúndum
   var pos = 0, timer = null;
-
-  var ICON_PLAY  = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
-  var ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
 
   function stamp(sec) {
     var h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, s = sec % 60;
@@ -437,9 +443,8 @@
     if (!shot) return;
 
     lbShot = shot;
-    if (lbFrame.lastElementChild && lbFrame.lastElementChild.dataset.lbfill) {
-      lbFrame.removeChild(lbFrame.lastElementChild);
-    }
+    var old = $("[data-lbfill]", lbFrame);
+    if (old) lbFrame.removeChild(old);
 
     var fill;
     if (shot.dataset.img) {
@@ -449,7 +454,7 @@
     } else {
       fill = document.createElement("span");
       fill.className = "shot__art";
-      fill.style.cssText = $(".shot__art", shot).getAttribute("style");
+      fill.setAttribute("style", $(".shot__art", shot).getAttribute("style"));
     }
     fill.dataset.lbfill = "1";
     lbFrame.appendChild(fill);
@@ -476,6 +481,7 @@
     if (ev.key !== "Escape") return;
     if (lb.dataset.open === "true") closeLightbox();
     if (cartEl.dataset.open === "true") openCart(false);
+    if (navLinks.dataset.open === "true") setMenu(false);
   });
 
   /* ------------------------------------------------------------- PÓSTLISTI */
@@ -510,16 +516,18 @@
   var navLinks = $("#navLinks");
   var navToggle = $("#navToggle");
 
+  function setMenu(open) {
+    navToggle.setAttribute("aria-expanded", String(open));
+    navLinks.dataset.open = String(open);
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+
   navToggle.addEventListener("click", function () {
-    var open = navToggle.getAttribute("aria-expanded") === "true";
-    navToggle.setAttribute("aria-expanded", String(!open));
-    navLinks.dataset.open = String(!open);
+    setMenu(navToggle.getAttribute("aria-expanded") !== "true");
   });
 
   navLinks.addEventListener("click", function (ev) {
-    if (!ev.target.closest("a")) return;
-    navToggle.setAttribute("aria-expanded", "false");
-    navLinks.dataset.open = "false";
+    if (ev.target.closest("a")) setMenu(false);
   });
 
   window.addEventListener("scroll", function () {
@@ -542,14 +550,14 @@
 
   sections.forEach(function (s) { spy.observe(s); });
 
-  /* Innkomu-hreyfing */
+  /* Innkoma */
   var reveal = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
       entry.target.dataset.seen = "true";
       reveal.unobserve(entry.target);
     });
-  }, { rootMargin: "0px 0px -8% 0px" });
+  }, { rootMargin: "0px 0px -6% 0px" });
 
   $$("[data-rise]").forEach(function (el) { reveal.observe(el); });
 
