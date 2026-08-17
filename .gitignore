@@ -1,4 +1,8 @@
-node_modules/
+﻿node_modules/
 .vercel/
 .DS_Store
 Thumbs.db
+
+# Skill sem sett voru upp fyrir hönnunarvinnuna — verkfæri, ekki hluti af vefnum
+.agents/
+.claude/skills/

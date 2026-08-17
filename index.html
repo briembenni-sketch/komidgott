@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#08070A">
 
 <!-- Sýnidæmi: haldið utan við leitarvélar svo tilbúnu viðburðadagsetningarnar
-     hér að neðan rati ekki í Google undir nafni hlaðvarpsins.
+     rati ekki í Google undir nafni hlaðvarpsins.
      Fjarlægið þessa línu — og robots.txt — þegar síðan fer í loftið fyrir alvöru. -->
 <meta name="robots" content="noindex, nofollow">
 
@@ -26,35 +26,26 @@
 </head>
 
 <body>
-
 <a class="skip" href="#efni">Beint í efnið</a>
 
-<!-- ====================================================== HAUS ============ -->
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a class="nav__brand" href="#top" aria-label="Komið gott — forsíða">Komið gott<i>.</i></a>
-
-    <nav class="nav__nav" aria-label="Aðalvalmynd">
+    <a class="nav__brand" href="index.html">Komið gott<i>.</i></a>
+    <nav aria-label="Aðalvalmynd">
       <ul class="nav__links" id="navLinks">
-        <li><a href="#thaettir">Þættir</a></li>
-        <li><a href="#vidburdir">Viðburðir</a></li>
-        <li><a href="#myndir">Myndir</a></li>
-        <li><a href="#budin">Búðin</a></li>
-        <li><a href="#um">Um okkur</a></li>
+        <li><a href="thaettir.html">Þættir</a></li>
+        <li><a href="vidburdir.html">Viðburðir</a></li>
+        <li><a href="myndir.html">Myndir</a></li>
+        <li><a href="budin.html">Búðin</a></li>
+        <li><a href="um.html">Um okkur</a></li>
       </ul>
     </nav>
-
     <div class="nav__actions">
-      <a class="btn btn--flag btn--sm nav__tickets" href="#vidburdir">Miðar</a>
-
+      <a class="btn btn--flag btn--sm nav__tickets" href="vidburdir.html">Miðar</a>
       <button class="iconbtn" id="cartOpen" aria-label="Opna körfu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M4 7h16l-1.3 12.2a1 1 0 0 1-1 .8H6.3a1 1 0 0 1-1-.9L4 7Z"/>
-          <path d="M8.5 7V5.6a3.5 3.5 0 0 1 7 0V7"/>
-        </svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16l-1.3 12.2a1 1 0 0 1-1 .8H6.3a1 1 0 0 1-1-.9L4 7Z"/><path d="M8.5 7V5.6a3.5 3.5 0 0 1 7 0V7"/></svg>
         <span class="iconbtn__count" id="cartCount" hidden>0</span>
       </button>
-
       <button class="iconbtn nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Valmynd">
         <span class="burger"></span>
       </button>
@@ -62,86 +53,80 @@
   </div>
 </header>
 
-<main id="top">
+<main id="efni">
 
-<!-- ====================================================== HERO ============ -->
-<section class="hero" id="efni">
-
+<!-- ====================================================== PLAKAT ========== -->
+<section class="hero">
   <div class="hero__inner">
-    <p class="micro hero__eyebrow"><span class="pulse"></span>Hlaðvarp · Nýr þáttur alla þriðjudaga</p>
-
     <div class="hero__mark">
       <h1 class="hero__word">
         <span class="hero__line"><span>Komið</span></span>
         <span class="hero__line"><span>gott<i>.</i></span></span>
       </h1>
-      <div class="hand hero__hand" aria-hidden="true"><img src="assets/logo.jpg" alt=""></div>
+      <div class="hand hero__hand" aria-hidden="true">
+        <svg viewBox="0 0 845 1000" fill="currentColor"><path d="M39.4 0Q38.1 0 25.4 12.7Q12.7 25.4 13.9 45.7Q15.2 66 7.6 76.2Q0 86.3 0 101.5Q0 116.8 53.3 219.6Q106.6 322.3 111.7 337.6Q116.8 352.8 132 375.6Q147.2 398.5 156.1 406.1Q165 413.7 176.4 437.8Q187.8 461.9 210.7 491.1Q233.5 520.3 241.1 554.5Q248.7 588.8 211.9 566Q175.1 543.1 143.4 531.7Q111.7 520.3 93.9 517.8Q76.1 515.2 60.9 521.5Q45.7 527.9 34.3 543.1Q22.8 558.4 22.8 576.1Q22.8 593.9 29.1 604Q35.5 614.2 118 670Q200.5 725.9 251.3 777.9Q302 829.9 317.3 838.8Q332.5 847.7 341.4 850.3Q350.3 852.8 388.4 850.3Q426.4 847.7 456.9 856.6Q487.3 865.5 601.5 903.5Q715.7 941.6 777.9 970.8Q840.1 1000 842.7 1000Q845.2 1000 845.2 851.5Q845.2 703 750 684Q654.8 665 620.5 653.5Q586.3 642.1 568.5 639.6Q550.8 637.1 536.8 628.2Q522.8 619.3 478.4 563.5Q434 507.6 404.8 454.3Q375.6 401 356.6 381.9Q337.6 362.9 330 359.1Q322.3 355.3 304.6 335Q286.8 314.7 257.6 270.3Q228.4 225.9 210.7 189.1Q192.9 152.3 186.6 148.5Q180.2 144.7 171.3 144.7Q162.4 144.7 137.1 112.9Q111.7 81.2 93.9 48.2Q76.1 15.2 68.5 8.8Q60.9 2.5 50.8 1.3Q40.6 0 39.4 0Z"/></svg>
+      </div>
     </div>
 
     <p class="hero__lead">
       Ólöf Skafta og Kristín Gunnars taka vikuna fyrir — fólkið, fréttirnar og
-      allt hitt sem enginn nennir að segja upphátt.
+      allt hitt sem enginn nennir að segja upphátt. Nýr þáttur alla þriðjudaga.
     </p>
 
     <div class="hero__cta">
       <a class="btn" href="#nyjast">
-        <svg class="btn__i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
         Hlusta á nýjasta þátt
       </a>
-      <a class="btn btn--ghost" href="#vidburdir">Sjá viðburði</a>
+      <a class="btn btn--ghost" href="vidburdir.html">Sjá viðburði</a>
     </div>
 
     <ul class="hero__facts micro">
-      <li><b>4,7</b> ★ á Apple Podcasts</li>
+      <li><b>4,7</b> á Apple Podcasts</li>
       <li><b>5</b> þáttaraðir</li>
       <li><b>3</b> uppseld hús</li>
     </ul>
   </div>
 
-  <!-- Næsti viðburður: fullbreiður miðaborði, ekki fljótandi spjald -->
-  <a class="nextbar" href="#vidburdir">
-    <span class="nextbar__flag micro">Næsti viðburður</span>
-
+  <a class="nextbar" href="vidburdir.html">
     <span class="nextbar__main">
-      <b>Komið gott LIVE</b>
-      <span>Austurbær · fim. 25. sept. · kl. 20:00</span>
+      <b>Næst: Komið gott LIVE</b>
+      <span>Austurbær&nbsp;· fim.&nbsp;25.&nbsp;sept.&nbsp;· kl.&nbsp;20:00</span>
     </span>
-
-    <span class="nextbar__cd" id="countdown" aria-label="Tími til stefnu">
-      <span><b data-cd="d">–</b><i>d</i></span>
-      <span><b data-cd="h">–</b><i>klst</i></span>
-      <span><b data-cd="m">–</b><i>mín</i></span>
-      <span><b data-cd="s">–</b><i>sek</i></span>
+    <span class="nextbar__cd" aria-label="Tími til stefnu">
+      <span><b data-cd="d">00</b><i>d</i></span>
+      <span><b data-cd="h">00</b><i>klst</i></span>
+      <span><b data-cd="m">00</b><i>mín</i></span>
+      <span><b data-cd="s">00</b><i>sek</i></span>
     </span>
-
     <span class="nextbar__cta">
       <span class="tag tag--flag">Örfá sæti</span>
-      <span class="nextbar__go">Miðar <i>→</i></span>
+      <span class="nextbar__go">Miðar
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
     </span>
   </a>
 </section>
 
-<!-- ============================================= NÝJASTI ÞÁTTUR =========== -->
+<!-- ================================================ ÞÁTTUR VIKUNNAR ======= -->
 <section class="band" id="nyjast">
   <div class="wrap">
-
-    <header class="shead">
-      <p class="micro">Nýjast í spilaranum</p>
+    <div class="shead">
       <h2>Þáttur vikunnar</h2>
-      <a class="shead__link tlink" href="#thaettir">Allt þáttasafnið →</a>
-    </header>
+      <a class="tlink" href="thaettir.html">Allt þáttasafnið
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
 
-    <div class="latest rise" data-rise>
+    <div class="latest">
       <figure class="latest__art">
-        <img src="assets/logo.jpg" alt="Merki hlaðvarpsins Komið gott">
+        <img src="assets/logo.jpg" width="3000" height="3000" alt="Merki hlaðvarpsins Komið gott" fetchpriority="high">
         <figcaption class="micro">Þáttaröð 5 · 2026</figcaption>
       </figure>
 
       <div class="latest__body">
-        <p class="micro latest__meta">S05E02 <i>·</i> 12. ágúst 2026 <i>·</i> 1 klst 00 mín</p>
-
+        <p class="micro latest__meta data">S05E02 · 12. ágúst 2026 · 1 klst 00 mín</p>
         <h3 class="latest__title">Sumarfrí á enda, Sundabraut og siðanefndin</h3>
-
         <p class="latest__desc">
           Fyrsti þátturinn eftir sumarleyfi þar sem stelpurnar fara yfir það sem
           gerðist á meðan þjóðin lá í sólbaði: framkvæmdir sem enginn skilur,
@@ -150,73 +135,50 @@
 
         <div class="player">
           <button class="player__play" id="playBtn" aria-label="Spila sýnishorn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           </button>
-          <span class="player__t data" id="playTime">00:00</span>
+          <span class="player__t" id="playTime">00:00</span>
           <span class="player__bar"><span class="player__fill" id="playFill"></span></span>
-          <span class="player__t data player__len">1:00:24</span>
+          <span class="player__t player__len">1:00:24</span>
         </div>
 
         <ul class="platforms micro">
-          <li><a href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">Spotify <i>↗</i></a></li>
-          <li><a href="https://podcasts.apple.com/is/podcast/komi%C3%B0-gott/id1753137038" target="_blank" rel="noopener">Apple Podcasts <i>↗</i></a></li>
-          <li><a href="https://www.mbl.is/hladvarp/hlusta/komid-gott/" target="_blank" rel="noopener">mbl.is <i>↗</i></a></li>
+          <li><a href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">Spotify
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
+          <li><a href="https://podcasts.apple.com/is/podcast/komi%C3%B0-gott/id1753137038" target="_blank" rel="noopener">Apple Podcasts
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
+          <li><a href="https://www.mbl.is/hladvarp/hlusta/komid-gott/" target="_blank" rel="noopener">mbl.is
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- =================================================== ÞÆTTIR ============= -->
-<section class="band band--tight" id="thaettir">
+<!-- ================================================= NÆSTU VIÐBURÐIR ===== -->
+<section class="band paper">
   <div class="wrap">
-
-    <header class="shead">
-      <p class="micro">Þáttasafn</p>
-      <h2>Allir þættir</h2>
-      <div class="filters" id="filters" role="group" aria-label="Sía eftir þáttaröð"></div>
-    </header>
-
-    <ul class="eps" id="eplist"></ul>
-
-    <div class="eps__more">
-      <button class="btn btn--ghost" id="moreBtn">Hlaða fleiri þáttum</button>
+    <div class="shead">
+      <h2>Næstu viðburðir</h2>
+      <a class="tlink" href="vidburdir.html">Allir viðburðir
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
 
-  </div>
-</section>
-
-<!-- ================================================ VIÐBURÐIR ============= -->
-<section class="band paper" id="vidburdir">
-  <div class="wrap">
-
-    <header class="shead">
-      <p class="micro">Í beinni, fyrir framan fólk</p>
-      <h2>Viðburðir</h2>
-      <a class="shead__link tlink" href="#postlisti">Láta mig vita af miðasölu →</a>
-    </header>
-
-    <div class="tickets rise" data-rise>
-
+    <div class="tickets">
       <article class="ticket ticket--lead">
-        <div class="ticket__date">
-          <b>25</b><span>sept</span><i>2026</i>
-        </div>
+        <div class="ticket__date"><b>25</b><span>sept</span><i>2026</i></div>
         <div class="ticket__body">
           <p class="micro ticket__kicker">Fimmtudagur · húsið opnar 19:00</p>
           <h3>Komið gott LIVE í Austurbæ</h3>
           <p class="ticket__where">Austurbær, Snorrabraut 37 · kl. 20:00 · 16 ára aldurstakmark</p>
-          <p class="ticket__note">
-            Þátturinn tekinn upp fyrir framan fullan sal, með gestum sem vita
-            ekki alveg hvað þeir eru búnir að samþykkja.
-          </p>
         </div>
         <div class="ticket__buy">
           <span class="tag tag--flag">Örfá sæti laus</span>
-          <p class="ticket__price">6.900 <i>kr.</i></p>
-          <a class="btn btn--flag btn--block" href="https://tix.is" target="_blank" rel="noopener">Kaupa miða <i>↗</i></a>
-          <p class="micro ticket__fine">Miðasala í gegnum Tix</p>
+          <p class="ticket__price">6.900&nbsp;<i>kr.</i></p>
+          <a class="btn btn--flag btn--block" href="https://tix.is" target="_blank" rel="noopener">Kaupa miða
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
+          </a>
         </div>
       </article>
 
@@ -228,217 +190,86 @@
         </div>
         <div class="ticket__buy">
           <span class="tag tag--flag">Miðasala hafin</span>
-          <p class="ticket__price">6.900 <i>kr.</i></p>
-          <a class="btn btn--block" href="https://tix.is" target="_blank" rel="noopener">Miðar <i>↗</i></a>
+          <p class="ticket__price">6.900&nbsp;<i>kr.</i></p>
+          <a class="btn btn--block" href="https://tix.is" target="_blank" rel="noopener">Miðar
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
+          </a>
         </div>
       </article>
-
-      <article class="ticket">
-        <div class="ticket__date"><b>04</b><span>des</span><i>2026</i></div>
-        <div class="ticket__body">
-          <h3>Jólaþátturinn í Iðnó</h3>
-          <p class="ticket__where">Iðnó, Vonarstræti 3 · föstudagur · kl. 20:00</p>
-        </div>
-        <div class="ticket__buy">
-          <span class="tag">Miðasala hefst 1. okt.</span>
-          <p class="ticket__price">7.900 <i>kr.</i></p>
-          <a class="btn btn--ghost btn--block" href="#postlisti">Láta vita</a>
-        </div>
-      </article>
-
     </div>
-
-    <div class="past rise" data-rise>
-      <p class="micro past__label">Liðnir viðburðir</p>
-      <ul class="past__list">
-        <li><b>21. maí 2026</b> Austurbær <span class="tag tag--sold">Uppselt</span> <a class="tlink" href="#myndir">Myndir</a></li>
-        <li><b>15. maí 2025</b> Austurbær <span class="tag tag--sold">Uppselt</span> <a class="tlink" href="#myndir">Myndir</a></li>
-        <li><b>5. des. 2024</b> Iðnó <span class="tag tag--sold">Uppselt</span> <a class="tlink" href="#myndir">Myndir</a></li>
-      </ul>
-    </div>
-
   </div>
 </section>
 
-<!-- =================================================== MYNDIR ============= -->
-<section class="band" id="myndir">
+<!-- ==================================================== BÚÐIN (SÝNI) ===== -->
+<section class="band paper" style="padding-top:0">
   <div class="wrap">
-
-    <header class="shead">
-      <p class="micro">Úr salnum</p>
-      <h2>Myndir af viðburðum</h2>
-      <p class="shead__note">Smelltu á mynd til að stækka hana.</p>
-    </header>
-
-    <div class="shots rise" data-rise id="gallery">
-
-      <button class="shot shot--lead" data-cap="Austurbær" data-sub="21. maí 2026 · uppselt hús" data-img="assets/tvaer.jpg">
-        <img src="assets/tvaer.jpg" alt="Ólöf Skaftadóttir og Kristín Gunnarsdóttir">
-        <span class="shot__cap">
-          <b>Austurbær</b>
-          <span class="micro">21. maí 2026 · uppselt hús</span>
-        </span>
-      </button>
-
-      <button class="shot" data-cap="Baksviðs" data-sub="Austurbær · maí 2026">
-        <span class="shot__art" style="--base:#0D0C11; --tint:#7C79FF; --mx:28%; --my:20%"></span>
-        <span class="shot__cap">
-          <b>Baksviðs</b>
-          <span class="micro">Austurbær · maí 2026</span>
-        </span>
-      </button>
-
-      <button class="shot" data-cap="Salurinn" data-sub="Austurbær · maí 2026">
-        <span class="shot__art" style="--base:#13100A; --tint:#F5B62B; --mx:70%; --my:74%"></span>
-        <span class="shot__cap">
-          <b>Salurinn</b>
-          <span class="micro">Austurbær · maí 2026</span>
-        </span>
-      </button>
-
-      <button class="shot" data-cap="Jólaþátturinn" data-sub="Iðnó · desember 2024">
-        <span class="shot__art" style="--base:#141319; --tint:#F4F0E4; --mx:42%; --my:30%"></span>
-        <span class="shot__cap">
-          <b>Jólaþátturinn</b>
-          <span class="micro">Iðnó · des. 2024</span>
-        </span>
-      </button>
-
-      <button class="shot" data-cap="Gestir kvöldsins" data-sub="Iðnó · desember 2024">
-        <span class="shot__art" style="--base:#0C0B10; --tint:#3B37E8; --mx:20%; --my:80%"></span>
-        <span class="shot__cap">
-          <b>Gestir kvöldsins</b>
-          <span class="micro">Iðnó · des. 2024</span>
-        </span>
-      </button>
-
-      <button class="shot shot--wide" data-cap="Eftir þáttinn" data-sub="Austurbær · maí 2025">
-        <span class="shot__art" style="--base:#0F0E13; --tint:#F4F0E4; --mx:64%; --my:40%"></span>
-        <span class="shot__cap">
-          <b>Eftir þáttinn</b>
-          <span class="micro">Austurbær · maí 2025</span>
-        </span>
-      </button>
-
+    <div class="shead">
+      <h2>Úr búðinni</h2>
+      <a class="tlink" href="budin.html">Í búðina
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
-
-    <p class="micro shots__note">☞ Sýnishorn — hér birtast myndir ljósmyndara kvöldsins.</p>
-
+    <div class="products" id="products" data-limit="4"></div>
   </div>
 </section>
 
-<!-- =================================================== BÚÐIN ============== -->
-<section class="band paper" id="budin">
-  <div class="wrap">
-
-    <header class="shead">
-      <p class="micro">Vefverslun</p>
-      <h2>Búðin</h2>
-      <p class="shead__note">Frí heimsending á höfuðborgarsvæðinu. Póstsent um allt land.</p>
-    </header>
-
-    <div class="products" id="products"></div>
-
-    <p class="micro shop__note">
-      ☞ Sýnidæmi — í raunútgáfu tengist karfan greiðslugátt og lagerstaða uppfærist sjálfkrafa.
-    </p>
-
-  </div>
-</section>
-
-<!-- ================================================= UM OKKUR ============= -->
-<section class="band" id="um">
-  <div class="wrap about">
-
-    <figure class="about__photo rise" data-rise>
-      <img src="assets/tvaer.jpg" alt="Ólöf Skaftadóttir og Kristín Gunnarsdóttir">
-    </figure>
-
-    <div class="about__text rise" data-rise>
-      <p class="micro">Um okkur</p>
-      <h2>Tvær sem segja það sem hinar hugsa</h2>
-      <p class="about__lead">
-        Komið gott byrjaði sem samtal sem átti aldrei að fara í loftið. Í dag er
-        það eitt hlustaðasta hlaðvarp landsins — vikulegt uppgjör á fréttum,
-        fólki og því sem má víst ekki ræða.
-      </p>
-
-      <dl class="hosts">
-        <div>
-          <dt>Ólöf Skaftadóttir</dt>
-          <dd>Blaðamaður og fyrrverandi ritstjóri Fréttablaðsins. Spyr þess sem aðrir sleppa.</dd>
-        </div>
-        <div>
-          <dt>Kristín Gunnarsdóttir</dt>
-          <dd>Hönnuður. Sér um að ekkert kvöld endi án þess að einhver roðni.</dd>
-        </div>
-      </dl>
-
-      <ul class="stats">
-        <li><b>4,7★</b><span class="micro">154 einkunnir</span></li>
-        <li><b>5</b><span class="micro">þáttaraðir</span></li>
-        <li><b>120+</b><span class="micro">þættir</span></li>
-        <li><b>3</b><span class="micro">uppseld hús</span></li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================ PÓSTLISTI ============= -->
+<!-- ================================================= PÓSTLISTI =========== -->
 <section class="signup" id="postlisti">
   <div class="wrap signup__inner">
-    <div class="signup__text">
-      <p class="micro">Póstlisti</p>
+    <div>
       <h2>Vertu á undan að vita af miðasölu</h2>
       <p>Þrír uppseldir viðburðir í röð. Skráðu þig og þú færð póst um leið og miðasala hefst.</p>
     </div>
 
     <form class="form" id="signupForm" novalidate>
-      <label class="vh" for="email">Netfang</label>
+      <label for="email">Netfang</label>
       <div class="form__row">
-        <input id="email" name="email" type="email" placeholder="netfangið þitt" autocomplete="email" required>
-        <button class="btn" type="submit">Skrá</button>
+        <input id="email" name="email" type="email" inputmode="email" placeholder="nafn@example.is"
+               autocomplete="email" spellcheck="false" required aria-describedby="emailErr">
+        <button class="btn" type="submit">Skrá mig</button>
       </div>
-      <p class="micro form__fine">Engin önnur póstsending. Hægt að skrá sig af hvenær sem er.</p>
+      <p class="form__err" id="emailErr" hidden>Netfangið vantar @ eða endingu — dæmi: nafn@example.is</p>
+      <p class="form__fine">Engin önnur póstsending. Hægt að skrá sig af hvenær sem er.</p>
     </form>
   </div>
 </section>
 
 </main>
 
-<!-- ==================================================== FÓTUR ============= -->
 <footer class="footer">
   <div class="wrap">
     <div class="footer__top">
       <p class="footer__word">Komið gott<i>.</i></p>
-      <p class="footer__tag micro">Nýr þáttur alla þriðjudaga</p>
+      <p class="micro">Nýr þáttur alla þriðjudaga</p>
     </div>
 
     <div class="footer__cols">
       <div>
-        <h3 class="micro">Hlusta</h3>
+        <h2>Hlusta</h2>
         <ul>
-          <li><a href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">Spotify</a></li>
-          <li><a href="https://podcasts.apple.com/is/podcast/komi%C3%B0-gott/id1753137038" target="_blank" rel="noopener">Apple Podcasts</a></li>
-          <li><a href="https://www.mbl.is/hladvarp/hlusta/komid-gott/" target="_blank" rel="noopener">Hlaðvarp mbl.is</a></li>
+          <li><a href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">Spotify
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
+          <li><a href="https://podcasts.apple.com/is/podcast/komi%C3%B0-gott/id1753137038" target="_blank" rel="noopener">Apple Podcasts
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
+          <li><a href="https://www.mbl.is/hladvarp/hlusta/komid-gott/" target="_blank" rel="noopener">Hlaðvarp mbl.is
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
         </ul>
       </div>
       <div>
-        <h3 class="micro">Síðan</h3>
+        <h2>Síðan</h2>
         <ul>
-          <li><a href="#thaettir">Þáttasafn</a></li>
-          <li><a href="#vidburdir">Viðburðir</a></li>
-          <li><a href="#myndir">Myndir</a></li>
-          <li><a href="#budin">Búðin</a></li>
+          <li><a href="thaettir.html">Þáttasafn</a></li>
+          <li><a href="vidburdir.html">Viðburðir</a></li>
+          <li><a href="myndir.html">Myndir</a></li>
+          <li><a href="budin.html">Búðin</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="micro">Hafa samband</h3>
+        <h2>Hafa samband</h2>
         <ul>
           <li><a href="mailto:hae@komidgott.is">hae@komidgott.is</a></li>
           <li><a href="mailto:auglysingar@komidgott.is">Auglýsingar &amp; samstarf</a></li>
-          <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="um.html">Um okkur</a></li>
         </ul>
       </div>
     </div>
@@ -450,20 +281,17 @@
   </div>
 </footer>
 
-<!-- ==================================================== KARFA ============= -->
 <div class="scrim" id="scrim"></div>
 
 <aside class="cart" id="cart" aria-label="Karfa" aria-hidden="true">
   <div class="cart__head">
     <h2>Karfan þín</h2>
     <button class="iconbtn" id="cartClose" aria-label="Loka körfu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
     </button>
   </div>
-
   <ul class="cart__items" id="cartItems"></ul>
-  <p class="cart__empty" id="cartEmpty">Karfan er tóm.<br><a class="tlink" href="#budin" data-close-cart>Kíktu í búðina</a></p>
-
+  <p class="cart__empty" id="cartEmpty">Karfan er tóm.<br><a href="budin.html">Kíktu í búðina</a></p>
   <div class="cart__foot">
     <div class="cart__total">
       <span class="micro">Samtals</span>
@@ -473,18 +301,6 @@
     <p class="micro cart__fine">Sýnidæmi — engin greiðsla fer fram.</p>
   </div>
 </aside>
-
-<!-- ================================================= LIGHTBOX ============= -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Mynd">
-  <div class="lightbox__stage">
-    <div class="lightbox__frame" id="lightboxFrame">
-      <button class="iconbtn lightbox__x" id="lightboxClose" aria-label="Loka">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
-      </button>
-    </div>
-    <p class="lightbox__cap micro"><b id="lightboxCap"></b> <span id="lightboxSub"></span></p>
-  </div>
-</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 

@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "skills": {
+    "anti-ui-slop": {
+      "source": "uizze.com",
+      "sourceUrl": "https://uizze.com/",
+      "sourceType": "well-known",
+      "computedHash": "9b287825666f0564e7863dd08b6e16635b538646c5cf07a3de6bf95e585ef7c7",
+      "wellKnownDigest": "sha256:4d8634f0e316bb29f411e0915e02e1b545a1000a3d173b606a986464e541c7b3"
+    },
+    "ui-design": {
+      "source": "uizze.com",
+      "sourceUrl": "https://uizze.com/",
+      "sourceType": "well-known",
+      "computedHash": "ede88d17dd225812462007fa6aea848508eb7764c634d8f33b177db6c9eb3933",
+      "wellKnownDigest": "sha256:b2ac6776531fa3caa1ddc66673e1e88c0f28dda6d5f69bc5c5d23f490320e6b1"
+    },
+    "ui-radar": {
+      "source": "uizze.com",
+      "sourceUrl": "https://uizze.com/",
+      "sourceType": "well-known",
+      "computedHash": "34305420bba52f3fe7d1d3b2dd355b64ccf12de7411cbbf4557a1231e8ef8ddb",
+      "wellKnownDigest": "sha256:461cf4d25b9e74840cb6f20ab81751ec5352dbcb28dac8e3bce001602965279e"
+    },
+    "ui-slop-score": {
+      "source": "uizze.com",
+      "sourceUrl": "https://uizze.com/",
+      "sourceType": "well-known",
+      "computedHash": "0a5fc2ea99e52f2a44d2abb4e6f2f91de8e613dc8a53ae5f5c4155a7568e7cb8",
+      "wellKnownDigest": "sha256:bb43034d6b27055d6c2b7d525456a374a0e92015af6db2d51640cbccabccd275"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "d1de8ff8d228cd4204bf06eb959ef4317d5b927908d9f42765971e33e80c8a7e"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+    }
+  }
+}
