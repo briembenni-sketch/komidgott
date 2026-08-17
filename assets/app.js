@@ -21,6 +21,27 @@
     hand:  '<svg class="i" viewBox="0 0 845 1000" fill="currentColor" aria-hidden="true"><path d="M39.4 0Q38.1 0 25.4 12.7Q12.7 25.4 13.9 45.7Q15.2 66 7.6 76.2Q0 86.3 0 101.5Q0 116.8 53.3 219.6Q106.6 322.3 111.7 337.6Q116.8 352.8 132 375.6Q147.2 398.5 156.1 406.1Q165 413.7 176.4 437.8Q187.8 461.9 210.7 491.1Q233.5 520.3 241.1 554.5Q248.7 588.8 211.9 566Q175.1 543.1 143.4 531.7Q111.7 520.3 93.9 517.8Q76.1 515.2 60.9 521.5Q45.7 527.9 34.3 543.1Q22.8 558.4 22.8 576.1Q22.8 593.9 29.1 604Q35.5 614.2 118 670Q200.5 725.9 251.3 777.9Q302 829.9 317.3 838.8Q332.5 847.7 341.4 850.3Q350.3 852.8 388.4 850.3Q426.4 847.7 456.9 856.6Q487.3 865.5 601.5 903.5Q715.7 941.6 777.9 970.8Q840.1 1000 842.7 1000Q845.2 1000 845.2 851.5Q845.2 703 750 684Q654.8 665 620.5 653.5Q586.3 642.1 568.5 639.6Q550.8 637.1 536.8 628.2Q522.8 619.3 478.4 563.5Q434 507.6 404.8 454.3Q375.6 401 356.6 381.9Q337.6 362.9 330 359.1Q322.3 355.3 304.6 335Q286.8 314.7 257.6 270.3Q228.4 225.9 210.7 189.1Q192.9 152.3 186.6 148.5Q180.2 144.7 171.3 144.7Q162.4 144.7 137.1 112.9Q111.7 81.2 93.9 48.2Q76.1 15.2 68.5 8.8Q60.9 2.5 50.8 1.3Q40.6 0 39.4 0Z"/></svg>'
   };
 
+  /* ------------------------------------------------------------ ÞÁTTUR */
+  /* Sama færslan er teiknuð á forsíðunni og í safninu, svo hún er skrifuð
+     einu sinni hér. */
+
+  var SHOW_URL = "https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj";
+
+  function epItem(e) {
+    return '<li class="ep">' +
+        '<span class="ep__no data">' + e.code + '</span>' +
+        '<div class="ep__body">' +
+          '<h3 class="ep__title">' + e.title + '</h3>' +
+          '<p class="ep__desc">' + e.desc + '</p>' +
+          (e.guest ? '<span class="ep__guest micro">' + ICON.hand + 'Gestur: ' + e.guest + '</span>' : '') +
+        '</div>' +
+        '<div class="ep__meta"><span>' + e.date + '</span><span>' + e.len + '</span></div>' +
+        '<a class="ep__play" href="' + SHOW_URL + '" target="_blank" rel="noopener" aria-label="Hlusta á ' + e.code + ' á Spotify">' +
+          ICON.play +
+        '</a>' +
+      '</li>';
+  }
+
   /* --------------------------------------------------------------- VERÐ */
   /* Intl fyrst; vafrar án íslenskra staðsetningargagna skila enskri kommu
      ("7,900"), og þá tekur handvirka sniðið við. */
@@ -294,16 +315,28 @@
     });
   }
 
+  /* ------------------------------------------------- FYRRI ÞÆTTIR (FORSÍÐA) */
+
+  var homeEps = $("#homeEps");
+
+  if (homeEps && window.KG_EPISODES) {
+    /* Fyrsta færslan er þátturinn sem stendur efst á forsíðunni — hún er
+       sleppt hér svo sami þáttur birtist ekki tvisvar. */
+    var skip = Number(homeEps.dataset.skip) || 0;
+    var take = Number(homeEps.dataset.limit) || 6;
+    homeEps.innerHTML = window.KG_EPISODES.slice(skip, skip + take).map(epItem).join("");
+  }
+
   /* ----------------------------------------------------------- ÞÆTTIR */
 
   var listEl = $("#eplist");
 
   if (listEl && window.KG_EPISODES) {
     var EPISODES = window.KG_EPISODES;
-    var SHOW_URL = "https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj";
     var PAGE = 8;
-    var state = { filter: "all", shown: PAGE };
+    var state = { filter: "all", q: "", shown: PAGE };
     var filtersEl = $("#filters"), moreBtn = $("#moreBtn");
+    var searchEl = $("#epSearch"), countEl = $("#epCount");
 
     var SEASONS = [
       { key: "all", label: "Allt" }, { key: "5", label: "Röð 5" }, { key: "4", label: "Röð 4" },
@@ -311,30 +344,39 @@
       { key: "0", label: "Sérþættir" }
     ];
 
+    /* Leitað er í titli, lýsingu, gesti og þáttanúmeri. Íslenskir stafir
+       lækka rétt með toLowerCase, svo „SÓLMUNDUR“ finnur Sólmund. */
+    var matches = function (e, q) {
+      if (!q) return true;
+      return (e.title + " " + e.desc + " " + (e.guest || "") + " " + e.code)
+        .toLowerCase().indexOf(q) >= 0;
+    };
+
     var filtered = function () {
-      return state.filter === "all" ? EPISODES
-        : EPISODES.filter(function (e) { return String(e.season) === state.filter; });
+      var q = state.q.trim().toLowerCase();
+      return EPISODES.filter(function (e) {
+        if (state.filter !== "all" && String(e.season) !== state.filter) return false;
+        return matches(e, q);
+      });
     };
 
     var renderEpisodes = function () {
-      listEl.innerHTML = filtered().slice(0, state.shown).map(function (e) {
-        return '<li class="ep">' +
-            '<span class="ep__no data">' + e.code + '</span>' +
-            '<div class="ep__body">' +
-              '<h3 class="ep__title">' + e.title + '</h3>' +
-              '<p class="ep__desc">' + e.desc + '</p>' +
-              (e.guest ? '<span class="ep__guest micro">' + ICON.hand + 'Gestur: ' + e.guest + '</span>' : '') +
-            '</div>' +
-            '<div class="ep__meta"><span>' + e.date + '</span><span>' + e.len + '</span></div>' +
-            '<a class="ep__play" href="' + SHOW_URL + '" target="_blank" rel="noopener" aria-label="Hlusta á ' + e.code + ' á Spotify">' +
-              ICON.play +
-            '</a>' +
-          '</li>';
-      }).join("");
+      var list = filtered();
+      var total = list.length;
 
-      var total = filtered().length;
+      listEl.innerHTML = total
+        ? list.slice(0, state.shown).map(epItem).join("")
+        : '<li class="eps__empty">Enginn þáttur fannst. Prófaðu annað orð — eða skoðaðu allt safnið.</li>';
+
       moreBtn.hidden = state.shown >= total;
       moreBtn.textContent = "Hlaða fleiri þáttum (" + Math.max(total - state.shown, 0) + " eftir)";
+
+      if (countEl) {
+        /* „af 1 þætti“ en „af 2 þáttum“ — talan beygir orðið á eftir sér */
+        countEl.textContent = total
+          ? "Sýni " + Math.min(state.shown, total) + " af " + total + (total === 1 ? " þætti" : " þáttum")
+          : (state.q.trim() ? "Ekkert fannst við leitina" : "Enginn þáttur í þessari síu");
+      }
     };
 
     filtersEl.innerHTML = SEASONS.map(function (s) {
@@ -356,6 +398,14 @@
     });
 
     moreBtn.addEventListener("click", function () { state.shown += PAGE; renderEpisodes(); });
+
+    if (searchEl) {
+      searchEl.addEventListener("input", function () {
+        state.q = searchEl.value;
+        state.shown = PAGE;
+        renderEpisodes();
+      });
+    }
 
     var fromUrl = new URL(location.href).searchParams.get("rod");
     if (fromUrl && SEASONS.some(function (s) { return s.key === fromUrl; })) {

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Komið gott — hlaðvarp Ólafar Skafta og Kristínar Gunnars</title>
-<meta name="description" content="Komið gott er hlaðvarp Ólafar Skaftadóttur og Kristínar Gunnarsdóttur. Nýr þáttur alla þriðjudaga, viðburðir í beinni og búðin.">
+<meta name="description" content="Komið gott er hlaðvarp Ólafar Skaftadóttur og Kristínar Gunnarsdóttur. Nýr þáttur alla þriðjudaga á Spotify, Apple Podcasts og mbl.is.">
 <meta name="theme-color" content="#08070A">
 
 <!-- Sýnidæmi: haldið utan við leitarvélar svo tilbúnu viðburðadagsetningarnar
@@ -13,8 +13,8 @@
 <meta name="robots" content="noindex, nofollow">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Komið gott">
-<meta property="og:description" content="Nýr þáttur alla þriðjudaga. Næsti viðburður: Austurbær, 25. september.">
+<meta property="og:title" content="Komið gott — hlaðvarp">
+<meta property="og:description" content="Nýr þáttur alla þriðjudaga. Nýjast: Sumarfrí á enda, Sundabraut og siðanefndin.">
 <meta property="og:image" content="assets/logo.jpg">
 <meta property="og:locale" content="is_IS">
 
@@ -23,6 +23,26 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Archivo:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
+
+<!-- Segir leitarvélum og hlaðvarpsskrám að þetta sé hlaðvarp, ekki fyrirtæki -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PodcastSeries",
+  "name": "Komið gott",
+  "inLanguage": "is",
+  "description": "Vikulegt hlaðvarp Ólafar Skaftadóttur og Kristínar Gunnarsdóttur um fólkið, fréttirnar og allt hitt.",
+  "author": [
+    { "@type": "Person", "name": "Ólöf Skaftadóttir" },
+    { "@type": "Person", "name": "Kristín Gunnarsdóttir" }
+  ],
+  "sameAs": [
+    "https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj",
+    "https://podcasts.apple.com/is/podcast/komi%C3%B0-gott/id1753137038",
+    "https://www.mbl.is/hladvarp/hlusta/komid-gott/"
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -34,14 +54,25 @@
     <nav aria-label="Aðalvalmynd">
       <ul class="nav__links" id="navLinks">
         <li><a href="thaettir.html">Þættir</a></li>
+        <li><a href="um.html">Þáttastjórnendur</a></li>
         <li><a href="vidburdir.html">Viðburðir</a></li>
         <li><a href="myndir.html">Myndir</a></li>
         <li><a href="budin.html">Búðin</a></li>
-        <li><a href="um.html">Um okkur</a></li>
+        <li class="nav__listen">
+          <span class="micro">Hlusta</span>
+          <span>
+            <a href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">Spotify
+              <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a>
+            <a href="https://podcasts.apple.com/is/podcast/komi%C3%B0-gott/id1753137038" target="_blank" rel="noopener">Apple Podcasts
+              <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a>
+            <a href="https://www.mbl.is/hladvarp/hlusta/komid-gott/" target="_blank" rel="noopener">mbl.is
+              <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a>
+          </span>
+        </li>
       </ul>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--flag btn--sm nav__tickets" href="vidburdir.html">Miðar</a>
+      <a class="btn btn--sm nav__cta" href="#hlusta">Hlusta</a>
       <button class="iconbtn" id="cartOpen" aria-label="Opna körfu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16l-1.3 12.2a1 1 0 0 1-1 .8H6.3a1 1 0 0 1-1-.9L4 7Z"/><path d="M8.5 7V5.6a3.5 3.5 0 0 1 7 0V7"/></svg>
         <span class="iconbtn__count" id="cartCount" hidden>0</span>
@@ -69,8 +100,8 @@
     </div>
 
     <p class="hero__lead">
-      Ólöf Skafta og Kristín Gunnars taka vikuna fyrir — fólkið, fréttirnar og
-      allt hitt sem enginn nennir að segja upphátt. Nýr þáttur alla þriðjudaga.
+      Vikulegt hlaðvarp Ólafar Skafta og Kristínar Gunnars um fólkið, fréttirnar
+      og allt hitt sem enginn nennir að segja upphátt. Nýr þáttur alla þriðjudaga.
     </p>
 
     <div class="hero__cta">
@@ -78,41 +109,41 @@
         <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
         Hlusta á nýjasta þátt
       </a>
-      <a class="btn btn--ghost" href="vidburdir.html">Sjá viðburði</a>
+      <a class="btn btn--ghost" href="thaettir.html">Þáttasafnið</a>
     </div>
 
     <ul class="hero__facts micro">
-      <li><b>4,7</b> á Apple Podcasts</li>
+      <li><b>120+</b> þættir</li>
       <li><b>5</b> þáttaraðir</li>
-      <li><b>3</b> uppseld hús</li>
+      <li><b>4,7</b> á Apple Podcasts</li>
     </ul>
   </div>
 
-  <a class="nextbar" href="vidburdir.html">
-    <span class="nextbar__main">
-      <b>Næst: Komið gott LIVE</b>
-      <span>Austurbær&nbsp;· fim.&nbsp;25.&nbsp;sept.&nbsp;· kl.&nbsp;20:00</span>
-    </span>
-    <span class="nextbar__cd" aria-label="Tími til stefnu">
-      <span><b data-cd="d">00</b><i>d</i></span>
-      <span><b data-cd="h">00</b><i>klst</i></span>
-      <span><b data-cd="m">00</b><i>mín</i></span>
-      <span><b data-cd="s">00</b><i>sek</i></span>
-    </span>
-    <span class="nextbar__cta">
-      <span class="tag tag--flag">Örfá sæti</span>
-      <span class="nextbar__go">Miðar
-        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  <!-- Nýjasti þátturinn stendur neðst á plakatinu. Efnið er það sama og í
+       fyrsta færslunni í assets/episodes.js — hér skrifað beint í HTML svo
+       hann sjáist líka þótt skriftur nái ekki að hlaðast. -->
+  <a class="epbar" href="#nyjast">
+    <img class="epbar__art" src="assets/logo.jpg" width="3000" height="3000" alt="" fetchpriority="high">
+    <span class="epbar__body">
+      <span class="epbar__kicker">
+        <span class="epbar__new">Nýjasti þáttur</span>
+        <span class="micro">S05E02 · 12. ágúst</span>
       </span>
+      <span class="epbar__title">Sumarfrí á enda, Sundabraut og siðanefndin</span>
+      <span class="epbar__meta">Þáttaröð 5 · 1 klst 00 mín</span>
+    </span>
+    <span class="epbar__go">
+      <i><svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i>
+      <span>Hlusta</span>
     </span>
   </a>
 </section>
 
-<!-- ================================================ ÞÁTTUR VIKUNNAR ======= -->
+<!-- ================================================ NÝJASTI ÞÁTTURINN ==== -->
 <section class="band" id="nyjast">
   <div class="wrap">
     <div class="shead">
-      <h2>Þáttur vikunnar</h2>
+      <h2>Nýjasti þátturinn</h2>
       <a class="tlink" href="thaettir.html">Allt þáttasafnið
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
@@ -155,11 +186,123 @@
   </div>
 </section>
 
-<!-- ================================================= NÆSTU VIÐBURÐIR ===== -->
+<!-- =================================================== FYRRI ÞÆTTIR ====== -->
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Fyrri þættir</h2>
+      <a class="tlink" href="thaettir.html">Öll 120+ í safninu
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <ul class="eps" id="homeEps" data-skip="1" data-limit="6"></ul>
+  </div>
+</section>
+
+<!-- ================================================ HVAR ER HLUSTAÐ ====== -->
+<section class="band paper" id="hlusta">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Hvar sem þú hlustar</h2>
+      <p class="micro">Nýr þáttur alla þriðjudaga</p>
+    </div>
+
+    <div class="plats">
+      <a class="plat" href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">
+        <span class="plat__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9.2"/><path d="M7 9.5c3.3-.9 6.7-.6 9.5 1"/>
+            <path d="M7.7 13c2.6-.7 5.3-.4 7.6.8"/><path d="M8.4 16.3c2-.5 4-.3 5.7.6"/>
+          </svg>
+        </span>
+        <h3>Spotify</h3>
+        <p>Allir þættir, líka gestaþættirnir. Fylgstu með og nýi þátturinn bíður á þriðjudagsmorgni.</p>
+        <span class="plat__go">Opna
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
+        </span>
+      </a>
+
+      <a class="plat" href="https://podcasts.apple.com/is/podcast/komi%C3%B0-gott/id1753137038" target="_blank" rel="noopener">
+        <span class="plat__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="2.7"/><path d="M6.7 13.7a7 7 0 1 1 10.6 0"/>
+            <path d="M10.2 21.1c-.5-.9-.8-2.9-.8-4.9 0-1.1 1.1-1.7 2.6-1.7s2.6.6 2.6 1.7c0 2-.3 4-.8 4.9-.4.7-3.2.7-3.6 0Z"/>
+          </svg>
+        </span>
+        <h3>Apple Podcasts</h3>
+        <p>4,7 í einkunn af fimm mögulegum. Þar má líka skilja eftir umsögn — það hjálpar meira en fólk heldur.</p>
+        <span class="plat__go">Opna
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
+        </span>
+      </a>
+
+      <a class="plat" href="https://www.mbl.is/hladvarp/hlusta/komid-gott/" target="_blank" rel="noopener">
+        <span class="plat__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.2 14.5v-2.3a7.8 7.8 0 0 1 15.6 0v2.3"/>
+            <rect x="2.6" y="13.6" width="4" height="6.2" rx="1.6"/><rect x="17.4" y="13.6" width="4" height="6.2" rx="1.6"/>
+          </svg>
+        </span>
+        <h3>Hlaðvarp mbl.is</h3>
+        <p>Þættirnir eru líka aðgengilegir beint í vafra á hlaðvarpsvef mbl.is — engin forrit, ekkert app.</p>
+        <span class="plat__go">Opna
+          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
+        </span>
+      </a>
+    </div>
+
+    <div class="subscribe">
+      <p>Ábendingar, gestahugmyndir og annað sem má fara í loftið:</p>
+      <a class="tlink" href="mailto:hae@komidgott.is">hae@komidgott.is</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ ÞÁTTASTJÓRNENDUR ===== -->
+<section class="band">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Þáttastjórnendur</h2>
+      <a class="tlink" href="um.html">Um okkur
+        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="about">
+      <div class="about__text">
+        <h3 class="about__head">Tvær sem segja það sem hinar hugsa</h3>
+        <p class="about__lead">
+          Komið gott byrjaði sem samtal sem átti aldrei að fara í loftið. Í dag er
+          það eitt hlustaðasta hlaðvarp landsins — vikulegt uppgjör á fréttum,
+          fólki og því sem má víst ekki ræða.
+        </p>
+
+        <dl class="hosts">
+          <div>
+            <dt>Ólöf Skaftadóttir</dt>
+            <dd>Blaðamaður og fyrrverandi ritstjóri Fréttablaðsins. Spyr þess sem aðrir sleppa.</dd>
+          </div>
+          <div>
+            <dt>Kristín Gunnarsdóttir</dt>
+            <dd>Hönnuður. Sér um að ekkert kvöld endi án þess að einhver roðni.</dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="about__photo">
+        <img src="assets/tvaer.jpg" width="1640" height="1093" loading="lazy"
+             alt="Ólöf Skaftadóttir og Kristín Gunnarsdóttir standa hlið við hlið">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================= ÞÁTTURINN Á SVIÐI === -->
 <section class="band paper">
   <div class="wrap">
     <div class="shead">
-      <h2>Næstu viðburðir</h2>
+      <h2>Þátturinn á sviði</h2>
       <a class="tlink" href="vidburdir.html">Allir viðburðir
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
@@ -172,26 +315,12 @@
           <p class="micro ticket__kicker">Fimmtudagur · húsið opnar 19:00</p>
           <h3>Komið gott LIVE í Austurbæ</h3>
           <p class="ticket__where">Austurbær, Snorrabraut 37 · kl. 20:00 · 16 ára aldurstakmark</p>
+          <p class="ticket__note">Þátturinn tekinn upp fyrir framan fullan sal — og fer svo í loftið eins og hver annar þriðjudagsþáttur.</p>
         </div>
         <div class="ticket__buy">
           <span class="tag tag--flag">Örfá sæti laus</span>
           <p class="ticket__price">6.900&nbsp;<i>kr.</i></p>
           <a class="btn btn--flag btn--block" href="https://tix.is" target="_blank" rel="noopener">Kaupa miða
-            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
-          </a>
-        </div>
-      </article>
-
-      <article class="ticket">
-        <div class="ticket__date"><b>17</b><span>okt</span><i>2026</i></div>
-        <div class="ticket__body">
-          <h3>Komið gott x Akureyri</h3>
-          <p class="ticket__where">Hof, Menningarhúsið · laugardagur · kl. 20:30</p>
-        </div>
-        <div class="ticket__buy">
-          <span class="tag tag--flag">Miðasala hafin</span>
-          <p class="ticket__price">6.900&nbsp;<i>kr.</i></p>
-          <a class="btn btn--block" href="https://tix.is" target="_blank" rel="noopener">Miðar
             <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
           </a>
         </div>
@@ -217,8 +346,8 @@
 <section class="signup" id="postlisti">
   <div class="wrap signup__inner">
     <div>
-      <h2>Vertu á undan að vita af miðasölu</h2>
-      <p>Þrír uppseldir viðburðir í röð. Skráðu þig og þú færð póst um leið og miðasala hefst.</p>
+      <h2>Póstur þegar eitthvað gerist</h2>
+      <p>Nýjar þáttaraðir, gestaþættir og miðasala. Einn póstur í mesta lagi — ekki vikuleg áminning um að þátturinn sé kominn.</p>
     </div>
 
     <form class="form" id="signupForm" novalidate>
@@ -259,6 +388,7 @@
         <h2>Síðan</h2>
         <ul>
           <li><a href="thaettir.html">Þáttasafn</a></li>
+          <li><a href="um.html">Þáttastjórnendur</a></li>
           <li><a href="vidburdir.html">Viðburðir</a></li>
           <li><a href="myndir.html">Myndir</a></li>
           <li><a href="budin.html">Búðin</a></li>
@@ -304,6 +434,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="assets/episodes.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

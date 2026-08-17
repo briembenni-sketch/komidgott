@@ -1,7 +1,8 @@
 # Komið gott — sýnidæmi að vefsíðu
 
-Sýnidæmi (demo) unnið eftir fyrirspurn Kristínar: viðburðir og miðasala,
-hugmynd að vefverslun, myndir af viðburðum — auk þáttasafns og efnis um þær.
+Sýnidæmi (demo) unnið eftir fyrirspurn Kristínar. Þetta er hlaðvarpsvefur
+fyrst og fremst: þættirnir, hvar er hlustað og hverjar standa á bak við þá.
+Viðburðir, miðasala, vefverslun og myndir eru með — en aftar í röðinni.
 
 ## Skoða síðuna
 
@@ -15,12 +16,13 @@ Allt er venjulegt HTML/CSS/JS án byggingarskrefa. `index.html` er í rót
 geymslunnar, svo Vercel þarf hvorki byggingarskipun né stillingar.
 
 ```
-index.html        · forsíða (plakat, þáttur vikunnar, næstu viðburðir, búð)
-thaettir.html     · þáttasafnið
-vidburdir.html    · viðburðir og miðasala
+index.html        · forsíða (plakat, nýjasti þáttur, fyrri þættir, veitur,
+                    þáttastjórnendur, viðburður, búð)
+thaettir.html     · þáttasafnið með síu og leit
+vidburdir.html    · viðburðir, niðurtalning og miðasala
 myndir.html       · myndir af viðburðum
 budin.html        · vefverslunin
-um.html           · um Ólöfu og Kristínu, og póstlisti
+um.html           · Ólöf og Kristín, tölur um hlaðvarpið og póstlisti
 assets/
   styles.css      · öll stílskráin
   app.js          · sameiginleg skrifta (karfa, sía, spilari, myndagluggi)
@@ -48,8 +50,13 @@ hönd. Síðan byggir á því:
 - **Höndin** er ekki JPG-mynd heldur vektor sem var rakinn úr merkinu sjálfu
   (þröskuldur, tengdir hlutar, marching squares, Douglas–Peucker). Hún er því
   hnífskörp í hvaða stærð sem er, ólíkt myndinni sem varð mjúk í stækkun.
-- **Miðaborðinn** neðst á forsíðunni er fullbreiður: næsti viðburður,
-  niðurtalning og hnappur á miðasölu.
+- **Þáttaborðinn** neðst á forsíðunni er fullbreiður og sýnir nýjasta þáttinn:
+  cover-artið, þáttanúmer, heiti og hlustunarhnapp. Það eina sem stendur ofan
+  á plakatinu er hlaðvarpið sjálft — niðurtalningin að næsta viðburði flutti
+  yfir á viðburðasíðuna, þangað sem hún á heima.
+- **Veiturnar** (Spotify, Apple Podcasts, mbl.is) eru heill kafli á forsíðunni
+  með spjöldum, ekki bara tenglaröð í fæti. Þær eru líka í símavalmyndinni og
+  hnappurinn í hausnum segir „Hlusta“ en ekki „Miðar“.
 - **Viðburðir eru miðar** með rifgati og útstungum.
 - **Vörur** eru prentfletir með þrykktu merki, ekki litaðir ferningar.
 - Reitir á myndasíðunni sem bíða ljósmynda eru **titilspjöld**, ekki
@@ -68,12 +75,12 @@ nákvæmlega einn `h1`, allar myndir með `alt` og fastar stærðir. Stillingin
 
 | Síða | Hvað hún gerir |
 |---|---|
-| **Forsíða** | Plakat, þáttur vikunnar með spilara, næstu viðburðir, sýnishorn úr búðinni |
-| **Þættir** | Allt safnið, síað eftir þáttaröð. Sían skrifast í slóðina svo hægt sé að deila henni |
-| **Viðburðir** | Komandi viðburðir sem miðar, tenglar á Tix, listi yfir liðna viðburði |
+| **Forsíða** | Plakat með nýjasta þætti neðst, þátturinn með spilara, sex fyrri þættir, hlustunarveiturnar, þáttastjórnendur, næsti viðburður, sýnishorn úr búðinni |
+| **Þættir** | Allt safnið, síað eftir þáttaröð og leitað í titlum, lýsingum og gestum. Sían skrifast í slóðina svo hægt sé að deila henni |
+| **Viðburðir** | Niðurtalning að næsta viðburði, komandi viðburðir sem miðar, tenglar á Tix, listi yfir liðna viðburði |
 | **Myndir** | Myndanet með stækkunarglugga |
 | **Búðin** | Vörur, stærðarval og karfa sem man sig milli heimsókna og milli síðna |
-| **Um okkur** | Ólöf og Kristín, tölur um hlaðvarpið og póstlisti |
+| **Þáttastjórnendur** | Ólöf og Kristín, tölur um hlaðvarpið, veitutenglar og póstlisti |
 
 ## Hvað er raunverulegt og hvað er sett inn til sýnis
 
@@ -96,7 +103,11 @@ Iðnó og Austurbær hafi selst upp.
 
 ## Hvað þarf að tengja fyrir alvöru útgáfu
 
-- **Þættir** lesnir sjálfkrafa úr RSS-straumnum svo safnið uppfærist sjálft.
+- **Þættir** lesnir sjálfkrafa úr RSS-straumnum svo safnið uppfærist sjálft —
+  þá uppfærist líka þáttaborðinn efst, listinn á forsíðunni og leitin, því allt
+  þrennt les sama listann (`assets/episodes.js`). Nýjasti þátturinn er í dag
+  skrifaður beint í `index.html` líka, svo hann sjáist þótt skriftur bregðist;
+  sá texti þarf að fylgja fyrstu færslunni í listanum.
 - **Karfan** tengd greiðslugátt (Rapyd, Netgíró eða Aur) og lagerstöðu.
 - **Póstlistinn** tengdur við t.d. Mailchimp.
 - **Vefumsjón** svo hægt sé að bæta við viðburði, myndum og vörum án þess að

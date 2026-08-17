@@ -1,4 +1,8 @@
-/* Þáttalisti. Í raunútgáfu kæmi þetta úr RSS-straumnum. */
+/* Þáttalisti. Í raunútgáfu kæmi þetta úr RSS-straumnum.
+   Fyrsta færslan er nýjasti þátturinn: hann stendur á þáttaborðanum efst á
+   forsíðunni og í kaflanum „Nýjasti þátturinn“, og er þess vegna sleppt úr
+   listanum „Fyrri þættir“ þar fyrir neðan. Sá texti er líka skrifaður beint
+   í index.html — breytist hann hér þarf að breyta honum þar líka. */
 window.KG_EPISODES = [
   { code: "S05E02", season: 5, date: "12. ágúst 2026", len: "1:00:24",
     title: "Sumarfrí á enda, Sundabraut og siðanefndin",
