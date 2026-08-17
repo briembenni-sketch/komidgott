@@ -17,29 +17,26 @@
     pause: '<svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>',
     plus:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 6v12M6 12h12"/></svg>',
     minus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>',
+    back15: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 5.5 7 9l4.5 3.5"/><path d="M7 9h6.5a5.5 5.5 0 1 1-5.5 5.5"/></svg>',
+    fwd15:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 5.5 17 9l-4.5 3.5"/><path d="M17 9h-6.5A5.5 5.5 0 1 0 16 14.5"/></svg>',
+    ext: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>',
+    x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
     /* Höndin úr merkinu, rakin úr myndinni sjálfri */
-    hand:  '<svg class="i" viewBox="0 0 845 1000" fill="currentColor" aria-hidden="true"><path d="M39.4 0Q38.1 0 25.4 12.7Q12.7 25.4 13.9 45.7Q15.2 66 7.6 76.2Q0 86.3 0 101.5Q0 116.8 53.3 219.6Q106.6 322.3 111.7 337.6Q116.8 352.8 132 375.6Q147.2 398.5 156.1 406.1Q165 413.7 176.4 437.8Q187.8 461.9 210.7 491.1Q233.5 520.3 241.1 554.5Q248.7 588.8 211.9 566Q175.1 543.1 143.4 531.7Q111.7 520.3 93.9 517.8Q76.1 515.2 60.9 521.5Q45.7 527.9 34.3 543.1Q22.8 558.4 22.8 576.1Q22.8 593.9 29.1 604Q35.5 614.2 118 670Q200.5 725.9 251.3 777.9Q302 829.9 317.3 838.8Q332.5 847.7 341.4 850.3Q350.3 852.8 388.4 850.3Q426.4 847.7 456.9 856.6Q487.3 865.5 601.5 903.5Q715.7 941.6 777.9 970.8Q840.1 1000 842.7 1000Q845.2 1000 845.2 851.5Q845.2 703 750 684Q654.8 665 620.5 653.5Q586.3 642.1 568.5 639.6Q550.8 637.1 536.8 628.2Q522.8 619.3 478.4 563.5Q434 507.6 404.8 454.3Q375.6 401 356.6 381.9Q337.6 362.9 330 359.1Q322.3 355.3 304.6 335Q286.8 314.7 257.6 270.3Q228.4 225.9 210.7 189.1Q192.9 152.3 186.6 148.5Q180.2 144.7 171.3 144.7Q162.4 144.7 137.1 112.9Q111.7 81.2 93.9 48.2Q76.1 15.2 68.5 8.8Q60.9 2.5 50.8 1.3Q40.6 0 39.4 0Z"/></svg>'
+    hand:  '<svg class="i" viewBox="0 0 845 1000" fill="currentColor" aria-hidden="true"><path d="M39.4 0Q38.1 0 25.4 12.7Q12.7 25.4 13.9 45.7Q15.2 66 7.6 76.2Q0 86.3 0 101.5Q0 116.8 53.3 219.6Q106.6 322.3 111.7 337.6Q116.8 352.8 132 375.6Q147.2 398.5 156.1 406.1Q165 413.7 176.4 437.8Q187.8 461.9 210.7 491.1Q233.5 520.3 241.1 554.5Q248.7 588.8 211.9 566Q175.1 543.1 143.4 531.7Q111.7 520.3 93.9 517.8Q76.1 515.2 60.9 521.5Q45.7 527.9 34.3 543.1Q22.8 558.4 22.8 576.1Q22.8 593.9 29.1 604Q35.5 614.2 118 670Q200.5 725.9 251.3 777.9Q302 829.9 317.3 838.8Q332.5 847.7 341.4 850.3Q350.3 852.8 388.4 850.3Q426.4 847.7 456.9 856.6Q487.3 865.5 601.5 903.5Q715.7 941.6 777.9 970.8Q840.1 1000 842.7 1000Q845.2 1000 845.2 851.5Q845.2 703 750 684Q654.8 665 620.5 653.5Q586.3 642.1 568.5 639.6Q550.8 637.1 536.8 628.2Q522.8 619.3 478.4 563.5Q434 507.6 404.8 454.3Q375.6 401 356.6 381.9Q337.6 362.9 330 359.1Q322.3 355.3 304.6 335Q286.8 314.7 257.6 270.3Q228.4 225.9 210.7 189.1Q192.9 152.3 186.6 148.5Q180.2 144.7 171.3 144.7Q162.4 144.7 137.1 112.9Q111.7 81.2 93.9 48.2Q76.1 15.2 68.5 8.8Q60.9 2.5 50.8 1.3Q40.6 0 39.4 0Z"/></svg>',
+    /* Tónjafnari sem hreyfist meðan þáttur spilast */
+    eq: '<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>'
   };
 
-  /* ------------------------------------------------------------ ÞÁTTUR */
-  /* Sama færslan er teiknuð á forsíðunni og í safninu, svo hún er skrifuð
-     einu sinni hér. */
-
+  var COVER = "assets/logo.jpg";
   var SHOW_URL = "https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj";
 
-  function epItem(e) {
-    return '<li class="ep">' +
-        '<span class="ep__no data">' + e.code + '</span>' +
-        '<div class="ep__body">' +
-          '<h3 class="ep__title">' + e.title + '</h3>' +
-          '<p class="ep__desc">' + e.desc + '</p>' +
-          (e.guest ? '<span class="ep__guest micro">' + ICON.hand + 'Gestur: ' + e.guest + '</span>' : '') +
-        '</div>' +
-        '<div class="ep__meta"><span>' + e.date + '</span><span>' + e.len + '</span></div>' +
-        '<a class="ep__play" href="' + SHOW_URL + '" target="_blank" rel="noopener" aria-label="Hlusta á ' + e.code + ' á Spotify">' +
-          ICON.play +
-        '</a>' +
-      '</li>';
+  var EPISODES = window.KG_EPISODES || [];
+  var byId = {};
+  EPISODES.forEach(function (e) { byId[e.id] = e; });
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
   /* --------------------------------------------------------------- VERÐ */
@@ -55,7 +52,15 @@
   })();
 
   /* Fast bil á milli tölu og einingar svo „7.900 kr.“ brotni aldrei í tvennt */
-  var kr = function (n) { return fmt(n) + " kr."; };
+  var kr = function (n) { return fmt(n) + " kr."; };
+
+  function pad(n) { return n < 10 ? "0" + n : String(n); }
+
+  function stamp(sec) {
+    sec = Math.max(0, Math.floor(sec || 0));
+    var h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, s = sec % 60;
+    return (h ? h + ":" + pad(m) : String(m)) + ":" + pad(s);
+  }
 
   /* --------------------------------------------------------- TILKYNNING */
 
@@ -68,6 +73,533 @@
     toastEl.dataset.open = "true";
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { toastEl.dataset.open = "false"; }, 3600);
+  }
+
+  /* =========================================================== SPILARI ==
+     Þættirnir spilast í vafranum, beint af straumnum. Spilarinn er einn
+     borði neðst á síðunni og fylgir öllum síðum.
+
+     Vefurinn er venjulegar síður en ekki eitt forrit, svo hljóðið stöðvast
+     við að skipta um síðu. Staðan er því geymd: hvaða þáttur var í gangi og
+     hvar hann stóð. Við komu er reynt að halda áfram þar sem frá var horfið
+     — vafrar leyfa það aðeins hafi notandi þegar spilað hljóð á léninu, og
+     þá bíður spilarinn einfaldlega tilbúinn.
+     ==================================================================== */
+
+  var STATE_KEY = "kg-player-v1";
+  var POS_KEY   = "kg-pos-v1";
+
+  var player = {
+    audio: null,
+    ep: null,
+    dock: null,
+    seek: null,
+    dragging: false
+  };
+
+  function readJSON(key, fallback) {
+    try {
+      var raw = window.localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch (err) { return fallback; }
+  }
+
+  function writeJSON(key, value) {
+    try { window.localStorage.setItem(key, JSON.stringify(value)); } catch (err) {}
+  }
+
+  var positions = readJSON(POS_KEY, {}) || {};
+
+  function savePosition() {
+    if (!player.ep || !player.audio) return;
+    var t = player.audio.currentTime;
+    /* Þáttur sem er nánast búinn telst kláraður og byrjar upp á nýtt */
+    if (t > 5 && t < player.audio.duration - 20) positions[player.ep.id] = Math.floor(t);
+    else delete positions[player.ep.id];
+    writeJSON(POS_KEY, positions);
+  }
+
+  function saveState() {
+    if (!player.ep) return;
+    writeJSON(STATE_KEY, {
+      id: player.ep.id,
+      t: Math.floor(player.audio ? player.audio.currentTime : 0),
+      rate: player.audio ? player.audio.playbackRate : 1,
+      playing: player.audio ? !player.audio.paused : false
+    });
+  }
+
+  function buildDock() {
+    var el = document.createElement("div");
+    el.className = "dock";
+    el.id = "dock";
+    el.setAttribute("aria-label", "Spilari");
+    el.dataset.open = "false";
+    el.innerHTML =
+      '<div class="dock__track">' +
+        '<input class="dock__seek" id="dockSeek" type="range" min="0" max="1000" value="0" step="1" aria-label="Staðsetning í þætti">' +
+      '</div>' +
+      '<div class="dock__inner">' +
+        '<img class="dock__art" src="' + COVER + '" width="120" height="120" alt="">' +
+        '<div class="dock__meta">' +
+          '<p class="dock__code data"><span data-d="code"></span>' + ICON.eq + '</p>' +
+          '<p class="dock__title" data-d="title"></p>' +
+        '</div>' +
+        '<div class="dock__ctl">' +
+          '<button class="dock__btn dock__skip" type="button" data-act="back" aria-label="Til baka um 15 sekúndur">' + ICON.back15 + '</button>' +
+          '<button class="dock__play" type="button" data-act="toggle" aria-label="Spila">' + ICON.play + '</button>' +
+          '<button class="dock__btn dock__skip" type="button" data-act="fwd" aria-label="Áfram um 15 sekúndur">' + ICON.fwd15 + '</button>' +
+        '</div>' +
+        '<p class="dock__time data"><b data-d="now">0:00</b><span data-d="dur">0:00</span></p>' +
+        '<button class="dock__btn dock__rate" type="button" data-act="rate" aria-label="Hraði">1×</button>' +
+        '<a class="dock__btn dock__ext" data-d="link" href="' + SHOW_URL + '" target="_blank" rel="noopener" aria-label="Opna þáttinn á Spotify">' + ICON.ext + '</a>' +
+        '<button class="dock__btn dock__close" type="button" data-act="close" aria-label="Loka spilara">' + ICON.x + '</button>' +
+      '</div>';
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function dockSet(name, value) {
+    var el = $('[data-d="' + name + '"]', player.dock);
+    if (el) el.textContent = value;
+  }
+
+  function paintPlaying() {
+    var id = player.ep ? player.ep.id : null;
+    var on = !!(player.audio && !player.audio.paused);
+
+    $$("[data-ep]").forEach(function (row) {
+      var mine = row.dataset.ep === id;
+      var live = mine && on;
+      row.dataset.playing = String(live);
+      row.dataset.current = String(mine);
+
+      /* Aðeins reitir sem eru merktir sem tákn mega skipta um innihald —
+         annars þurrkast cover-artið út með spilunarhnappinum. */
+      $$("[data-icon]", row).forEach(function (el) {
+        el.innerHTML = live ? ICON.pause : ICON.play;
+      });
+      var ep = byId[row.dataset.ep];
+      $$("[data-play]", row).forEach(function (el) {
+        el.setAttribute("aria-label", (live ? "Gera hlé á " : "Spila ") + (ep ? ep.code : "þætti"));
+      });
+    });
+
+    if (player.dock) {
+      player.dock.dataset.playing = String(on);
+      var play = $(".dock__play", player.dock);
+      play.innerHTML = on ? ICON.pause : ICON.play;
+      play.setAttribute("aria-label", on ? "Gera hlé" : "Spila");
+    }
+  }
+
+  function paintProgress() {
+    if (!player.audio || !player.dock) return;
+    var d = player.audio.duration || (player.ep ? player.ep.secs : 0);
+    var t = player.audio.currentTime;
+    dockSet("now", stamp(t));
+    dockSet("dur", d ? stamp(d) : "–:––");
+    if (!player.dragging && d) {
+      player.seek.value = String(Math.round((t / d) * 1000));
+      player.seek.style.setProperty("--p", (t / d * 100) + "%");
+      player.seek.setAttribute("aria-valuetext", stamp(t) + " af " + stamp(d));
+    }
+    /* Hlustunarstaðan sést líka á þættinum sjálfum í listanum */
+    var row = $('[data-ep="' + (player.ep ? player.ep.id : "") + '"]');
+    if (row && d) row.style.setProperty("--heard", (t / d * 100) + "%");
+  }
+
+  function ensurePlayer() {
+    if (player.audio) return;
+
+    player.audio = new Audio();
+    player.audio.preload = "metadata";
+    player.dock = buildDock();
+    player.seek = $("#dockSeek", player.dock);
+    /* Eining án controls sést ekki, en í DOM-inu er hún sýnileg verkfærum */
+    player.dock.appendChild(player.audio);
+
+    var a = player.audio;
+
+    a.addEventListener("timeupdate", paintProgress);
+    a.addEventListener("durationchange", paintProgress);
+    a.addEventListener("play", function () { paintPlaying(); saveState(); });
+    a.addEventListener("pause", function () { paintPlaying(); savePosition(); saveState(); });
+    a.addEventListener("ended", function () {
+      savePosition();
+      var next = nextEpisode();
+      if (next) play(next);
+      else paintPlaying();
+    });
+    a.addEventListener("error", function () {
+      player.dock.dataset.error = "true";
+      toast("Náði ekki í hljóðskrána — <b>prófaðu að opna þáttinn á Spotify</b>");
+    });
+
+    setInterval(function () { if (!a.paused) { savePosition(); saveState(); } }, 5000);
+    window.addEventListener("pagehide", function () { savePosition(); saveState(); });
+
+    player.dock.addEventListener("click", function (ev) {
+      var b = ev.target.closest("[data-act]");
+      if (!b) return;
+      var act = b.dataset.act;
+      if (act === "toggle") toggle();
+      if (act === "back") a.currentTime = Math.max(0, a.currentTime - 15);
+      if (act === "fwd") a.currentTime = Math.min(a.duration || 1e9, a.currentTime + 15);
+      if (act === "rate") cycleRate(b);
+      if (act === "close") closeDock();
+    });
+
+    var onSeek = function () {
+      var d = a.duration;
+      if (!d) return;
+      var t = (Number(player.seek.value) / 1000) * d;
+      player.seek.style.setProperty("--p", (t / d * 100) + "%");
+      dockSet("now", stamp(t));
+      return t;
+    };
+    player.seek.addEventListener("pointerdown", function () { player.dragging = true; });
+    player.seek.addEventListener("input", onSeek);
+    player.seek.addEventListener("change", function () {
+      var t = onSeek();
+      if (t != null) a.currentTime = t;
+      player.dragging = false;
+    });
+    /* Lyklaborðsnotkun sendir aðeins change, ekki pointerup */
+    player.seek.addEventListener("keyup", function () { player.dragging = false; });
+  }
+
+  var RATES = [1, 1.25, 1.5, 1.75, 2];
+
+  function cycleRate(btn) {
+    var i = RATES.indexOf(player.audio.playbackRate);
+    var r = RATES[(i + 1) % RATES.length];
+    player.audio.playbackRate = r;
+    btn.textContent = String(r).replace(".", ",") + "×";
+    saveState();
+  }
+
+  function nextEpisode() {
+    if (!player.ep) return null;
+    var i = EPISODES.indexOf(player.ep);
+    /* Listinn er nýjastur fyrst, svo „næsti“ er sá sem kom á undan í tíma */
+    return i >= 0 && i + 1 < EPISODES.length ? EPISODES[i + 1] : null;
+  }
+
+  function load(ep, resumeAt) {
+    ensurePlayer();
+    if (player.ep && player.ep.id === ep.id) return;
+
+    if (player.ep) savePosition();
+    player.ep = ep;
+    player.audio.src = ep.audio;
+
+    var at = resumeAt != null ? resumeAt : (positions[ep.id] || 0);
+    if (at > 0) {
+      /* Staðsetningu má aðeins setja þegar vafrinn þekkir lengdina */
+      var seekWhenReady = function () {
+        try { player.audio.currentTime = at; } catch (err) {}
+        player.audio.removeEventListener("loadedmetadata", seekWhenReady);
+      };
+      player.audio.addEventListener("loadedmetadata", seekWhenReady);
+    }
+
+    player.dock.dataset.open = "true";
+    player.dock.dataset.error = "false";
+    document.body.dataset.dock = "true";
+    dockSet("code", ep.code + (ep.season ? "" : " · " + kindLabel(ep)));
+    dockSet("title", ep.title);
+    dockSet("dur", ep.secs ? stamp(ep.secs) : "0:00");
+    dockSet("now", stamp(at));
+    var link = $('[data-d="link"]', player.dock);
+    if (link) link.href = ep.link || SHOW_URL;
+
+    if ("mediaSession" in navigator) {
+      try {
+        navigator.mediaSession.metadata = new window.MediaMetadata({
+          title: ep.title,
+          artist: "Komið gott — " + ep.code,
+          album: "Komið gott",
+          artwork: [{ src: new URL(COVER, location.href).href, sizes: "512x512", type: "image/jpeg" }]
+        });
+        navigator.mediaSession.setActionHandler("play", function () { play(ep); });
+        navigator.mediaSession.setActionHandler("pause", function () { player.audio.pause(); });
+        navigator.mediaSession.setActionHandler("seekbackward", function () { player.audio.currentTime -= 15; });
+        navigator.mediaSession.setActionHandler("seekforward", function () { player.audio.currentTime += 15; });
+      } catch (err) { /* eldri vafrar */ }
+    }
+
+    paintPlaying();
+    paintProgress();
+  }
+
+  function play(ep) {
+    load(ep);
+    var p = player.audio.play();
+    if (p && p.catch) p.catch(function () { paintPlaying(); });
+  }
+
+  function toggle(ep) {
+    ensurePlayer();
+    if (ep && (!player.ep || player.ep.id !== ep.id)) { play(ep); return; }
+    if (!player.ep) return;
+    if (player.audio.paused) play(player.ep);
+    else player.audio.pause();
+  }
+
+  function closeDock() {
+    if (!player.audio) return;
+    player.audio.pause();
+    savePosition();
+    player.dock.dataset.open = "false";
+    document.body.dataset.dock = "false";
+    try { window.localStorage.removeItem(STATE_KEY); } catch (err) {}
+  }
+
+  /* Sami þáttur heldur áfram milli síðna */
+  (function restore() {
+    if (!EPISODES.length) return;
+    var s = readJSON(STATE_KEY, null);
+    if (!s || !byId[s.id]) return;
+    load(byId[s.id], s.t || 0);
+    if (s.rate && player.audio) {
+      player.audio.playbackRate = s.rate;
+      var rb = $(".dock__rate", player.dock);
+      if (rb) rb.textContent = String(s.rate).replace(".", ",") + "×";
+    }
+    if (s.playing) {
+      var p = player.audio.play();
+      if (p && p.catch) p.catch(function () { /* vafrinn vill snertingu fyrst */ });
+    }
+  })();
+
+  /* Smellur á hvaða spilunarhnapp sem er, hvar sem hann stendur á síðunni */
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest("[data-play]");
+    if (!b) return;
+    ev.preventDefault();
+    var ep = byId[b.dataset.play];
+    if (ep) toggle(ep);
+  });
+
+  /* ----------------------------------------------------------- ÞÁTTUR */
+
+  function kindLabel(e) {
+    if (e.kind === "gestur") return "Gestur";
+    if (e.kind === "kosningar") return "Kosningaspecial";
+    return "Sérþáttur";
+  }
+
+  function epItem(e) {
+    var heard = positions[e.id];
+    var pct = heard && e.secs ? Math.min(100, heard / e.secs * 100) : 0;
+
+    return '<li class="ep" data-ep="' + e.id + '" style="--heard:' + pct + '%">' +
+        '<button class="ep__art" type="button" data-play="' + e.id + '" aria-label="Spila ' + esc(e.code) + '">' +
+          '<img src="' + COVER + '" width="160" height="160" alt="" loading="lazy">' +
+          '<span class="ep__cue" data-icon>' + ICON.play + '</span>' +
+        '</button>' +
+        '<div class="ep__body">' +
+          '<p class="ep__no data">' +
+            '<span class="ep__code">' + esc(e.code) + '</span>' +
+            (e.season ? '' : '<span class="ep__kind">' + kindLabel(e) + '</span>') +
+            ICON.eq +
+          '</p>' +
+          '<h3 class="ep__title">' + esc(e.title) + '</h3>' +
+          (e.desc ? '<p class="ep__desc">' + esc(e.desc) + '</p>' : '') +
+          (e.guest ? '<span class="ep__guest micro">' + ICON.hand + 'Gestur: ' + esc(e.guest) + '</span>' : '') +
+        '</div>' +
+        '<div class="ep__meta data"><span>' + esc(e.dateText) + '</span><span>' + esc(e.len) + '</span>' +
+          (pct > 0 ? '<span class="ep__heard">Hlustað ' + Math.round(pct) + '%</span>' : '') +
+        '</div>' +
+        '<div class="ep__go">' +
+          '<button class="ep__play" type="button" data-play="' + e.id + '" data-icon aria-label="Spila ' + esc(e.code) + '">' + ICON.play + '</button>' +
+          '<a class="ep__ext" href="' + esc(e.link || SHOW_URL) + '" target="_blank" rel="noopener" aria-label="Opna ' + esc(e.code) + ' á Spotify">' + ICON.ext + '</a>' +
+        '</div>' +
+      '</li>';
+  }
+
+  /* --------------------------------------- NÝJASTI ÞÁTTUR OG FORSÍÐULISTI */
+
+  var featured = EPISODES[0];
+
+  if (featured) {
+    /* Borðinn neðst á plakatinu */
+    var bar = $("#epbar");
+    if (bar) {
+      bar.dataset.ep = featured.id;
+      $('[data-f="code"]', bar).textContent = featured.code + " · " + featured.dateText.replace(/ \d{4}$/, "");
+      $('[data-f="title"]', bar).textContent = featured.title;
+      $('[data-f="meta"]', bar).textContent = (featured.season ? "Þáttaröð " + featured.season : kindLabel(featured)) + " · " + featured.len;
+      $("[data-play]", bar).dataset.play = featured.id;
+    }
+
+    /* Kaflinn „Nýjasti þátturinn“ */
+    var feat = $("#featured");
+    if (feat) {
+      $('[data-f="meta"]', feat).textContent = featured.code + " · " + featured.dateText + " · " + featured.len;
+      $('[data-f="title"]', feat).textContent = featured.title;
+      $('[data-f="desc"]', feat).textContent = featured.desc ||
+        "Nýjasti þátturinn af Komið gott. Ýttu á spila — hann hleðst beint af straumnum.";
+      $('[data-f="dur"]', feat).textContent = featured.lenShort;
+      $$("[data-play]", feat).forEach(function (b) { b.dataset.play = featured.id; });
+      var flink = $('[data-f="link"]', feat);
+      if (flink) flink.href = featured.link || SHOW_URL;
+      if (featured.sponsors) {
+        var sp = $('[data-f="sponsors"]', feat);
+        if (sp) { sp.textContent = featured.sponsors; sp.parentElement.hidden = false; }
+      }
+    }
+  }
+
+  var homeEps = $("#homeEps");
+
+  if (homeEps && EPISODES.length) {
+    /* Fyrsta færslan stendur þegar efst á síðunni og er sleppt hér */
+    var skip = Number(homeEps.dataset.skip) || 0;
+    var take = Number(homeEps.dataset.limit) || 6;
+    homeEps.innerHTML = EPISODES.slice(skip, skip + take).map(epItem).join("");
+    paintPlaying();
+  }
+
+  /* ----------------------------------------------------------- ÞÁTTASAFN */
+
+  var listEl = $("#eplist");
+
+  if (listEl && EPISODES.length) {
+    var PAGE = 12;
+    var state = { filter: "all", q: "", sort: "new", shown: PAGE };
+    var filtersEl = $("#filters"), moreBtn = $("#moreBtn");
+    var searchEl = $("#epSearch"), countEl = $("#epCount"), sortBtn = $("#sortBtn");
+
+    var seasons = [];
+    EPISODES.forEach(function (e) {
+      if (e.season && seasons.indexOf(e.season) < 0) seasons.push(e.season);
+    });
+    seasons.sort(function (a, b) { return b - a; });
+
+    var FILTERS = [{ key: "all", label: "Allt", n: EPISODES.length }]
+      .concat(seasons.map(function (s) {
+        return { key: String(s), label: "Röð " + s, n: EPISODES.filter(function (e) { return e.season === s; }).length };
+      }))
+      .concat([{ key: "0", label: "Sérþættir", n: EPISODES.filter(function (e) { return !e.season; }).length }]);
+
+    var matches = function (e, q) {
+      if (!q) return true;
+      return (e.title + " " + e.desc + " " + (e.guest || "") + " " + e.code + " " + e.dateText)
+        .toLowerCase().indexOf(q) >= 0;
+    };
+
+    /* Röðun.
+
+       Straumurinn er í tímaröð og þar fléttast sérþættirnir inn á milli
+       þáttaraðanna. Það er rétt tímaröð en ljót yfirsýn, svo þegar allt
+       safnið er undir er raðað eftir þáttaröð: hver röð heil og í einu lagi,
+       sérþættirnir saman aftast. Leit og stök þáttaröð halda sig við tímaröð
+       innan sinnar sneiðar. */
+    var order = function (dir) {
+      return function (a, b) {
+        /* Sérþættirnir standa saman aftast, hvernig sem er raðað */
+        var sa = a.season ? 0 : 1, sb = b.season ? 0 : 1;
+        if (sa !== sb) return sa - sb;
+        if (!a.season) return dir * (a.date < b.date ? 1 : -1);
+        if (a.season !== b.season) return dir * (b.season - a.season);
+        return dir * (b.ep - a.ep);
+      };
+    };
+
+    var filtered = function () {
+      var q = state.q.trim().toLowerCase();
+      return EPISODES.filter(function (e) {
+        if (state.filter === "0" && e.season) return false;
+        if (state.filter !== "all" && state.filter !== "0" && String(e.season) !== state.filter) return false;
+        return matches(e, q);
+      }).sort(order(state.sort === "new" ? 1 : -1));
+    };
+
+    /* Fyrirsögn þáttaraðar skýtur sér inn þegar röðin skiptir um — aðeins
+       þegar allt safnið er undir og röðin er í tímaröð. */
+    var groupHead = function (e) {
+      if (!e.season) return '<li class="epgroup"><b>Sérþættir</b><span class="micro">Gestir, kosningaspecial og annað utan þáttaraða</span></li>';
+      var n = EPISODES.filter(function (x) { return x.season === e.season; }).length;
+      return '<li class="epgroup"><b>Þáttaröð ' + e.season + '</b><span class="micro">' + n + ' þættir</span></li>';
+    };
+
+    var renderEpisodes = function () {
+      var list = filtered();
+      var total = list.length;
+      var slice = list.slice(0, state.shown);
+      var grouped = state.filter === "all" && !state.q.trim();
+      var last = null;
+      var html = "";
+
+      slice.forEach(function (e) {
+        var key = e.season || 0;
+        if (grouped && key !== last) { html += groupHead(e); last = key; }
+        html += epItem(e);
+      });
+
+      listEl.innerHTML = total ? html
+        : '<li class="eps__empty">Enginn þáttur fannst. Prófaðu annað orð — eða skoðaðu allt safnið.</li>';
+
+      moreBtn.hidden = state.shown >= total;
+      moreBtn.textContent = "Hlaða fleiri þáttum (" + Math.max(total - state.shown, 0) + " eftir)";
+
+      if (countEl) {
+        countEl.textContent = total
+          ? "Sýni " + Math.min(state.shown, total) + " af " + total + (total === 1 ? " þætti" : " þáttum")
+          : (state.q.trim() ? "Ekkert fannst við leitina" : "Enginn þáttur í þessari síu");
+      }
+      paintPlaying();
+    };
+
+    filtersEl.innerHTML = FILTERS.map(function (s) {
+      return '<button class="chip" type="button" data-season="' + s.key + '" aria-pressed="' + (s.key === "all") + '">' +
+        s.label + '<i>' + s.n + '</i></button>';
+    }).join("");
+
+    filtersEl.addEventListener("click", function (ev) {
+      var b = ev.target.closest("[data-season]");
+      if (!b) return;
+      state.filter = b.dataset.season;
+      state.shown = PAGE;
+      $$("[data-season]", filtersEl).forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      /* Staðan á að lifa af endurhleðslu og deilanlegan hlekk */
+      var url = new URL(location.href);
+      if (state.filter === "all") url.searchParams.delete("rod");
+      else url.searchParams.set("rod", state.filter);
+      history.replaceState(null, "", url);
+      renderEpisodes();
+    });
+
+    moreBtn.addEventListener("click", function () { state.shown += PAGE; renderEpisodes(); });
+
+    if (searchEl) {
+      searchEl.addEventListener("input", function () {
+        state.q = searchEl.value;
+        state.shown = PAGE;
+        renderEpisodes();
+      });
+    }
+
+    if (sortBtn) {
+      sortBtn.addEventListener("click", function () {
+        state.sort = state.sort === "new" ? "old" : "new";
+        state.shown = PAGE;
+        sortBtn.textContent = state.sort === "new" ? "Nýjast fyrst" : "Elst fyrst";
+        sortBtn.setAttribute("aria-label", "Röðun: " + sortBtn.textContent + ". Smelltu til að snúa við.");
+        renderEpisodes();
+      });
+    }
+
+    var fromUrl = new URL(location.href).searchParams.get("rod");
+    if (fromUrl && FILTERS.some(function (s) { return s.key === fromUrl; })) {
+      state.filter = fromUrl;
+      $$("[data-season]", filtersEl).forEach(function (x) {
+        x.setAttribute("aria-pressed", String(x.dataset.season === fromUrl));
+      });
+    }
+    renderEpisodes();
   }
 
   /* -------------------------------------------------------------- VÖRUR */
@@ -159,12 +691,7 @@
   /* -------------------------------------------------------------- KARFA */
 
   var STORE = "kg-cart-v1";
-  var cart = [];
-
-  try {
-    var saved = window.localStorage.getItem(STORE);
-    if (saved) cart = JSON.parse(saved);
-  } catch (err) { /* lokað fyrir vistun — karfan lifir þá bara í minni */ }
+  var cart = readJSON(STORE, []) || [];
 
   /* Vörulistinn getur breyst milli heimsókna. Línur sem vísa í vöru sem er
      ekki lengur til eru hreinsaðar — annars félli útreikningur á heildar-
@@ -173,9 +700,7 @@
     ? cart.filter(function (l) { return l && product(l.id) && l.qty > 0; })
     : [];
 
-  function persist() {
-    try { window.localStorage.setItem(STORE, JSON.stringify(cart)); } catch (err) {}
-  }
+  function persist() { writeJSON(STORE, cart); }
 
   function add(id, size) {
     var key = id + "|" + (size || "");
@@ -253,9 +778,6 @@
       var b = ev.target.closest("[data-bump]");
       if (b) bump(b.dataset.bump, Number(b.dataset.delta));
     });
-    cartEl.addEventListener("click", function (ev) {
-      if (ev.target.closest("[data-close-cart]")) openCart(false);
-    });
     checkout.addEventListener("click", function () {
       if (cart.length) toast("Hér tæki greiðslugáttin við — <b>sýnidæmi</b>");
     });
@@ -266,8 +788,6 @@
   /* ------------------------------------------------------- NIÐURTALNING */
 
   var cd = { d: $("[data-cd='d']"), h: $("[data-cd='h']"), m: $("[data-cd='m']"), s: $("[data-cd='s']") };
-
-  function pad(n) { return n < 10 ? "0" + n : String(n); }
 
   if (cd.d) {
     var TARGET = new Date("2026-09-25T20:00:00Z").getTime();
@@ -282,181 +802,6 @@
     };
     tick();
     setInterval(tick, 1000);
-  }
-
-  /* ------------------------------------------------------------ SPILARI */
-
-  var playBtn = $("#playBtn");
-
-  if (playBtn) {
-    var playFill = $("#playFill"), playTime = $("#playTime");
-    var LEN = 3624, pos = 0, timer = null;
-
-    var stamp = function (sec) {
-      var h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, s = sec % 60;
-      return (h ? h + ":" + pad(m) : pad(m)) + ":" + pad(s);
-    };
-
-    playBtn.addEventListener("click", function () {
-      if (timer) {
-        clearInterval(timer); timer = null;
-        playBtn.innerHTML = ICON.play;
-        playBtn.setAttribute("aria-label", "Spila sýnishorn");
-        return;
-      }
-      playBtn.innerHTML = ICON.pause;
-      playBtn.setAttribute("aria-label", "Gera hlé");
-      toast("Sýnidæmi — hér spilast þátturinn beint af straumnum");
-      timer = setInterval(function () {
-        pos = (pos + 12) % LEN;
-        playFill.style.width = (pos / LEN * 100) + "%";
-        playTime.textContent = stamp(pos);
-      }, 250);
-    });
-  }
-
-  /* ------------------------------------------------- FYRRI ÞÆTTIR (FORSÍÐA) */
-
-  var homeEps = $("#homeEps");
-
-  if (homeEps && window.KG_EPISODES) {
-    /* Fyrsta færslan er þátturinn sem stendur efst á forsíðunni — hún er
-       sleppt hér svo sami þáttur birtist ekki tvisvar. */
-    var skip = Number(homeEps.dataset.skip) || 0;
-    var take = Number(homeEps.dataset.limit) || 6;
-    homeEps.innerHTML = window.KG_EPISODES.slice(skip, skip + take).map(epItem).join("");
-  }
-
-  /* ----------------------------------------------------------- ÞÆTTIR */
-
-  var listEl = $("#eplist");
-
-  if (listEl && window.KG_EPISODES) {
-    var EPISODES = window.KG_EPISODES;
-    var PAGE = 8;
-    var state = { filter: "all", q: "", shown: PAGE };
-    var filtersEl = $("#filters"), moreBtn = $("#moreBtn");
-    var searchEl = $("#epSearch"), countEl = $("#epCount");
-
-    var SEASONS = [
-      { key: "all", label: "Allt" }, { key: "5", label: "Röð 5" }, { key: "4", label: "Röð 4" },
-      { key: "3", label: "Röð 3" }, { key: "2", label: "Röð 2" }, { key: "1", label: "Röð 1" },
-      { key: "0", label: "Sérþættir" }
-    ];
-
-    /* Leitað er í titli, lýsingu, gesti og þáttanúmeri. Íslenskir stafir
-       lækka rétt með toLowerCase, svo „SÓLMUNDUR“ finnur Sólmund. */
-    var matches = function (e, q) {
-      if (!q) return true;
-      return (e.title + " " + e.desc + " " + (e.guest || "") + " " + e.code)
-        .toLowerCase().indexOf(q) >= 0;
-    };
-
-    var filtered = function () {
-      var q = state.q.trim().toLowerCase();
-      return EPISODES.filter(function (e) {
-        if (state.filter !== "all" && String(e.season) !== state.filter) return false;
-        return matches(e, q);
-      });
-    };
-
-    var renderEpisodes = function () {
-      var list = filtered();
-      var total = list.length;
-
-      listEl.innerHTML = total
-        ? list.slice(0, state.shown).map(epItem).join("")
-        : '<li class="eps__empty">Enginn þáttur fannst. Prófaðu annað orð — eða skoðaðu allt safnið.</li>';
-
-      moreBtn.hidden = state.shown >= total;
-      moreBtn.textContent = "Hlaða fleiri þáttum (" + Math.max(total - state.shown, 0) + " eftir)";
-
-      if (countEl) {
-        /* „af 1 þætti“ en „af 2 þáttum“ — talan beygir orðið á eftir sér */
-        countEl.textContent = total
-          ? "Sýni " + Math.min(state.shown, total) + " af " + total + (total === 1 ? " þætti" : " þáttum")
-          : (state.q.trim() ? "Ekkert fannst við leitina" : "Enginn þáttur í þessari síu");
-      }
-    };
-
-    filtersEl.innerHTML = SEASONS.map(function (s) {
-      return '<button class="chip" type="button" data-season="' + s.key + '" aria-pressed="' + (s.key === "all") + '">' + s.label + '</button>';
-    }).join("");
-
-    filtersEl.addEventListener("click", function (ev) {
-      var b = ev.target.closest("[data-season]");
-      if (!b) return;
-      state.filter = b.dataset.season;
-      state.shown = PAGE;
-      $$("[data-season]", filtersEl).forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-      /* Staðan á að lifa af endurhleðslu og deilanlegan hlekk */
-      var url = new URL(location.href);
-      if (state.filter === "all") url.searchParams.delete("rod");
-      else url.searchParams.set("rod", state.filter);
-      history.replaceState(null, "", url);
-      renderEpisodes();
-    });
-
-    moreBtn.addEventListener("click", function () { state.shown += PAGE; renderEpisodes(); });
-
-    if (searchEl) {
-      searchEl.addEventListener("input", function () {
-        state.q = searchEl.value;
-        state.shown = PAGE;
-        renderEpisodes();
-      });
-    }
-
-    var fromUrl = new URL(location.href).searchParams.get("rod");
-    if (fromUrl && SEASONS.some(function (s) { return s.key === fromUrl; })) {
-      state.filter = fromUrl;
-      $$("[data-season]", filtersEl).forEach(function (x) {
-        x.setAttribute("aria-pressed", String(x.dataset.season === fromUrl));
-      });
-    }
-    renderEpisodes();
-  }
-
-  /* ---------------------------------------------------------- LIGHTBOX */
-
-  var gallery = $("#gallery");
-  var lb = $("#lightbox");
-
-  if (gallery && lb) {
-    var lbFrame = $("#lightboxFrame"), lbCap = $("#lightboxCap"), lbSub = $("#lightboxSub"), lbShot = null;
-
-    gallery.addEventListener("click", function (ev) {
-      var shot = ev.target.closest(".shot");
-      if (!shot) return;
-      lbShot = shot;
-      var old = $("[data-lbfill]", lbFrame);
-      if (old) lbFrame.removeChild(old);
-      var img = document.createElement("img");
-      img.src = shot.dataset.img;
-      img.alt = shot.dataset.cap;
-      /* Raunstærð myndarinnar svo ramminn hoppi ekki þegar hún hleðst */
-      var src = $("img", shot);
-      img.width = src ? src.width : 1640;
-      img.height = src ? src.height : 1093;
-      img.dataset.lbfill = "1";
-      lbFrame.appendChild(img);
-      lbCap.textContent = shot.dataset.cap;
-      lbSub.textContent = shot.dataset.sub;
-      lb.dataset.open = "true";
-      document.body.style.overflow = "hidden";
-      $("#lightboxClose").focus();
-    });
-
-    var closeLightbox = function () {
-      lb.dataset.open = "false";
-      document.body.style.overflow = "";
-      if (lbShot) { lbShot.focus(); lbShot = null; }
-    };
-    $("#lightboxClose").addEventListener("click", closeLightbox);
-    lb.addEventListener("click", function (ev) {
-      if (ev.target === lb || ev.target.classList.contains("lightbox__stage")) closeLightbox();
-    });
-    window.__closeLightbox = closeLightbox;
   }
 
   /* --------------------------------------------------------- PÓSTLISTI */
@@ -497,10 +842,20 @@
   }, { passive: true });
 
   document.addEventListener("keydown", function (ev) {
-    if (ev.key !== "Escape") return;
-    if (lb && lb.dataset.open === "true") window.__closeLightbox();
-    else if (cartEl && cartEl.dataset.open === "true") openCart(false);
-    else if (navLinks.dataset.open === "true") setMenu(false);
+    if (ev.key === "Escape") {
+      if (cartEl && cartEl.dataset.open === "true") openCart(false);
+      else if (navLinks.dataset.open === "true") setMenu(false);
+      return;
+    }
+
+    /* Flýtileiðir spilarans mega ekki trufla innslátt í reit */
+    var t = ev.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+    if (!player.audio || !player.ep) return;
+
+    if (ev.key === " " || ev.key === "k") { ev.preventDefault(); toggle(); }
+    if (ev.key === "ArrowLeft") { ev.preventDefault(); player.audio.currentTime -= 15; }
+    if (ev.key === "ArrowRight") { ev.preventDefault(); player.audio.currentTime += 15; }
   });
 
 })();

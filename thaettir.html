@@ -35,10 +35,9 @@
         <li><a href="thaettir.html" aria-current="page">Þættir</a></li>
         <li><a href="um.html">Þáttastjórnendur</a></li>
         <li><a href="vidburdir.html">Viðburðir</a></li>
-        <li><a href="myndir.html">Myndir</a></li>
         <li><a href="budin.html">Búðin</a></li>
         <li class="nav__listen">
-          <span class="micro">Hlusta</span>
+          <span class="micro">Hlusta annars staðar</span>
           <span>
             <a href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">Spotify
               <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a>
@@ -51,7 +50,7 @@
       </ul>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--sm nav__cta" href="index.html#hlusta">Hlusta</a>
+      <a class="btn btn--sm nav__cta" href="index.html#nyjast">Spila nýjasta</a>
       <button class="iconbtn" id="cartOpen" aria-label="Opna körfu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16l-1.3 12.2a1 1 0 0 1-1 .8H6.3a1 1 0 0 1-1-.9L4 7Z"/><path d="M8.5 7V5.6a3.5 3.5 0 0 1 7 0V7"/></svg>
         <span class="iconbtn__count" id="cartCount" hidden>0</span>
@@ -67,21 +66,25 @@
 
 <header class="phead wrap">
   <h1>Þættir</h1>
-  <p>Allt safnið frá fyrsta þætti. Nýr þáttur birtist alla þriðjudaga á Spotify, Apple Podcasts og hlaðvarpi mbl.is.</p>
+  <p>Allir hundrað þættirnir, frá þeim fyrsta í júní 2024. Ýttu á cover-artið og þátturinn spilast beint hér á síðunni.</p>
 </header>
 
 <section class="band wrap" style="padding-top:0">
-  <div class="shead">
-    <h2 class="vh">Sía og leita í safninu</h2>
+  <div class="shead shead--tools">
+    <h2 class="vh">Sía, raða og leita í safninu</h2>
     <div class="filters" id="filters" role="group" aria-label="Sía eftir þáttaröð"></div>
 
-    <div class="epsearch">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4"/>
-      </svg>
-      <label class="vh" for="epSearch">Leita í þáttum</label>
-      <input id="epSearch" type="search" placeholder="Leita eftir titli eða gesti"
-             autocomplete="off" spellcheck="false" aria-describedby="epCount">
+    <div class="tools">
+      <button class="sortbtn" id="sortBtn" type="button" aria-label="Röðun: Nýjast fyrst. Smelltu til að snúa við.">Nýjast fyrst</button>
+
+      <div class="epsearch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4"/>
+        </svg>
+        <label class="vh" for="epSearch">Leita í þáttum</label>
+        <input id="epSearch" type="search" placeholder="Leita eftir efni eða gesti"
+               autocomplete="off" spellcheck="false" aria-describedby="epCount">
+      </div>
     </div>
   </div>
 
@@ -116,7 +119,6 @@
           <li><a href="thaettir.html">Þáttasafn</a></li>
           <li><a href="um.html">Þáttastjórnendur</a></li>
           <li><a href="vidburdir.html">Viðburðir</a></li>
-          <li><a href="myndir.html">Myndir</a></li>
           <li><a href="budin.html">Búðin</a></li>
         </ul>
       </div>
