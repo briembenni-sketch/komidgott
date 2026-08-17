@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Komið gott — hlaðvarp Ólafar Skafta og Kristínar Gunnars</title>
-<meta name="description" content="Komið gott er hlaðvarp Ólafar Skaftadóttur og Kristínar Gunnarsdóttur. Hundrað þættir, allir spilanlegir hér á síðunni. Nýr þáttur alla þriðjudaga.">
+<meta name="description" content="Komið gott er hlaðvarp Ólafar Skaftadóttur og Kristínar Gunnarsdóttur. Allir þættir spilanlegir hér á síðunni. Nýr þáttur alla þriðjudaga.">
 <meta name="theme-color" content="#08070A">
 
 <!-- Sýnidæmi: haldið utan við leitarvélar svo tilbúnu viðburðadagsetningarnar
@@ -14,7 +14,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Komið gott — hlaðvarp">
-<meta property="og:description" content="Hundrað þættir, allir spilanlegir beint á síðunni. Nýr þáttur alla þriðjudaga.">
+<meta property="og:description" content="Allir þættir spilanlegir beint á síðunni. Nýr þáttur alla þriðjudaga.">
 <meta property="og:image" content="assets/logo.jpg">
 <meta property="og:locale" content="is_IS">
 
@@ -73,7 +73,6 @@
       </ul>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--sm nav__cta" href="#nyjast">Spila nýjasta</a>
       <button class="iconbtn" id="cartOpen" aria-label="Opna körfu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16l-1.3 12.2a1 1 0 0 1-1 .8H6.3a1 1 0 0 1-1-.9L4 7Z"/><path d="M8.5 7V5.6a3.5 3.5 0 0 1 7 0V7"/></svg>
         <span class="iconbtn__count" id="cartCount" hidden>0</span>
@@ -101,29 +100,18 @@
         </div>
       </div>
 
-      <p class="hero__status">
-        <b>Straumurinn virkur</b>
-        <span>100 þættir · 5 þáttaraðir · nýr alla þriðjudaga</span>
-      </p>
-
       <p class="hero__lead">
         Ólöf Skafta og Kristín Gunnars taka vikuna fyrir — fólkið, fréttirnar og
-        allt hitt sem enginn nennir að segja upphátt.
+        allt hitt sem enginn nennir að segja upphátt. Nýr þáttur alla þriðjudaga.
       </p>
 
       <div class="hero__cta">
-        <a class="btn" href="#nyjast">
+        <button class="btn" type="button" data-play="">
           <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           Spila nýjasta þátt
-        </a>
-        <a class="btn btn--ghost" href="thaettir.html">Öll 100 í safninu</a>
+        </button>
+        <a class="btn btn--ghost" href="thaettir.html">Þáttasafnið</a>
       </div>
-
-      <ul class="hero__facts micro">
-        <li><b>100</b> þættir</li>
-        <li><b>16</b> sérþættir</li>
-        <li><b>4,7</b> á Apple Podcasts</li>
-      </ul>
     </div>
 
     <figure class="hero__cast">
@@ -146,7 +134,7 @@
         <span class="epbar__new">Nýjasti þáttur</span>
         <span class="micro" data-f="code">S05E02 · 12. ágúst</span>
       </span>
-      <a class="epbar__title" href="#nyjast" data-f="title">Raunarsaga fallins borgarstjóra, sigursaga fallins bankastjóra og neytendahorn Hinsegin daga.</a>
+      <a class="epbar__title" href="thaettir.html" data-f="title">Raunarsaga fallins borgarstjóra, sigursaga fallins bankastjóra og neytendahorn Hinsegin daga.</a>
       <span class="epbar__meta" data-f="meta">Þáttaröð 5 · 1 klst 00 mín</span>
     </span>
     <button class="epbar__go" type="button" data-play="" aria-label="Spila nýjasta þátt">
@@ -156,67 +144,17 @@
   </div>
 </section>
 
-<!-- ================================================ NÝJASTI ÞÁTTURINN ==== -->
-<section class="band" id="nyjast">
+<!-- ===================================================== ÞÆTTIRNIR ======= -->
+<section class="band" id="thaettir">
   <div class="wrap">
     <div class="shead">
-      <h2>Nýjasti þátturinn</h2>
-      <a class="tlink" href="thaettir.html">Allt þáttasafnið
+      <h2>Þættirnir</h2>
+      <a class="tlink" href="thaettir.html">Allt safnið
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
 
-    <div class="latest" id="featured">
-      <figure class="latest__art" data-play="">
-        <img src="assets/logo.jpg" width="3000" height="3000" alt="Merki hlaðvarpsins Komið gott">
-        <span class="latest__cue" aria-hidden="true">
-          <span data-icon><svg class="i" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        </span>
-      </figure>
-
-      <div class="latest__body">
-        <p class="micro latest__meta data" data-f="meta">S05E02 · 12. ágúst 2026 · 1 klst 00 mín</p>
-        <h3 class="latest__title" data-f="title">Raunarsaga fallins borgarstjóra, sigursaga fallins bankastjóra og neytendahorn Hinsegin daga.</h3>
-        <p class="latest__desc" data-f="desc">Nýjasti þátturinn af Komið gott. Ýttu á spila — hann hleðst beint af straumnum.</p>
-
-        <div class="latest__act">
-          <button class="btn" type="button" data-play="">
-            <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-            Spila þátt
-          </button>
-          <span class="latest__len data" data-f="dur">1:00:01</span>
-          <a class="tlink" data-f="link" href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">Opna á Spotify
-            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
-          </a>
-        </div>
-
-        <ul class="platforms micro">
-          <li><a href="https://open.spotify.com/show/0MOGvOhy1255O5DG4xU5uj" target="_blank" rel="noopener">Spotify
-            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
-          <li><a href="https://podcasts.apple.com/is/podcast/komi%C3%B0-gott/id1753137038" target="_blank" rel="noopener">Apple Podcasts
-            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
-          <li><a href="https://www.mbl.is/hladvarp/hlusta/komid-gott/" target="_blank" rel="noopener">mbl.is
-            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg></a></li>
-        </ul>
-
-        <p class="micro latest__sponsors" hidden>Í boði
-          <span data-f="sponsors"></span>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- =================================================== FYRRI ÞÆTTIR ====== -->
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <div class="shead">
-      <h2>Fyrri þættir</h2>
-      <a class="tlink" href="thaettir.html">Allt safnið — 100 þættir
-        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-
+    <!-- Nýjasti þátturinn er á borðanum efst og er því sleppt hér -->
     <ul class="eps" id="homeEps" data-skip="1" data-limit="6"></ul>
   </div>
 </section>
@@ -252,7 +190,7 @@
           </svg>
         </span>
         <h3>Apple Podcasts</h3>
-        <p>4,7 í einkunn af fimm mögulegum. Þar má líka skilja eftir umsögn — það hjálpar meira en fólk heldur.</p>
+        <p>Þar má líka skilja eftir umsögn — það hjálpar meira en fólk heldur.</p>
         <span class="plat__go">Opna
           <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
         </span>
@@ -266,16 +204,11 @@
           </svg>
         </span>
         <h3>Hlaðvarp mbl.is</h3>
-        <p>Þættirnir eru líka aðgengilegir beint í vafra á hlaðvarpsvef mbl.is — engin forrit, ekkert app.</p>
+        <p>Þættirnir beint í vafra á hlaðvarpsvef mbl.is — engin forrit, ekkert app.</p>
         <span class="plat__go">Opna
           <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7"/></svg>
         </span>
       </a>
-    </div>
-
-    <div class="subscribe">
-      <p>Ábendingar, gestahugmyndir og annað sem má fara í loftið:</p>
-      <a class="tlink" href="mailto:hae@komidgott.is">hae@komidgott.is</a>
     </div>
   </div>
 </section>
@@ -285,36 +218,20 @@
   <div class="wrap">
     <div class="shead">
       <h2>Þáttastjórnendur</h2>
-      <a class="tlink" href="um.html">Um okkur
+      <a class="tlink" href="um.html">Nánar um þær
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
 
-    <div class="about">
-      <div class="about__text">
-        <h3 class="about__head">Tvær sem segja það sem hinar hugsa</h3>
-        <p class="about__lead">
-          Komið gott byrjaði sem samtal sem átti aldrei að fara í loftið. Í dag er
-          það eitt hlustaðasta hlaðvarp landsins — vikulegt uppgjör á fréttum,
-          fólki og því sem má víst ekki ræða.
-        </p>
-
-        <dl class="hosts">
-          <div>
-            <dt>Ólöf Skaftadóttir</dt>
-            <dd>Blaðamaður og fyrrverandi ritstjóri Fréttablaðsins. Spyr þess sem aðrir sleppa.</dd>
-          </div>
-          <div>
-            <dt>Kristín Gunnarsdóttir</dt>
-            <dd>Hönnuður. Sér um að ekkert kvöld endi án þess að einhver roðni.</dd>
-          </div>
-        </dl>
+    <div class="duo">
+      <div>
+        <h3>Ólöf Skaftadóttir</h3>
+        <p>Blaðamaður og fyrrverandi ritstjóri Fréttablaðsins. Spyr þess sem aðrir sleppa.</p>
       </div>
-
-      <figure class="about__photo">
-        <img src="assets/tvaer.jpg" width="1640" height="1093" loading="lazy"
-             alt="Ólöf Skaftadóttir og Kristín Gunnarsdóttir í stúdíóinu">
-      </figure>
+      <div>
+        <h3>Kristín Gunnarsdóttir</h3>
+        <p>Hönnuður. Sér um að ekkert kvöld endi án þess að einhver roðni.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -347,19 +264,6 @@
         </div>
       </article>
     </div>
-  </div>
-</section>
-
-<!-- ==================================================== BÚÐIN (SÝNI) ===== -->
-<section class="band paper" style="padding-top:0">
-  <div class="wrap">
-    <div class="shead">
-      <h2>Úr búðinni</h2>
-      <a class="tlink" href="budin.html">Í búðina
-        <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-    <div class="products" id="products" data-limit="4"></div>
   </div>
 </section>
 

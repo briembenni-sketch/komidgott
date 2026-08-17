@@ -17,8 +17,8 @@ Allt er venjulegt HTML/CSS/JS án byggingarskrefa. `index.html` er í rót
 geymslunnar, svo Vercel þarf hvorki byggingarskipun né stillingar.
 
 ```
-index.html        · forsíða (plakat með þeim tveimur, nýjasti þáttur, fyrri
-                    þættir, veitur, þáttastjórnendur, viðburður, búð)
+index.html        · forsíða (plakat með þeim tveimur og nýjasta þætti,
+                    þáttalisti, veitur, þáttastjórnendur, næsti viðburður)
 thaettir.html     · þáttasafnið: 100 þættir, sía, röðun og leit
 vidburdir.html    · viðburðir, niðurtalning og miðasala
 budin.html        · vefverslunin
@@ -130,7 +130,7 @@ allar myndir með `alt`, plakatið rúmast á skjánum á öllum stærðum. Stil
 
 | Síða | Hvað hún gerir |
 |---|---|
-| **Forsíða** | Plakat með þeim tveimur og nýjasta þætti neðst, þátturinn með spilara, sex fyrri þættir, hlustunarveiturnar, þáttastjórnendur, næsti viðburður, sýnishorn úr búðinni |
+| **Forsíða** | Plakat með þeim tveimur og nýjasta þætti neðst — hann spilast beint þaðan — sex nýlegir þættir, hlustunarveiturnar, þáttastjórnendur og næsti viðburður. Búðin er á sinni síðu |
 | **Þættir** | Allir 100 þættirnir, raðaðir eftir þáttaröðum, síaðir, leitanlegir og spilanlegir. Sían skrifast í slóðina svo hægt sé að deila henni |
 | **Viðburðir** | Niðurtalning að næsta viðburði, komandi viðburðir sem miðar, tenglar á Tix, listi yfir liðna viðburði |
 | **Búðin** | Vörur, stærðarval og karfa sem man sig milli heimsókna og milli síðna |

@@ -431,25 +431,11 @@
       $('[data-f="code"]', bar).textContent = featured.code + " · " + featured.dateText.replace(/ \d{4}$/, "");
       $('[data-f="title"]', bar).textContent = featured.title;
       $('[data-f="meta"]', bar).textContent = (featured.season ? "Þáttaröð " + featured.season : kindLabel(featured)) + " · " + featured.len;
-      $("[data-play]", bar).dataset.play = featured.id;
     }
 
-    /* Kaflinn „Nýjasti þátturinn“ */
-    var feat = $("#featured");
-    if (feat) {
-      $('[data-f="meta"]', feat).textContent = featured.code + " · " + featured.dateText + " · " + featured.len;
-      $('[data-f="title"]', feat).textContent = featured.title;
-      $('[data-f="desc"]', feat).textContent = featured.desc ||
-        "Nýjasti þátturinn af Komið gott. Ýttu á spila — hann hleðst beint af straumnum.";
-      $('[data-f="dur"]', feat).textContent = featured.lenShort;
-      $$("[data-play]", feat).forEach(function (b) { b.dataset.play = featured.id; });
-      var flink = $('[data-f="link"]', feat);
-      if (flink) flink.href = featured.link || SHOW_URL;
-      if (featured.sponsors) {
-        var sp = $('[data-f="sponsors"]', feat);
-        if (sp) { sp.textContent = featured.sponsors; sp.parentElement.hidden = false; }
-      }
-    }
+    /* Hnappar með tómu data-play — hetjuhnappurinn og borðinn — spila
+       nýjasta þáttinn, hver sem hann er hverju sinni. */
+    $$('[data-play=""]').forEach(function (b) { b.dataset.play = featured.id; });
   }
 
   var homeEps = $("#homeEps");
