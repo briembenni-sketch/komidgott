@@ -424,17 +424,24 @@
   var featured = EPISODES[0];
 
   if (featured) {
-    /* Borðinn neðst á plakatinu */
-    var bar = $("#epbar");
-    if (bar) {
-      bar.dataset.ep = featured.id;
-      $('[data-f="code"]', bar).textContent = featured.code + " · " + featured.dateText.replace(/ \d{4}$/, "");
-      $('[data-f="title"]', bar).textContent = featured.title;
-      $('[data-f="meta"]', bar).textContent = (featured.season ? "Þáttaröð " + featured.season : kindLabel(featured)) + " · " + featured.len;
+    /* Pillan í hetjunni */
+    var kick = $('.hero__kicker [data-f="code"]');
+    if (kick) kick.textContent = "Nýjast · " + featured.code + " · " + featured.dateText.replace(/ \d{4}$/, "");
+
+    /* Spjaldið „Nýjasti þátturinn“ */
+    var feat = $("#featured");
+    if (feat) {
+      feat.dataset.ep = featured.id;
+      $('[data-f="fcode"]', feat).textContent = featured.code + (featured.season ? " · Þáttaröð " + featured.season : " · " + kindLabel(featured));
+      $('[data-f="fdate"]', feat).textContent = featured.dateText + " · " + featured.len;
+      $('[data-f="ftitle"]', feat).textContent = featured.title;
+      if (featured.desc) $('[data-f="fdesc"]', feat).textContent = featured.desc;
+      var flink = $('[data-f="flink"]', feat);
+      if (flink) flink.href = featured.link || SHOW_URL;
     }
 
-    /* Hnappar með tómu data-play — hetjuhnappurinn og borðinn — spila
-       nýjasta þáttinn, hver sem hann er hverju sinni. */
+    /* Hnappar með tómu data-play — hetjan og spjaldið — spila nýjasta
+       þáttinn, hver sem hann er hverju sinni. */
     $$('[data-play=""]').forEach(function (b) { b.dataset.play = featured.id; });
   }
 

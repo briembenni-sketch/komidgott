@@ -1,5 +1,9 @@
 /* ==========================================================================
    Komið gott
+   Eitt dökkt litaheimili með rafindígó hreim — sama hönnunarmál og
+   chessafterdark.is og betkastid.is: grótesk letur, stór rúnnun, pillur,
+   glóandi skuggar. Rjómalitur cover-artsins er textaliturinn og höndin
+   úr merkinu fylgir með.
    Farsíma-fyrst: grunnstílarnir eru símaútlitið, breiðari skjáir fá
    viðbætur í min-width fyrirspurnum neðar.
    ========================================================================== */
@@ -7,39 +11,42 @@
 :root {
   color-scheme: dark;
 
-  --ink:        #08070A;
-  --ink-1:      #101016;
-  --ink-2:      #191922;
-  --line:       #26262F;
+  --bg:        #08060F;
+  --bg-alt:    #0C091A;
+  --surface:   #120E24;
+  --surface-2: #191434;
+  --line:        rgba(244, 240, 228, 0.09);
+  --line-strong: rgba(244, 240, 228, 0.2);
 
-  --paper:      #F4F0E4;
-  --paper-card: #FBF9F2;
-  --paper-line: #DCD5C2;
+  --ink:      #F4F0E4;
+  --ink-soft: #C9C4E0;
+  --muted:    #8D87B0;
 
-  --on-ink:     #F4F0E4;
-  --on-ink-2:   #C6BFB2;
-  --on-ink-3:   #8A8478;
-  --on-paper:   #100E14;
-  --on-paper-2: #56503E;
+  --electric:      #5D5BFF;
+  --electric-2:    #918FFF;
+  --electric-deep: #3B37E8;
+  --flag:          #F5B62B;
 
-  --signal:     #3B37E8;
-  --signal-2:   #7C79FF;
-  --flag:       #F5B62B;
+  --glow:    0 10px 40px -12px rgba(93, 91, 255, 0.55);
+  --glow-lg: 0 24px 70px -20px rgba(93, 91, 255, 0.45);
+  --shadow:  0 16px 40px -20px rgba(0, 0, 0, 0.8);
 
-  --display: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --data: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --display: "Bricolage Grotesque", "Arial Black", sans-serif;
+  --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --data: "Space Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --r:    20px;
+  --r-sm: 12px;
+  --r-lg: 28px;
 
   --gutter: 1.25rem;
-  --max: 80rem;
-  --nav-h: 3.75rem;
-  --r: 3px;
-  --ease: cubic-bezier(.22, .68, .3, 1);
+  --max: 76rem;
+  --nav-h: 4rem;
+  --ease: cubic-bezier(.22, .61, .36, 1);
 
-  /* Vafraflötur sem við teiknuðum ekki sjálf — þeir bera hönnunina líka */
-  accent-color: var(--signal);
-  caret-color: var(--signal-2);
-  scrollbar-color: var(--line) var(--ink);
+  accent-color: var(--electric);
+  caret-color: var(--electric-2);
+  scrollbar-color: var(--surface-2) var(--bg);
   scrollbar-width: thin;
 }
 
@@ -53,16 +60,21 @@ html {
 
 body {
   margin: 0;
-  background: var(--ink);
-  color: var(--on-ink);
+  background: var(--bg);
+  /* Daufir litapollar í bakgrunninum — allur vefurinn stendur í sama ljósi */
+  background-image:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(93, 91, 255, 0.13), transparent 60%),
+    radial-gradient(50rem 36rem at -15% 30%, rgba(59, 55, 232, 0.09), transparent 60%);
+  background-attachment: fixed;
+  color: var(--ink);
   font-family: var(--body);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.65;
   font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(124, 121, 255, 0.24);
+  -webkit-tap-highlight-color: rgba(145, 143, 255, 0.25);
 }
 
 img, svg { display: block; max-width: 100%; }
@@ -70,13 +82,12 @@ a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1p
 button { font: inherit; color: inherit; }
 
 :focus-visible {
-  outline: 2px solid var(--signal-2);
+  outline: 2px solid var(--electric-2);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 6px;
 }
-.paper :focus-visible { outline-color: var(--signal); }
 
-::selection { background: var(--signal); color: #fff; }
+::selection { background: var(--electric); color: #fff; }
 
 .vh {
   position: absolute; width: 1px; height: 1px;
@@ -87,10 +98,10 @@ button { font: inherit; color: inherit; }
 .skip {
   position: absolute; left: 50%; top: 0.5rem; z-index: 200;
   transform: translate(-50%, -250%);
-  padding: 0.7rem 1.1rem;
-  background: var(--paper); color: var(--on-paper);
-  border-radius: var(--r);
-  font-size: 0.85rem; font-weight: 600; text-decoration: none;
+  padding: 0.7rem 1.2rem;
+  background: var(--ink); color: var(--bg);
+  border-radius: 999px;
+  font-size: 0.85rem; font-weight: 700; text-decoration: none;
   transition: transform 0.2s var(--ease);
 }
 .skip:focus { transform: translate(-50%, 0); }
@@ -101,10 +112,9 @@ button { font: inherit; color: inherit; }
 
 h1, h2, h3 {
   font-family: var(--display);
-  font-variation-settings: "opsz" 144, "SOFT" 16, "WONK" 1;
-  font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
   text-wrap: balance;
   margin: 0;
 }
@@ -112,41 +122,36 @@ h1, h2, h3 {
 p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
 li { list-style: none; }
 
-/* Smáletur fyrir gögn og myndatexta — aldrei sem merkimiði ofan á fyrirsögn */
+/* Smáletur með gleiðu stafabili — merkimiðar og yfirlínur */
 .micro {
   font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   line-height: 1.5;
-  color: var(--on-ink-3);
+  color: var(--muted);
 }
-.paper .micro, .ticket .micro { color: var(--on-paper-2); }
 
 .data {
   font-family: var(--data);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .tlink {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   text-decoration: none;
-  font-size: 0.92rem;
-  font-weight: 500;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 100% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  padding-bottom: 2px;
-  transition: color 0.2s var(--ease), background-size 0.3s var(--ease);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--electric-2);
+  transition: color 0.2s var(--ease), gap 0.25s var(--ease);
 }
-.tlink:hover { color: var(--signal-2); background-size: 100% 2px; }
-.paper .tlink:hover { color: var(--signal); }
-.tlink .i { width: 14px; height: 14px; transition: transform 0.25s var(--ease); }
-.tlink:hover .i { transform: translateX(3px); }
+.tlink:hover { color: var(--ink); gap: 0.7rem; }
+.tlink .i { width: 14px; height: 14px; }
 
 /* --------------------------------------------------------------------------
    Umgjörð
@@ -160,7 +165,8 @@ li { list-style: none; }
 }
 
 .band { padding-block: 3.5rem; }
-.paper { background: var(--paper); color: var(--on-paper); }
+/* Áður rjómaopna — nú blæbrigði af sama dökka heiminum */
+.paper { background: transparent; }
 
 .shead {
   display: flex;
@@ -168,100 +174,132 @@ li { list-style: none; }
   align-items: baseline;
   justify-content: space-between;
   gap: 0.75rem 2rem;
-  padding-bottom: 1.25rem;
   margin-bottom: 2rem;
-  border-bottom: 1px solid var(--line);
 }
-.paper .shead { border-bottom-color: var(--paper-line); }
-.shead h2 { font-size: clamp(2.1rem, 10vw, 3.2rem); font-weight: 800; }
+.shead h2 { font-size: clamp(1.9rem, 8vw, 2.9rem); }
+.shead .micro { color: var(--muted); }
 
 /* Haus undirsíðu */
-.phead { padding-block: 2.5rem 2rem; }
+.phead { padding-block: 2.75rem 2rem; }
 .phead h1 {
-  font-size: clamp(2.8rem, 15vw, 6rem);
-  font-weight: 900;
-  font-variation-settings: "opsz" 144, "SOFT" 10, "WONK" 1;
-  letter-spacing: -0.04em;
+  font-size: clamp(2.6rem, 13vw, 5.5rem);
+  letter-spacing: -0.035em;
 }
-.phead p { margin-top: 1rem; max-width: 46ch; color: var(--on-ink-2); }
-/* Rjómaopnan getur verið á foreldrinu, ekki á .phead sjálfu */
-.paper .phead p, .phead.paper p { color: var(--on-paper-2); }
+.phead p { margin-top: 1rem; max-width: 52ch; color: var(--ink-soft); }
 
 /* --------------------------------------------------------------------------
-   Höndin — vektor rakinn úr merkinu, því JPG-in var of mjúk í stækkun
+   Höndin — vektor rakinn úr merkinu
    -------------------------------------------------------------------------- */
 
-.hand { color: var(--on-ink); flex: none; }
+.hand { color: var(--ink); flex: none; }
 .hand svg { width: 100%; height: auto; }
 
 /* --------------------------------------------------------------------------
-   Hnappar og merkimiðar
+   Hnappar, pillur og merkimiðar
    -------------------------------------------------------------------------- */
 
 .btn {
-  --bg: var(--signal);
-  --fg: #fff;
+  --bg-b: var(--electric);
+  --fg-b: #fff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.9rem;
-  padding: 0.8rem 1.3rem;
-  background: var(--bg);
-  color: var(--fg);
-  border: 1px solid var(--bg);
-  border-radius: var(--r);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  gap: 0.55rem;
+  min-height: 3rem;
+  padding: 0.85rem 1.6rem;
+  background: var(--bg-b);
+  color: var(--fg-b);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
+  box-shadow: var(--glow);
   transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease),
-              color 0.2s var(--ease), transform 0.2s var(--ease);
+              color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
-.btn:hover { --bg: var(--signal-2); transform: translateY(-2px); }
+.btn:hover { --bg-b: var(--electric-2); transform: translateY(-2px); box-shadow: var(--glow-lg); }
 .btn:active { transform: none; }
 .btn .i { width: 13px; height: 13px; }
 
-.btn--ghost { --bg: transparent; --fg: var(--on-ink); border-color: var(--line); }
-.btn--ghost:hover { --bg: var(--on-ink); --fg: var(--ink); border-color: var(--on-ink); }
-.paper .btn--ghost, .ticket .btn--ghost { --fg: var(--on-paper); border-color: var(--paper-line); }
-.paper .btn--ghost:hover, .ticket .btn--ghost:hover { --bg: var(--on-paper); --fg: var(--paper); border-color: var(--on-paper); }
+.btn--ghost {
+  --bg-b: rgba(244, 240, 228, 0.04);
+  --fg-b: var(--ink);
+  border-color: var(--line-strong);
+  box-shadow: none;
+}
+.btn--ghost:hover { --bg-b: var(--ink); --fg-b: var(--bg); border-color: var(--ink); box-shadow: none; }
 
-.btn--flag { --bg: var(--flag); --fg: #17130A; }
-.btn--flag:hover { --bg: #FFC94E; }
+.btn--flag { --bg-b: var(--flag); --fg-b: #17130A; box-shadow: 0 10px 36px -12px rgba(245, 182, 43, 0.5); }
+.btn--flag:hover { --bg-b: #FFC94E; box-shadow: 0 16px 44px -14px rgba(245, 182, 43, 0.6); }
 
 .btn--block { width: 100%; }
-.btn--sm { min-height: 2.4rem; padding: 0.55rem 0.9rem; font-size: 0.72rem; }
+.btn--sm { min-height: 2.5rem; padding: 0.55rem 1.1rem; font-size: 0.74rem; }
 .btn[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
 
 .tag {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.28rem 0.6rem;
-  border: 1px solid currentColor;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
   font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
-  color: var(--on-ink-3);
+  color: var(--ink-soft);
 }
-.paper .tag, .ticket .tag { color: var(--on-paper-2); }
-.tag--flag { color: var(--flag); }
+.tag--flag { background: rgba(245, 182, 43, 0.14); border-color: rgba(245, 182, 43, 0.45); color: var(--flag); }
 
-/* Gulur texti á rjómalitum fleti mælist 1,6:1. Á ljósum grunni verður
-   miðinn því fylltur með dökkum texta í staðinn fyrir útlínu. */
-.paper .tag--flag,
-.epbar .tag--flag { background: var(--flag); border-color: var(--flag); color: #17130A; }
+.iconbtn {
+  position: relative;
+  width: 2.75rem; height: 2.75rem;
+  display: grid;
+  place-items: center;
+  background: rgba(244, 240, 228, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+.iconbtn:hover { border-color: var(--line-strong); background: rgba(244, 240, 228, 0.08); }
+.iconbtn svg { width: 18px; height: 18px; }
 
-/* Svarti miðinn er dökkur þótt hann standi á rjómaopnu — þar heldur
-   útlínuútgáfan sér og mælist 10,6:1. */
-.ticket--lead .tag--flag { background: transparent; border-color: currentColor; color: var(--flag); }
+.iconbtn__count {
+  position: absolute;
+  top: -5px; right: -5px;
+  min-width: 1.15rem; height: 1.15rem;
+  display: grid; place-items: center;
+  padding-inline: 0.25rem;
+  background: var(--electric);
+  border-radius: 999px;
+  font-family: var(--data);
+  font-size: 0.62rem;
+  color: #fff;
+  box-shadow: var(--glow);
+}
+.iconbtn__count[hidden] { display: none; }
+
+.burger, .burger::before, .burger::after {
+  display: block;
+  width: 15px; height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s var(--ease), opacity 0.2s var(--ease);
+}
+.burger { position: relative; }
+.burger::before { content: ""; position: absolute; top: -4.5px; }
+.burger::after  { content: ""; position: absolute; top: 4.5px; }
+.nav__toggle[aria-expanded="true"] .burger { background: transparent; }
+.nav__toggle[aria-expanded="true"] .burger::before { transform: translateY(4.5px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] .burger::after  { transform: translateY(-4.5px) rotate(-45deg); }
 
 /* --------------------------------------------------------------------------
    Haus
@@ -271,8 +309,8 @@ li { list-style: none; }
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(8, 7, 10, 0.82);
-  backdrop-filter: blur(16px);
+  background: rgba(8, 6, 15, 0.7);
+  backdrop-filter: blur(18px) saturate(150%);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s var(--ease);
 }
@@ -291,23 +329,22 @@ li { list-style: none; }
 
 .nav__brand {
   font-family: var(--display);
-  font-variation-settings: "opsz" 144, "SOFT" 16, "WONK" 1;
   font-weight: 800;
-  font-size: 1.15rem;
-  letter-spacing: -0.04em;
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
   text-decoration: none;
   margin-right: auto;
   white-space: nowrap;
 }
-.nav__brand i { font-style: normal; color: var(--signal-2); }
+.nav__brand i { font-style: normal; color: var(--electric-2); }
 
 .nav__links {
   position: fixed;
   inset: var(--nav-h) 0 auto 0;
   display: grid;
-  padding: 0.25rem var(--gutter) 1.5rem;
-  background: rgba(8, 7, 10, 0.98);
-  backdrop-filter: blur(16px);
+  padding: 0.5rem var(--gutter) 1.5rem;
+  background: rgba(8, 6, 15, 0.97);
+  backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
   transform: translateY(-120%);
   visibility: hidden;
@@ -322,108 +359,57 @@ li { list-style: none; }
   padding-block: 0.95rem;
   border-bottom: 1px solid var(--line);
   font-family: var(--display);
-  font-variation-settings: "opsz" 72, "SOFT" 16, "WONK" 1;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
   text-decoration: none;
   transition: color 0.2s var(--ease);
 }
-.nav__links a:hover { color: var(--signal-2); }
-.nav__links a[aria-current="page"] { color: var(--flag); }
+.nav__links a:hover { color: var(--electric-2); }
+.nav__links a[aria-current="page"] { color: var(--electric-2); }
 
 .nav__actions { display: flex; align-items: center; gap: 0.4rem; }
 
-/* Í símavalmyndinni fá veiturnar sinn eigin reit. Hnappurinn í hausnum
-   kemst ekki fyrir á síma, en „hvar hlusta ég“ má ekki hverfa þess vegna. */
+/* Veiturnar fá sinn eigin reit í símavalmyndinni */
 .nav__listen { display: grid; gap: 0.7rem; padding-top: 1.2rem; }
-.nav__listen .micro { color: var(--on-ink-3); }
+.nav__listen .micro { color: var(--muted); }
 .nav__listen span:last-child { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .nav__links .nav__listen a {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
   min-height: 2.4rem;
-  padding: 0.5rem 0.85rem;
+  padding: 0.5rem 0.9rem;
+  background: rgba(244, 240, 228, 0.04);
   border: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
   border-radius: 999px;
   font-family: var(--body);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0;
-  color: var(--on-ink-2);
+  color: var(--ink-soft);
 }
-.nav__links .nav__listen a:hover { color: var(--on-ink); border-color: var(--on-ink-3); }
+.nav__links .nav__listen a:hover { color: var(--ink); border-color: var(--line-strong); }
 .nav__listen .i { width: 11px; height: 11px; }
 
-.iconbtn {
-  position: relative;
-  width: 2.75rem; height: 2.75rem;
-  display: grid;
-  place-items: center;
-  background: transparent;
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  cursor: pointer;
-  padding: 0;
-  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
-}
-.iconbtn:hover { border-color: var(--on-ink-3); }
-.iconbtn svg { width: 18px; height: 18px; }
-
-.iconbtn__count {
-  position: absolute;
-  top: -6px; right: -6px;
-  min-width: 1.15rem; height: 1.15rem;
-  display: grid; place-items: center;
-  padding-inline: 0.25rem;
-  background: var(--signal);
-  border-radius: 999px;
-  font-family: var(--data);
-  font-size: 0.62rem;
-  color: #fff;
-}
-.iconbtn__count[hidden] { display: none; }
-
-.burger, .burger::before, .burger::after {
-  display: block;
-  width: 15px; height: 1.5px;
-  background: currentColor;
-  transition: transform 0.25s var(--ease), opacity 0.2s var(--ease);
-}
-.burger { position: relative; }
-.burger::before { content: ""; position: absolute; top: -4.5px; }
-.burger::after  { content: ""; position: absolute; top: 4.5px; }
-.nav__toggle[aria-expanded="true"] .burger { background: transparent; }
-.nav__toggle[aria-expanded="true"] .burger::before { transform: translateY(4.5px) rotate(45deg); }
-.nav__toggle[aria-expanded="true"] .burger::after  { transform: translateY(-4.5px) rotate(-45deg); }
-
 /* --------------------------------------------------------------------------
-   Hero — eitt plakat, aðeins á forsíðu
+   Hetjan — yfirlýsing, spilun og þær tvær
    -------------------------------------------------------------------------- */
 
 .hero {
   position: relative;
-  min-height: calc(100svh - var(--nav-h));
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   overflow: hidden;
-  padding-top: 1.25rem;
+  padding-block: 2.5rem 3rem;
 }
 
-/* Fínt hnitanet undir plakatinu — dofnar út áður en það truflar textann */
+/* Glóandi blettur á bak við efnið */
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(124, 121, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(124, 121, 255, 0.07) 1px, transparent 1px);
-  background-size: 72px 72px;
-  -webkit-mask-image: radial-gradient(120% 80% at 70% 15%, #000 0%, transparent 72%);
-  mask-image: radial-gradient(120% 80% at 70% 15%, #000 0%, transparent 72%);
+  top: -12rem; right: -10rem;
+  width: 42rem; height: 42rem;
+  background: radial-gradient(circle, rgba(93, 91, 255, 0.28), transparent 65%);
+  filter: blur(20px);
   pointer-events: none;
 }
 
@@ -432,276 +418,251 @@ li { list-style: none; }
   width: 100%;
   max-width: var(--max);
   margin-inline: auto;
-  padding: 0 var(--gutter) 1.5rem;
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: 2.25rem;
 }
 
-.hero__mark { display: flex; align-items: flex-end; margin-bottom: 1rem; }
+.hero__kicker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.hero__kicker .chip { border-color: rgba(93, 91, 255, 0.5); background: rgba(93, 91, 255, 0.14); color: var(--electric-2); }
 
-/* Andlitin á plakatinu.
+.hero__word {
+  font-size: clamp(3.2rem, 15vw, 7.5rem);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 1.1rem;
+}
+.hero__word i { font-style: normal; color: var(--electric-2); }
 
-   Á síma þarf plakatið að rúmast á einum skjá ásamt þáttaborðanum, svo
-   myndin fær hlutfallið sem gengur upp og hæðarþak miðað við skjáinn. */
+/* Heitið rís upp úr eigin ramma við komu — eina samda hreyfingin */
+.hero__line { display: block; overflow: hidden; padding-bottom: 0.04em; }
+.hero__line > span { display: block; transform: translateY(105%); animation: raise 1.05s var(--ease) forwards; }
+.hero__line:nth-child(2) > span { animation-delay: 0.1s; }
+@keyframes raise { to { transform: none; } }
+
+.hero__lead {
+  max-width: 46ch;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 1.6rem;
+}
+
+.hero__cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.75rem; }
+
+/* „Hlustaðu & fylgdu“ — veitupillur beint í hetjunni */
+.hero__plats { display: grid; gap: 0.6rem; }
+.hero__plats .micro { color: var(--muted); }
+.hero__plats ul { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.hero__plats a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.6rem;
+  padding: 0.55rem 1rem;
+  background: rgba(244, 240, 228, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.hero__plats a:hover {
+  color: var(--ink);
+  border-color: rgba(93, 91, 255, 0.6);
+  background: rgba(93, 91, 255, 0.12);
+  transform: translateY(-2px);
+}
+.hero__plats .i { width: 15px; height: 15px; }
+
+/* Myndin af þeim tveimur — rúnnuð með glóð, höndin bendir á þær */
 .hero__cast {
   position: relative;
-  margin-top: 1.1rem;
-  border-radius: var(--r);
+  border-radius: var(--r-lg);
   overflow: hidden;
-  background: var(--ink-1);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--glow-lg), var(--shadow);
 }
 .hero__cast img {
   width: 100%;
-  /* Án þessa ræður height-eigindin í HTML hæðinni og hlutfallið gildir ekki */
   height: auto;
-  aspect-ratio: 2 / 1;
-  max-height: 15svh;
+  aspect-ratio: 16 / 10;
+  max-height: 30svh;
   object-fit: cover;
   object-position: 50% 22%;
 }
 .hero__cast figcaption {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  padding: 2.5rem 0.9rem 0.7rem;
-  background: linear-gradient(transparent, rgba(4, 3, 6, 0.92));
-  color: var(--on-ink-2);
+  padding: 3rem 1.1rem 0.9rem;
+  background: linear-gradient(transparent, rgba(8, 6, 15, 0.9));
+  color: var(--ink-soft);
 }
 
-/* Höndin bleedar út af brúninni og tekur því aðeins 20vw af breiddinni.
-   Þannig kemst heitið að í fullri stærð niður í 320 px skjá. */
-.hero__hand {
-  width: 32vw;
-  margin-right: -12vw;
-  margin-bottom: -0.5rem;
-  transform: rotate(6deg);
-}
+.hero__hand { display: none; }
 
-.hero__word {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-size: clamp(2.7rem, 15.5vw, 8rem);
-  font-weight: 900;
-  font-variation-settings: "opsz" 144, "SOFT" 8, "WONK" 1;
-  line-height: 0.82;
-  letter-spacing: -0.04em;
-}
-.hero__word i { font-style: normal; color: var(--signal-2); }
-
-/* Eina samda hreyfingin á síðunni: heitið rís upp úr eigin ramma við komu */
-.hero__line { display: block; overflow: hidden; padding-bottom: 0.02em; }
-.hero__line:last-child { padding-bottom: 0.2em; }
-.hero__line > span { display: block; transform: translateY(105%); animation: raise 1.05s var(--ease) forwards; }
-.hero__line:nth-child(2) > span { animation-delay: 0.1s; }
-@keyframes raise { to { transform: none; } }
-
-.hero__lead {
-  max-width: 32ch;
-  font-size: 1.02rem;
-  line-height: 1.55;
-  color: var(--on-ink-2);
-  margin-bottom: 1.2rem;
-}
-
-.hero__cta { display: grid; gap: 0.5rem; }
-
-/* Þáttaborðinn: fullbreiður, límdur við botn plakatsins. Nýjasti þátturinn
-   er það eina sem stendur ofan á plakatinu — hlaðvarpið sjálft, ekki miðasala. */
-.epbar {
-  position: relative;
-  display: grid;
-  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.9rem;
-  padding: 1rem var(--gutter) 1.05rem;
-  background: var(--paper);
-  color: var(--on-paper);
-  text-decoration: none;
-  transition: background-color 0.25s var(--ease);
-}
-/* Borðinn er ekki einn hlekkur lengur heldur nokkrir fletir, svo
-   yfirsvif lýsir aðeins upp þann sem bendillinn stendur á. */
-.epbar::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: var(--signal);
-}
-
-.epbar__art {
-  position: relative;
-  width: 3.25rem; height: 3.25rem;
-  flex: none;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 2px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 6px 14px -8px rgba(0, 0, 0, 0.7);
-}
-.epbar__art img { width: 100%; height: 100%; object-fit: cover; }
-.epbar__cue {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: rgba(4, 3, 6, 0.55);
-  color: #fff;
-  opacity: 0;
-  transition: opacity 0.2s var(--ease);
-}
-.epbar__art:hover .epbar__cue, .epbar__art:focus-visible .epbar__cue { opacity: 1; }
-.epbar__cue .i { width: 14px; height: 14px; }
-
-.epbar__body { display: grid; gap: 0.15rem; min-width: 0; }
-.epbar__kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; }
-.epbar__kicker .micro { color: var(--on-paper-2); }
-.epbar__new {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--signal);
-}
-/* Punkturinn er teiknaður, ekki unicode — svo hann sitji á sömu línu alls staðar */
-.epbar__new::before {
-  content: "";
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--signal);
-}
-
-.epbar__title {
-  font-family: var(--display);
-  font-variation-settings: "opsz" 72, "SOFT" 16, "WONK" 1;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s var(--ease);
-  /* Löng heiti mega taka tvær línur á síma en aldrei fleiri */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.epbar__meta {
-  display: none;
-  font-family: var(--data);
-  font-variant-numeric: tabular-nums;
-  font-size: 0.78rem;
-  color: var(--on-paper-2);
-}
-
-.epbar__title:hover { color: var(--signal); }
-
-.epbar__go {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0;
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.epbar__go span { display: none; }
-.epbar__go i {
-  display: grid;
-  place-items: center;
-  width: 2.6rem; height: 2.6rem;
-  font-style: normal;
-  flex: none;
-  background: var(--on-paper);
-  color: var(--paper);
-  border-radius: 50%;
-  transition: transform 0.2s var(--ease), background-color 0.2s var(--ease);
-}
-.epbar__go .i { width: 13px; height: 13px; }
-.epbar__go:hover i { transform: scale(1.08); background: var(--signal); color: #fff; }
-
-/* --------------------------------------------------------------------------
-   Hlustunarveitur í línu — notaðar á um-síðunni
-   -------------------------------------------------------------------------- */
-
-.platforms { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.platforms a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  min-height: 2.4rem;
-  padding: 0.5rem 0.85rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  text-decoration: none;
-  color: var(--on-ink-2);
-  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
-}
-.platforms a:hover { color: var(--on-ink); border-color: var(--on-ink-3); }
-.platforms .i { width: 11px; height: 11px; }
-
-/* --------------------------------------------------------------------------
-   Þáttastjórnendur á forsíðu — léttur kafli, myndin af þeim er á plakatinu
-   -------------------------------------------------------------------------- */
-
-.duo { display: grid; gap: 1.75rem; }
-.duo h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-}
-.duo p { color: var(--on-ink-2); max-width: 44ch; }
-
-/* --------------------------------------------------------------------------
-   Þáttasafn
-   -------------------------------------------------------------------------- */
-
-.filters { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-
+/* Lítil pilla með þáttanúmeri — hlekkur á nýjasta þáttinn */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  min-height: 2.4rem;
-  padding: 0.45rem 0.85rem;
-  background: transparent;
+  min-height: 2.1rem;
+  padding: 0.3rem 0.8rem;
+  background: rgba(244, 240, 228, 0.05);
   border: 1px solid var(--line);
   border-radius: 999px;
-  color: var(--on-ink-3);
   font-family: var(--data);
-  font-size: 0.74rem;
-  cursor: pointer;
-  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
 }
-.chip:hover { color: var(--on-ink); border-color: var(--on-ink-3); }
-.chip[aria-pressed="true"] { background: var(--on-ink); border-color: var(--on-ink); color: var(--ink); }
-/* Fjöldinn í síunni: talan er gagn, ekki skraut */
+
+/* --------------------------------------------------------------------------
+   Hlaupandi borði — „nýr þáttur alla þriðjudaga“
+   -------------------------------------------------------------------------- */
+
+.marquee {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  background: rgba(93, 91, 255, 0.06);
+  padding-block: 0.8rem;
+  user-select: none;
+}
+.marquee__track {
+  display: flex;
+  gap: 2.5rem;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink-soft);
+}
+.marquee b { color: var(--electric-2); font-weight: 700; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* --------------------------------------------------------------------------
+   Nýjasti þátturinn — eitt stórt spjald
+   -------------------------------------------------------------------------- */
+
+.feat {
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, var(--surface-2), var(--surface) 55%);
+  border: 1px solid rgba(93, 91, 255, 0.28);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.feat::before {
+  content: "";
+  position: absolute;
+  top: -8rem; left: -6rem;
+  width: 26rem; height: 26rem;
+  background: radial-gradient(circle, rgba(93, 91, 255, 0.22), transparent 65%);
+  pointer-events: none;
+}
+
+.feat__art {
+  position: relative;
+  width: min(14rem, 60%);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.feat__art:hover { transform: scale(1.02); box-shadow: var(--glow-lg); }
+.feat__art img { width: 100%; height: 100%; object-fit: cover; }
+.feat__cue {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 6, 15, 0.5);
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.2s var(--ease);
+}
+.feat__art:hover .feat__cue,
+.feat__art:focus-visible .feat__cue,
+.feat[data-current="true"] .feat__cue { opacity: 1; }
+.feat__cue .i { width: 26px; height: 26px; }
+/* Hlustunarstaðan á spjaldinu */
+.feat__art::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 3px;
+  width: var(--heard, 0%);
+  background: var(--electric-2);
+}
+
+.feat__body { position: relative; min-width: 0; }
+.feat__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin-bottom: 0.9rem; }
+.feat__title {
+  font-size: clamp(1.5rem, 6vw, 2.3rem);
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+.feat__desc {
+  color: var(--ink-soft);
+  max-width: 58ch;
+  margin-bottom: 1.4rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.feat__act { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+
+/* --------------------------------------------------------------------------
+   Þáttalistinn — spjöld í röð
+   -------------------------------------------------------------------------- */
+
+.filters { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.chip[data-season] { cursor: pointer; transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background-color 0.2s var(--ease); }
+.chip[data-season]:hover { color: var(--ink); border-color: var(--line-strong); }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
 .chip i {
   font-style: normal;
-  font-size: 0.66rem;
-  opacity: 0.62;
+  font-size: 0.64rem;
+  opacity: 0.65;
   font-variant-numeric: tabular-nums;
 }
 
-/* Tónjafnari — sést aðeins á þeim þætti sem er í spilun */
+/* Tónjafnari — sést aðeins á þætti í spilun */
 .eq { display: none; align-items: flex-end; gap: 2px; height: 10px; }
 [data-playing="true"] .eq, .dock[data-playing="true"] .eq { display: inline-flex; }
 .eq i {
   display: block;
   width: 2px;
-  background: var(--signal-2);
+  border-radius: 2px;
+  background: var(--electric-2);
   animation: eq 0.9s var(--ease) infinite alternate;
 }
 .eq i:nth-child(1) { height: 40%; animation-delay: -0.5s; }
@@ -710,9 +671,7 @@ li { list-style: none; }
 .eq i:nth-child(4) { height: 30%; animation-delay: -0.35s; }
 @keyframes eq { from { height: 15%; } to { height: 100%; } }
 
-/* Engin border-top: fyrirsagnarlínan fyrir ofan sér um efri brúnina,
-   annars liggja tvær línur hlið við hlið. */
-.eps { border-top: 0; }
+.eps { display: grid; gap: 0.75rem; }
 
 /* Skil milli þáttaraða þegar allt safnið er undir */
 .epgroup {
@@ -720,16 +679,14 @@ li { list-style: none; }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.4rem 0.9rem;
-  padding: 2.25rem 0 0.75rem;
-  border-bottom: 1px solid var(--line);
+  padding: 2rem 0.25rem 0.5rem;
 }
-.eps > .epgroup:first-child { padding-top: 0; }
+.eps > .epgroup:first-child { padding-top: 0.25rem; }
 .epgroup b {
   font-family: var(--display);
-  font-variation-settings: "opsz" 72, "SOFT" 16, "WONK" 1;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .ep {
@@ -738,37 +695,44 @@ li { list-style: none; }
   grid-template-columns: 3.5rem minmax(0, 1fr) auto;
   align-items: start;
   gap: 0 0.9rem;
-  padding-block: 1.1rem;
-  border-bottom: 1px solid var(--line);
-  transition: border-color 0.25s var(--ease);
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  transition: border-color 0.25s var(--ease), background-color 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
-.ep:hover { border-bottom-color: var(--on-ink-3); }
-.ep[data-current="true"] { border-bottom-color: var(--signal-2); }
+.ep:hover {
+  border-color: rgba(93, 91, 255, 0.4);
+  background: var(--surface-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.ep[data-current="true"] { border-color: rgba(93, 91, 255, 0.55); }
 
-/* Cover-artið fylgir hverjum þætti og er um leið spilunarhnappurinn */
+/* Cover-artið er um leið spilunarhnappurinn */
 .ep__art {
   position: relative;
   grid-column: 1;
   grid-row: 1 / span 2;
   width: 3.5rem; height: 3.5rem;
   padding: 0;
-  background: var(--ink-1);
+  background: var(--bg);
   border: 1px solid var(--line);
-  border-radius: var(--r);
+  border-radius: var(--r-sm);
   overflow: hidden;
   cursor: pointer;
   transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 .ep__art img { width: 100%; height: 100%; object-fit: cover; }
-.ep__art:hover { transform: scale(1.04); border-color: var(--on-ink-3); }
+.ep__art:hover { transform: scale(1.05); border-color: var(--line-strong); }
 
 .ep__cue {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(4, 3, 6, 0.62);
-  color: var(--on-ink);
+  background: rgba(8, 6, 15, 0.6);
+  color: var(--ink);
   opacity: 0;
   transition: opacity 0.2s var(--ease);
 }
@@ -777,14 +741,14 @@ li { list-style: none; }
 .ep[data-current="true"] .ep__cue { opacity: 1; }
 .ep__cue .i { width: 14px; height: 14px; }
 
-/* Hversu langt er komið í þættinum — mælt af spilaranum sjálfum */
+/* Hlustunarstaðan, mæld af spilaranum */
 .ep__art::after {
   content: "";
   position: absolute;
   left: 0; bottom: 0;
   height: 2px;
   width: var(--heard, 0%);
-  background: var(--signal-2);
+  background: var(--electric-2);
 }
 
 .ep__body { grid-column: 2; grid-row: 1; }
@@ -794,42 +758,41 @@ li { list-style: none; }
   align-items: center;
   gap: 0.55rem;
   font-family: var(--data);
-  font-size: 0.7rem;
-  color: var(--signal-2);
-  margin-bottom: 0.25rem;
+  font-size: 0.68rem;
+  color: var(--electric-2);
+  margin-bottom: 0.3rem;
 }
 .ep__kind {
-  padding: 0.1rem 0.4rem;
-  border: 1px solid currentColor;
+  padding: 0.12rem 0.5rem;
+  background: rgba(245, 182, 43, 0.13);
+  border: 1px solid rgba(245, 182, 43, 0.4);
   border-radius: 999px;
-  font-size: 0.58rem;
-  letter-spacing: 0.08em;
+  font-size: 0.56rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--flag);
 }
 
 .ep__title {
   font-family: var(--display);
-  font-variation-settings: "opsz" 60, "SOFT" 16, "WONK" 1;
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   transition: color 0.2s var(--ease);
-  /* Straumurinn geymir stundum heilar efnisgreinar sem titil */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.ep:hover .ep__title { color: var(--signal-2); }
-.ep[data-current="true"] .ep__title { color: var(--signal-2); }
+.ep:hover .ep__title,
+.ep[data-current="true"] .ep__title { color: var(--electric-2); }
 
 .ep__desc {
   font-size: 0.88rem;
-  line-height: 1.5;
-  color: var(--on-ink-2);
+  line-height: 1.55;
+  color: var(--ink-soft);
   max-width: 62ch;
   margin-top: 0.35rem;
   display: -webkit-box;
@@ -848,10 +811,10 @@ li { list-style: none; }
   flex-wrap: wrap;
   gap: 0.35rem 0.9rem;
   margin-top: 0.55rem;
-  font-size: 0.72rem;
-  color: var(--on-ink-3);
+  font-size: 0.7rem;
+  color: var(--muted);
 }
-.ep__heard { color: var(--signal-2); }
+.ep__heard { color: var(--electric-2); }
 
 .ep__go {
   grid-column: 3;
@@ -867,188 +830,214 @@ li { list-style: none; }
   place-items: center;
   width: 2.6rem; height: 2.6rem;
   flex: none;
-  background: transparent;
+  background: rgba(244, 240, 228, 0.05);
   border: 1px solid var(--line);
-  border-radius: 50%;
+  border-radius: 999px;
   color: inherit;
   cursor: pointer;
   text-decoration: none;
-  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
-.ep__play:hover { background: var(--signal); border-color: var(--signal); color: #fff; }
+.ep__play:hover { background: var(--electric); border-color: var(--electric); color: #fff; box-shadow: var(--glow); }
 .ep__ext { display: none; }
-.ep__ext:hover { border-color: var(--on-ink-3); color: var(--on-ink); }
+.ep__ext:hover { border-color: var(--line-strong); color: var(--ink); }
 .ep__play .i, .ep__ext .i { width: 12px; height: 12px; }
-.ep[data-playing="true"] .ep__play { background: var(--signal-2); border-color: var(--signal-2); color: var(--ink); }
+.ep[data-playing="true"] .ep__play { background: var(--electric-2); border-color: var(--electric-2); color: var(--bg); }
 
 .eps__more { display: flex; justify-content: center; margin-top: 2.25rem; }
-.eps__empty { padding: 3rem 0; color: var(--on-ink-3); }
+.eps__empty { padding: 3rem 1rem; color: var(--muted); background: var(--surface); border: 1px dashed var(--line-strong); border-radius: var(--r); text-align: center; }
 
-/* Röðunarhnappur við hlið síunnar */
+.epcount { margin-top: 1.25rem; }
+
+/* Sía, röðun og leit í haus safnsins */
+.shead--tools { align-items: center; }
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; width: 100%; }
+
 .sortbtn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  min-height: 2.4rem;
-  padding: 0.45rem 0.85rem;
-  background: transparent;
-  border: 1px dashed var(--line);
+  min-height: 2.5rem;
+  padding: 0.45rem 1rem;
+  background: rgba(244, 240, 228, 0.04);
+  border: 1px dashed var(--line-strong);
   border-radius: 999px;
-  color: var(--on-ink-3);
+  color: var(--ink-soft);
   font-family: var(--data);
   font-size: 0.74rem;
   cursor: pointer;
   transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
 }
-.sortbtn:hover { color: var(--on-ink); border-color: var(--on-ink-3); }
-
-/* Sía, röðun og leit standa saman í haus safnsins. Á síma er sían í einni
-   línu og verkfærin í þeirri næstu. */
-.shead--tools { align-items: center; }
-.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; width: 100%; }
+.sortbtn:hover { color: var(--ink); border-color: var(--ink-soft); }
 
 .epsearch { position: relative; flex: 1 1 13rem; min-width: 0; max-width: 22rem; }
 .epsearch input {
   width: 100%;
-  min-height: 2.4rem;
-  padding: 0.5rem 0.9rem 0.5rem 2.2rem;
-  background: var(--ink-1);
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem 0.5rem 2.3rem;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 999px;
-  color: var(--on-ink);
+  color: var(--ink);
   font-family: var(--body);
   font-size: 0.88rem;
 }
-.epsearch input::placeholder { color: var(--on-ink-3); }
-.epsearch input:hover { border-color: var(--on-ink-3); }
+.epsearch input::placeholder { color: var(--muted); }
+.epsearch input:hover { border-color: var(--line-strong); }
 .epsearch svg {
   position: absolute;
-  left: 0.8rem; top: 50%;
+  left: 0.85rem; top: 50%;
   width: 14px; height: 14px;
   transform: translateY(-50%);
-  color: var(--on-ink-3);
+  color: var(--muted);
   pointer-events: none;
 }
 .epsearch input::-webkit-search-cancel-button { filter: invert(1); opacity: 0.5; }
 
-.epcount { margin-top: 1.25rem; }
-
 /* --------------------------------------------------------------------------
-   Hlustunarveitur — spjöld, ekki bara tenglaröð
+   Hlustunarveitur — spjöld
    -------------------------------------------------------------------------- */
 
 .plats { display: grid; gap: 0.85rem; }
 
 .plat {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  padding: 1.35rem 1.35rem 1.25rem;
-  background: var(--paper-card);
-  border: 1px solid var(--paper-line);
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: var(--r);
   text-decoration: none;
-  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  overflow: hidden;
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background-color 0.2s var(--ease);
 }
 .plat:hover {
-  border-color: var(--on-paper);
+  border-color: rgba(93, 91, 255, 0.45);
+  background: var(--surface-2);
   transform: translateY(-3px);
-  box-shadow: 0 18px 30px -22px rgba(16, 14, 20, 0.6);
+  box-shadow: var(--shadow);
 }
 
 .plat__logo {
   display: grid;
   place-items: center;
-  width: 2.6rem; height: 2.6rem;
-  margin-bottom: 0.5rem;
-  background: var(--on-paper);
-  color: var(--paper);
-  border-radius: 50%;
-  transition: background-color 0.2s var(--ease);
+  width: 2.8rem; height: 2.8rem;
+  margin-bottom: 0.6rem;
+  background: rgba(93, 91, 255, 0.15);
+  border: 1px solid rgba(93, 91, 255, 0.35);
+  color: var(--electric-2);
+  border-radius: 999px;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
 }
-.plat__logo svg { width: 17px; height: 17px; }
-.plat:hover .plat__logo { background: var(--signal); color: #fff; }
+.plat__logo svg { width: 18px; height: 18px; }
+.plat:hover .plat__logo { background: var(--electric); border-color: var(--electric); color: #fff; }
 
-.plat h3 { font-size: 1.3rem; font-weight: 700; }
-.plat p { font-size: 0.9rem; line-height: 1.45; color: var(--on-paper-2); }
+.plat h3 { font-size: 1.25rem; font-weight: 700; }
+.plat p { font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); }
 .plat__go {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   margin-top: 0.65rem;
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--electric-2);
 }
 .plat__go .i { width: 12px; height: 12px; transition: transform 0.25s var(--ease); }
 .plat:hover .plat__go .i { transform: translate(2px, -2px); }
 
-
 /* --------------------------------------------------------------------------
-   Viðburðir — miðar með rifgati
+   Þáttastjórnendur á forsíðu
    -------------------------------------------------------------------------- */
 
-.tickets { display: grid; gap: 1rem; }
-
-.ticket {
-  --pad: 1.25rem;
-  --perf: 4.75rem;
-  position: relative;
-  display: grid;
-  grid-template-columns: var(--perf) minmax(0, 1fr);
-  gap: 0 1.1rem;
-  padding: 1.35rem var(--pad);
-  background: var(--paper-card);
-  border: 1px solid var(--paper-line);
+.duo { display: grid; gap: 0.85rem; }
+.duo > div {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: var(--r);
 }
+.duo h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.4rem; }
+.duo p { color: var(--ink-soft); max-width: 44ch; font-size: 0.92rem; }
 
-/* Útstungurnar sitja á rifgatinu. Báðar leiða af --pad og --perf svo
-   gatið og götin geta ekki skriðið í sundur milli skjástærða. */
-.ticket::before,
-.ticket::after {
-  content: "";
-  position: absolute;
-  left: calc(var(--pad) + var(--perf));
-  width: 13px; height: 13px;
-  border: 1px solid var(--paper-line);
-  border-radius: 50%;
-  background: var(--paper);
-  transform: translateX(-50%);
+/* --------------------------------------------------------------------------
+   Viðburðir
+   -------------------------------------------------------------------------- */
+
+.cdown {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.4rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
 }
-.ticket::before { top: -8px; clip-path: inset(50% -2px -2px -2px); }
-.ticket::after  { bottom: -8px; clip-path: inset(-2px -2px 50% -2px); }
+.cdown__row { display: flex; gap: 1.1rem; }
+.cdown__row > span { display: flex; align-items: baseline; gap: 0.25rem; }
+.cdown__row b {
+  font-family: var(--data);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--electric-2);
+}
+.cdown__row i {
+  font-style: normal;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tickets { display: grid; gap: 0.85rem; }
+
+.ticket {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0 1.1rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.ticket:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
 
 .ticket__date {
-  position: relative;
   font-family: var(--data);
   font-variant-numeric: tabular-nums;
   text-align: center;
   line-height: 1;
-  padding-right: 1.1rem;
-}
-.ticket__date::after {
-  content: "";
-  position: absolute;
-  right: 0; top: -0.35rem; bottom: -0.35rem;
-  border-right: 1.5px dashed var(--paper-line);
+  padding: 0.7rem 0.5rem;
+  background: rgba(93, 91, 255, 0.12);
+  border: 1px solid rgba(93, 91, 255, 0.3);
+  border-radius: var(--r-sm);
+  align-self: start;
 }
 .ticket__date b {
   display: block;
   font-family: var(--display);
-  font-variation-settings: "opsz" 144, "SOFT" 16, "WONK" 1;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
+  color: var(--electric-2);
 }
-.ticket__date span { display: block; margin-top: 0.2rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
-.ticket__date i { display: block; margin-top: 0.25rem; font-style: normal; font-size: 0.68rem; color: var(--on-paper-2); }
+.ticket__date span { display: block; margin-top: 0.25rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.ticket__date i { display: block; margin-top: 0.2rem; font-style: normal; font-size: 0.62rem; color: var(--muted); }
 
 .ticket__kicker { margin-bottom: 0.5rem; }
-.ticket__body h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
-.ticket__where { font-family: var(--data); font-size: 0.78rem; color: var(--on-paper-2); }
-.ticket__note { margin-top: 0.75rem; font-size: 0.92rem; color: var(--on-paper-2); max-width: 48ch; }
+.ticket__body h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 0.35rem; }
+.ticket__where { font-family: var(--data); font-size: 0.75rem; color: var(--muted); }
+.ticket__note { margin-top: 0.75rem; font-size: 0.92rem; color: var(--ink-soft); max-width: 48ch; }
 
 .ticket__buy {
   grid-column: 1 / -1;
@@ -1056,88 +1045,60 @@ li { list-style: none; }
   flex-wrap: wrap;
   align-items: center;
   gap: 0.7rem;
-  margin-top: 1.1rem;
-  padding-top: 1.1rem;
-  border-top: 1px dashed var(--paper-line);
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
 }
-.ticket__price { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 1.3rem; letter-spacing: -0.03em; margin-right: auto; }
-.ticket__price i { font-style: normal; font-size: 0.85rem; color: var(--on-paper-2); }
+.ticket__price { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 1.25rem; letter-spacing: -0.03em; margin-right: auto; }
+.ticket__price i { font-style: normal; font-size: 0.85rem; color: var(--muted); }
 .ticket__buy .btn { width: 100%; }
 .ticket__fine { width: 100%; text-align: center; }
 
+/* Aðalviðburðurinn glóir */
 .ticket--lead {
-  background: var(--on-paper);
-  border-color: var(--on-paper);
-  color: var(--paper);
+  background: linear-gradient(145deg, var(--surface-2), var(--surface) 60%);
+  border-color: rgba(93, 91, 255, 0.35);
+  box-shadow: var(--shadow);
 }
-.ticket--lead .micro,
-.ticket--lead .ticket__where,
-.ticket--lead .ticket__note,
-.ticket--lead .ticket__date i,
-.ticket--lead .ticket__price i { color: rgba(244, 240, 228, 0.68); }
-.ticket--lead .ticket__date::after,
-.ticket--lead .ticket__buy { border-color: rgba(244, 240, 228, 0.3); }
-.ticket--lead::before, .ticket--lead::after { border-color: var(--on-paper); }
-.ticket--lead .ticket__body h3 { font-size: clamp(1.6rem, 7vw, 2.1rem); }
-
-/* Niðurtalning að næsta viðburði. Hún á heima á viðburðasíðunni — ekki
-   ofan á plakatinu, þar sem hlaðvarpið sjálft á að standa. */
-.cdown {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem 1.4rem;
-  margin-bottom: 1.75rem;
-  padding-bottom: 1.35rem;
-  border-bottom: 1px solid var(--paper-line);
-}
-.cdown__row { display: flex; gap: 1rem; }
-.cdown__row > span { display: flex; align-items: baseline; gap: 0.22rem; }
-.cdown__row b {
-  font-family: var(--data);
-  font-variant-numeric: tabular-nums;
-  font-size: 1.35rem;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-}
-.cdown__row i {
-  font-style: normal;
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--on-paper-2);
-}
+.ticket--lead .ticket__body h3 { font-size: clamp(1.5rem, 6vw, 2rem); }
 
 .past { margin-top: 2.5rem; }
-.past h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; }
+.past h2 { font-size: 1.35rem; margin-bottom: 1rem; }
 .past__list li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem 0.9rem;
-  padding-block: 0.9rem;
-  border-top: 1px solid var(--paper-line);
+  padding: 0.9rem 0.25rem;
+  border-top: 1px solid var(--line);
   font-size: 0.92rem;
-  color: var(--on-paper-2);
+  color: var(--ink-soft);
 }
-.past__list b { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 0.82rem; color: var(--on-paper); min-width: 7.5rem; }
+.past__list b { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 0.8rem; color: var(--ink); min-width: 7.5rem; }
 
 /* --------------------------------------------------------------------------
    Búðin
    -------------------------------------------------------------------------- */
 
 .products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem 0.85rem; }
-.product { display: flex; flex-direction: column; }
+.product {
+  display: flex;
+  flex-direction: column;
+  padding: 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.product:hover { border-color: var(--line-strong); transform: translateY(-2px); box-shadow: var(--shadow); }
 
 .product__art {
   position: relative;
   container-type: inline-size;
   aspect-ratio: 4 / 5;
-  border-radius: var(--r);
+  border-radius: var(--r-sm);
   overflow: hidden;
-  margin-bottom: 0.75rem;
-  box-shadow: inset 0 0 0 1px rgba(16, 14, 20, 0.1);
+  margin-bottom: 0.8rem;
 }
 
 /* Vörumynd er prentflötur: merkið þrykkt á lit vörunnar */
@@ -1148,24 +1109,24 @@ li { list-style: none; }
   place-items: center;
   background: var(--bg);
   color: var(--fg);
-  transition: transform 0.5s var(--ease);
+  background: var(--bg, #111);
 }
-.product:hover .swatch { transform: scale(1.03); }
+.swatch { background: var(--bg); color: var(--fg); transition: transform 0.5s var(--ease); }
+.product:hover .swatch { transform: scale(1.04); }
 
 .swatch__mark {
   font-family: var(--display);
-  font-variation-settings: "opsz" 144, "SOFT" 12, "WONK" 1;
   font-weight: 800;
-  font-size: 18cqw;
-  line-height: 0.86;
-  letter-spacing: -0.04em;
+  font-size: 17cqw;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
   text-align: center;
 }
 .swatch__kind {
   position: absolute;
-  left: 0.7rem; bottom: 0.6rem;
+  left: 0.75rem; bottom: 0.65rem;
   font-size: 0.58rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   opacity: 0.6;
@@ -1175,115 +1136,146 @@ li { list-style: none; }
   position: absolute;
   top: 0.6rem; left: 0.6rem;
   z-index: 1;
-  padding: 0.22rem 0.5rem;
+  padding: 0.24rem 0.55rem;
   background: var(--flag);
   color: #17130A;
   border-radius: 999px;
   font-size: 0.58rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.product__name { font-size: 0.98rem; font-weight: 600; line-height: 1.3; margin-bottom: 0.15rem; }
-.product__variant { font-size: 0.78rem; color: var(--on-paper-2); margin-bottom: 0.5rem; }
+.product__name { font-size: 0.98rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.15rem; }
+.product__variant { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.5rem; }
 .product__price { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 0.95rem; white-space: nowrap; margin-bottom: 0.75rem; }
 
-.sizes { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.75rem; }
+.sizes { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.85rem; }
 .sizes button {
   min-width: 2.4rem; min-height: 2.4rem;
   padding: 0.3rem 0.4rem;
   background: transparent;
-  border: 1px solid var(--paper-line);
-  border-radius: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
   font-family: var(--data);
   font-size: 0.72rem;
-  color: var(--on-paper-2);
+  color: var(--muted);
   cursor: pointer;
   transition: border-color 0.15s var(--ease), background-color 0.15s var(--ease), color 0.15s var(--ease);
 }
-.sizes button:hover { border-color: var(--on-paper-2); }
-.sizes button[aria-pressed="true"] { background: var(--on-paper); border-color: var(--on-paper); color: var(--paper); }
+.sizes button:hover { border-color: var(--line-strong); color: var(--ink); }
+.sizes button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
 
 .product .btn { margin-top: auto; width: 100%; }
-.shop__note { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--paper-line); }
+.shop__note { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
 
 /* --------------------------------------------------------------------------
    Um okkur
    -------------------------------------------------------------------------- */
 
 .about { display: grid; gap: 2rem; }
-.about__photo { border-radius: var(--r); overflow: hidden; background: var(--paper); }
+.about__photo {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--glow-lg), var(--shadow);
+}
 .about__photo img { width: 100%; height: auto; }
 
-.about__text h2,
-.about__head { font-size: clamp(2rem, 9vw, 3rem); font-weight: 800; letter-spacing: -0.035em; margin-bottom: 1rem; }
-/* Á forsíðunni er þetta undirfyrirsögn (h3) — stigveldið ræðst af síðunni,
-   ekki stærðinni. */
-.band .about__head { font-size: clamp(1.7rem, 7vw, 2.3rem); }
-.about__lead { color: var(--on-ink-2); max-width: 52ch; }
+.about__text h2 { font-size: clamp(1.9rem, 8.5vw, 2.9rem); margin-bottom: 1rem; }
+.about__lead { color: var(--ink-soft); max-width: 52ch; }
 
 .hosts { display: grid; gap: 1.25rem; margin-top: 1.75rem; padding-top: 1.75rem; border-top: 1px solid var(--line); }
 .hosts dt {
   font-family: var(--display);
-  font-variation-settings: "opsz" 60, "SOFT" 16, "WONK" 1;
   font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
   margin-bottom: 0.2rem;
 }
-.hosts dd { font-size: 0.92rem; color: var(--on-ink-2); }
+.hosts dd { font-size: 0.92rem; color: var(--ink-soft); }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
+  gap: 0.6rem;
   margin-top: 1.75rem;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  overflow: hidden;
 }
-.stats li { background: var(--ink); padding: 1rem 1.1rem; }
+.stats li {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 1rem 1.1rem;
+}
 .stats b {
   display: block;
   font-family: var(--display);
-  font-variation-settings: "opsz" 144, "SOFT" 16, "WONK" 1;
   font-size: 1.7rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   line-height: 1;
   margin-bottom: 0.3rem;
+  color: var(--electric-2);
 }
+
+.platforms { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.platforms a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.4rem;
+  padding: 0.5rem 0.9rem;
+  background: rgba(244, 240, 228, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink-soft);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.platforms a:hover { color: var(--ink); border-color: var(--line-strong); }
+.platforms .i { width: 11px; height: 11px; }
 
 /* --------------------------------------------------------------------------
    Póstlisti
    -------------------------------------------------------------------------- */
 
-.signup { background: var(--signal); color: #fff; padding-block: 3.25rem; }
-.signup__inner { display: grid; gap: 2rem; }
-.signup h2 { font-size: clamp(1.9rem, 8.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.035em; margin-bottom: 0.75rem; }
+.signup {
+  position: relative;
+  background: linear-gradient(135deg, var(--electric-deep), var(--electric) 70%);
+  color: #fff;
+  padding-block: 3.25rem;
+  overflow: hidden;
+}
+.signup::before {
+  content: "";
+  position: absolute;
+  top: -10rem; right: -8rem;
+  width: 30rem; height: 30rem;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 65%);
+  pointer-events: none;
+}
+.signup__inner { position: relative; display: grid; gap: 2rem; }
+.signup h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); margin-bottom: 0.75rem; }
 .signup p { color: rgba(255, 255, 255, 0.85); max-width: 44ch; }
 
 .form { display: grid; gap: 0.7rem; align-content: start; }
 .form__row { display: flex; gap: 0.5rem; }
-.form label { font-size: 0.8rem; font-weight: 600; color: rgba(255, 255, 255, 0.85); }
+.form label { font-size: 0.8rem; font-weight: 700; color: rgba(255, 255, 255, 0.85); }
 .form input {
   flex: 1;
   min-width: 0;
-  min-height: 2.9rem;
-  padding: 0.85rem 1rem;
-  background: rgba(255, 255, 255, 0.14);
+  min-height: 3rem;
+  padding: 0.85rem 1.2rem;
+  background: rgba(8, 6, 15, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: var(--r);
+  border-radius: 999px;
   color: #fff;
   font-family: var(--body);
   font-size: 1rem;
 }
-.form input::placeholder { color: rgba(255, 255, 255, 0.65); }
+.form input::placeholder { color: rgba(255, 255, 255, 0.6); }
 .form input:focus-visible { outline-color: #fff; }
-.form .btn { --bg: #fff; --fg: var(--signal); border-color: #fff; }
-.form .btn:hover { --bg: var(--paper); --fg: var(--signal); border-color: var(--paper); }
+.form .btn { --bg-b: #fff; --fg-b: var(--electric-deep); box-shadow: none; }
+.form .btn:hover { --bg-b: var(--ink); --fg-b: var(--electric-deep); }
 .form__fine { font-size: 0.8rem; color: rgba(255, 255, 255, 0.75); }
 .form__err { font-size: 0.85rem; color: #FFE39B; }
 .form__err[hidden] { display: none; }
@@ -1296,33 +1288,33 @@ li { list-style: none; }
 .footer__top { padding-bottom: 2.25rem; }
 .footer__word {
   font-family: var(--display);
-  font-variation-settings: "opsz" 144, "SOFT" 10, "WONK" 1;
-  font-weight: 900;
-  font-size: clamp(2.6rem, 14vw, 5.5rem);
-  line-height: 0.85;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 13vw, 5rem);
+  line-height: 0.9;
   letter-spacing: -0.04em;
   margin-bottom: 1.5rem;
 }
-.footer__word i { font-style: normal; color: var(--signal-2); }
+.footer__word i { font-style: normal; color: var(--electric-2); }
 
 .footer__cols { display: grid; gap: 1.75rem; padding-bottom: 2.25rem; }
-.footer__cols h2 { font-family: var(--body); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-ink-3); margin-bottom: 0.8rem; }
+.footer__cols h2 { font-family: var(--body); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
 .footer__cols ul { display: grid; gap: 0.5rem; }
-.footer__cols a { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.92rem; text-decoration: none; color: var(--on-ink-2); transition: color 0.2s var(--ease); }
-.footer__cols a:hover { color: var(--on-ink); }
+.footer__cols a { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.92rem; text-decoration: none; color: var(--ink-soft); transition: color 0.2s var(--ease); }
+.footer__cols a:hover { color: var(--ink); }
 .footer__cols .i { width: 11px; height: 11px; }
 
 .footer__base { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; padding-top: 1.5rem; border-top: 1px solid var(--line); }
 
 /* --------------------------------------------------------------------------
-   Karfa, myndagluggi, tilkynning
+   Karfa og tilkynning
    -------------------------------------------------------------------------- */
 
 .scrim {
   position: fixed;
   inset: 0;
   z-index: 80;
-  background: rgba(4, 3, 6, 0.72);
+  background: rgba(4, 3, 10, 0.72);
+  backdrop-filter: blur(4px);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s var(--ease), visibility 0.3s;
@@ -1336,8 +1328,8 @@ li { list-style: none; }
   width: min(26rem, 100%);
   display: flex;
   flex-direction: column;
-  background: var(--ink-1);
-  border-left: 1px solid var(--line);
+  background: var(--surface);
+  border-left: 1px solid var(--line-strong);
   transform: translateX(101%);
   visibility: hidden;
   overscroll-behavior: contain;
@@ -1346,50 +1338,50 @@ li { list-style: none; }
 .cart[data-open="true"] { transform: none; visibility: visible; }
 
 .cart__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--line); }
-.cart__head h2 { font-size: 1.3rem; font-weight: 700; }
+.cart__head h2 { font-size: 1.3rem; }
 
 .cart__items { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 0 1.25rem; }
-.cart__empty { padding: 3rem 1.25rem; text-align: center; color: var(--on-ink-3); font-size: 0.92rem; }
+.cart__empty { padding: 3rem 1.25rem; text-align: center; color: var(--muted); font-size: 0.92rem; }
 
 .line { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr) auto; gap: 0.85rem; align-items: center; padding-block: 0.9rem; border-bottom: 1px solid var(--line); }
-.line__art { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: 2px; font-family: var(--display); font-weight: 800; font-size: 0.58rem; line-height: 0.9; text-align: center; }
-.line__name { font-size: 0.9rem; font-weight: 600; }
-.line__sub { font-family: var(--data); font-size: 0.72rem; color: var(--on-ink-3); }
+.line__art { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border-radius: 8px; font-family: var(--display); font-weight: 800; font-size: 0.58rem; line-height: 0.9; text-align: center; }
+.line__name { font-size: 0.9rem; font-weight: 700; }
+.line__sub { font-family: var(--data); font-size: 0.72rem; color: var(--muted); }
 .line__price { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 0.85rem; white-space: nowrap; }
 
 .qty { display: inline-flex; align-items: center; gap: 0.15rem; margin-top: 0.4rem; }
-.qty button { width: 1.9rem; height: 1.9rem; display: grid; place-items: center; background: transparent; border: 1px solid var(--line); border-radius: 2px; color: var(--on-ink-3); cursor: pointer; line-height: 1; }
-.qty button:hover { color: var(--on-ink); border-color: var(--on-ink-3); }
+.qty button { width: 1.9rem; height: 1.9rem; display: grid; place-items: center; background: transparent; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); cursor: pointer; line-height: 1; }
+.qty button:hover { color: var(--ink); border-color: var(--line-strong); }
 .qty button svg { width: 10px; height: 10px; }
 .qty span { min-width: 1.7rem; text-align: center; font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 0.78rem; }
 
 .cart__foot { padding: 1.1rem 1.25rem 1.35rem; border-top: 1px solid var(--line); }
 .cart__total { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.9rem; }
-.cart__total b { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 1.3rem; font-weight: 500; letter-spacing: -0.03em; }
+.cart__total b { font-family: var(--data); font-variant-numeric: tabular-nums; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.03em; }
 .cart__fine { margin-top: 0.7rem; text-align: center; }
 
 /* --------------------------------------------------------------------------
-   Spilarinn — borði neðst sem fylgir öllum síðum
+   Spilarinn — fljótandi borði neðst
    -------------------------------------------------------------------------- */
 
 .dock {
   position: fixed;
-  left: 0; right: 0; bottom: 0;
+  left: 0.75rem; right: 0.75rem; bottom: 0.75rem;
   z-index: 95;
-  background: rgba(14, 14, 19, 0.86);
-  backdrop-filter: blur(20px) saturate(140%);
-  border-top: 1px solid var(--line);
-  transform: translateY(105%);
+  background: rgba(19, 14, 36, 0.85);
+  backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(93, 91, 255, 0.3);
+  border-radius: var(--r);
+  box-shadow: var(--glow-lg), var(--shadow);
+  transform: translateY(130%);
   visibility: hidden;
-  padding-bottom: env(safe-area-inset-bottom);
   transition: transform 0.4s var(--ease), visibility 0.4s;
 }
 .dock[data-open="true"] { transform: none; visibility: visible; }
-/* Fóturinn á ekki að hverfa undir spilarann */
-body[data-dock="true"] { padding-bottom: 4.9rem; }
+body[data-dock="true"] { padding-bottom: 6rem; }
 
 /* Framvindan liggur eftir efri brún borðans */
-.dock__track { position: absolute; inset: -9px 0 auto 0; height: 18px; }
+.dock__track { position: absolute; inset: -8px 1.25rem auto 1.25rem; height: 18px; }
 
 .dock__seek {
   -webkit-appearance: none;
@@ -1402,28 +1394,29 @@ body[data-dock="true"] { padding-bottom: 4.9rem; }
   cursor: pointer;
 }
 .dock__seek::-webkit-slider-runnable-track {
-  height: 3px;
+  height: 4px;
   border-radius: 999px;
   background:
-    linear-gradient(var(--signal-2), var(--signal-2)) 0 / var(--p, 0%) 100% no-repeat,
-    var(--line);
+    linear-gradient(var(--electric-2), var(--electric-2)) 0 / var(--p, 0%) 100% no-repeat,
+    rgba(244, 240, 228, 0.15);
 }
-.dock__seek::-moz-range-track { height: 3px; border-radius: 999px; background: var(--line); }
-.dock__seek::-moz-range-progress { height: 3px; border-radius: 999px; background: var(--signal-2); }
+.dock__seek::-moz-range-track { height: 4px; border-radius: 999px; background: rgba(244, 240, 228, 0.15); }
+.dock__seek::-moz-range-progress { height: 4px; border-radius: 999px; background: var(--electric-2); }
 .dock__seek::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 11px; height: 11px;
+  width: 12px; height: 12px;
   margin-top: -4px;
   border: none;
   border-radius: 50%;
-  background: var(--on-ink);
+  background: var(--ink);
+  box-shadow: var(--glow);
   transition: transform 0.15s var(--ease);
 }
 .dock__seek::-moz-range-thumb {
-  width: 11px; height: 11px;
+  width: 12px; height: 12px;
   border: none;
   border-radius: 50%;
-  background: var(--on-ink);
+  background: var(--ink);
 }
 .dock__seek:hover::-webkit-slider-thumb { transform: scale(1.25); }
 
@@ -1431,7 +1424,7 @@ body[data-dock="true"] { padding-bottom: 4.9rem; }
   width: 100%;
   max-width: var(--max);
   margin-inline: auto;
-  padding: 0.7rem var(--gutter);
+  padding: 0.75rem 1rem;
   display: grid;
   grid-template-columns: 2.9rem minmax(0, 1fr) auto auto;
   align-items: center;
@@ -1440,7 +1433,7 @@ body[data-dock="true"] { padding-bottom: 4.9rem; }
 
 .dock__art {
   width: 2.9rem; height: 2.9rem;
-  border-radius: 2px;
+  border-radius: 10px;
   object-fit: cover;
   border: 1px solid var(--line);
 }
@@ -1450,16 +1443,16 @@ body[data-dock="true"] { padding-bottom: 4.9rem; }
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--signal-2);
+  color: var(--electric-2);
 }
 .dock__title {
   font-size: 0.88rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.3;
-  color: var(--on-ink);
+  color: var(--ink);
   display: -webkit-box;
   -webkit-line-clamp: 1;
   line-clamp: 1;
@@ -1475,14 +1468,15 @@ body[data-dock="true"] { padding-bottom: 4.9rem; }
   place-items: center;
   width: 2.75rem; height: 2.75rem;
   flex: none;
-  background: var(--on-ink);
-  color: var(--ink);
+  background: var(--electric);
+  color: #fff;
   border: none;
-  border-radius: 50%;
+  border-radius: 999px;
   cursor: pointer;
+  box-shadow: var(--glow);
   transition: transform 0.2s var(--ease), background-color 0.2s var(--ease);
 }
-.dock__play:hover { transform: scale(1.07); background: var(--signal-2); }
+.dock__play:hover { transform: scale(1.07); background: var(--electric-2); }
 .dock__play .i { width: 14px; height: 14px; }
 
 .dock__btn {
@@ -1492,13 +1486,13 @@ body[data-dock="true"] { padding-bottom: 4.9rem; }
   flex: none;
   background: transparent;
   border: 1px solid transparent;
-  border-radius: var(--r);
-  color: var(--on-ink-3);
+  border-radius: 999px;
+  color: var(--muted);
   cursor: pointer;
   text-decoration: none;
   transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
 }
-.dock__btn:hover { color: var(--on-ink); border-color: var(--line); }
+.dock__btn:hover { color: var(--ink); border-color: var(--line); }
 .dock__btn svg { width: 18px; height: 18px; }
 
 .dock__skip, .dock__rate, .dock__ext, .dock__time { display: none; }
@@ -1514,10 +1508,10 @@ body[data-dock="true"] { padding-bottom: 4.9rem; }
   display: none;
   gap: 0.4rem;
   font-size: 0.74rem;
-  color: var(--on-ink-3);
+  color: var(--muted);
   white-space: nowrap;
 }
-.dock__time b { font-weight: 500; color: var(--on-ink); }
+.dock__time b { font-weight: 700; color: var(--ink); }
 .dock__time span::before { content: "/ "; }
 
 .toast {
@@ -1526,31 +1520,27 @@ body[data-dock="true"] { padding-bottom: 4.9rem; }
   z-index: 120;
   transform: translate(-50%, 200%);
   max-width: calc(100vw - 2rem);
-  padding: 0.85rem 1.15rem;
-  background: var(--paper);
-  color: var(--on-paper);
-  border-radius: var(--r);
+  padding: 0.85rem 1.25rem;
+  background: var(--surface-2);
+  border: 1px solid rgba(93, 91, 255, 0.4);
+  color: var(--ink);
+  border-radius: 999px;
   font-size: 0.88rem;
-  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.85);
-  /* Ekki reiða sig á færsluna eina: spilarinn lyftir tilkynningunni upp og
-     þá dugar 200% af eigin hæð ekki til að fela hana. */
+  box-shadow: var(--glow-lg), var(--shadow);
   opacity: 0;
   visibility: hidden;
   transition: transform 0.4s var(--ease), opacity 0.3s var(--ease), visibility 0.4s;
 }
 .toast[data-open="true"] { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
-/* Tilkynningin má ekki lenda undir spilaranum */
-body[data-dock="true"] .toast { bottom: 6rem; }
+body[data-dock="true"] .toast { bottom: 6.5rem; }
 
-/* Allra minnstu símarnir — plakatið á líka að rúmast þar */
+/* ==========================================================================
+   Allra minnstu símarnir
+   ========================================================================== */
+
 @media (max-width: 360px) {
-  .hero { padding-top: 0.9rem; }
-  .hero__word { font-size: clamp(2.2rem, 13vw, 2.8rem); }
-  .hero__lead { font-size: 0.92rem; margin-bottom: 1rem; }
-  .hero__mark { margin-bottom: 0.75rem; }
-  .hero__cast { margin-top: 0.85rem; }
-  .hero__cast img { max-height: 11svh; }
-  .hero__inner { padding-bottom: 1.1rem; }
+  .hero__word { font-size: clamp(2.5rem, 14vw, 3rem); }
+  .hero__cast img { max-height: 24svh; }
 }
 
 /* ==========================================================================
@@ -1561,32 +1551,26 @@ body[data-dock="true"] .toast { bottom: 6rem; }
   :root { --gutter: 2rem; }
 
   .band { padding-block: 4.5rem; }
-  .hero__cta { display: flex; flex-wrap: wrap; }
-  .hero { padding-top: 2rem; }
-  .hero__inner { padding-bottom: 2.25rem; }
-  .hero__cast img { aspect-ratio: 16 / 9; max-height: none; }
-  .hero__lead { font-size: 1.1rem; max-width: 36ch; }
+  .hero { padding-block: 3rem 3.5rem; }
+  .hero__lead { font-size: 1.12rem; }
+  .hero__cast img { max-height: none; aspect-ratio: 16 / 9; }
 
-  .epbar { grid-template-columns: 4rem minmax(0, 1fr) auto; gap: 1.15rem; padding-block: 1.15rem; }
-  .epbar__art { width: 4rem; height: 4rem; }
-  .epbar__title { font-size: 1.35rem; -webkit-line-clamp: 1; }
-  .epbar__meta { display: block; }
-  .epbar__go span { display: inline; }
+  .feat { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); align-items: center; padding: 2rem; }
+  .feat__art { width: 100%; }
 
-  .products { grid-template-columns: repeat(3, 1fr); gap: 1.75rem 1.25rem; }
   .plats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-  .duo { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+  .duo { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .products { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .footer__cols { grid-template-columns: repeat(3, 1fr); }
 
-  .ticket { --pad: 1.5rem; --perf: 5.5rem; }
-  .ticket__date b { font-size: 3rem; }
-
+  .ticket { grid-template-columns: 5rem minmax(0, 1fr); }
   .signup__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
   .phead { padding-block: 3.5rem 2.5rem; }
 
-  .dock__inner { grid-template-columns: 3.25rem minmax(0, 1fr) auto auto auto; }
-  .dock__art { width: 3.25rem; height: 3.25rem; }
+  .dock__inner { grid-template-columns: 3.1rem minmax(0, 1fr) auto auto auto; }
+  .dock__art { width: 3.1rem; height: 3.1rem; }
   .dock__time { display: flex; }
+  .stats { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* ==========================================================================
@@ -1596,7 +1580,7 @@ body[data-dock="true"] .toast { bottom: 6rem; }
 @media (min-width: 900px) {
   :root { --gutter: 2.5rem; --nav-h: 4.5rem; }
 
-  .band { padding-block: clamp(5rem, 8vw, 7.5rem); }
+  .band { padding-block: clamp(4.5rem, 7vw, 6.5rem); }
   .phead { padding-block: 4rem 2rem; }
 
   .nav__inner { gap: 2rem; }
@@ -1605,7 +1589,7 @@ body[data-dock="true"] .toast { bottom: 6rem; }
     position: static;
     display: flex;
     align-items: center;
-    gap: 1.9rem;
+    gap: 0.35rem;
     padding: 0;
     background: none;
     backdrop-filter: none;
@@ -1614,83 +1598,75 @@ body[data-dock="true"] .toast { bottom: 6rem; }
     visibility: visible;
   }
   .nav__links a {
-    display: inline;
-    padding: 0;
+    display: inline-flex;
+    padding: 0.5rem 0.95rem;
     border: none;
+    border-radius: 999px;
     font-family: var(--body);
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.01em;
-    color: var(--on-ink-2);
+    color: var(--ink-soft);
+    transition: color 0.2s var(--ease), background-color 0.2s var(--ease);
   }
-  .nav__links a:hover { color: var(--on-ink); }
-  .nav__links a[aria-current="page"] { color: var(--on-ink); text-decoration: underline; text-decoration-color: var(--signal-2); text-decoration-thickness: 2px; }
+  .nav__links a:hover { color: var(--ink); background: rgba(244, 240, 228, 0.06); }
+  .nav__links a[aria-current="page"] { color: var(--ink); background: rgba(93, 91, 255, 0.18); }
   .nav__toggle { display: none; }
   .nav__listen { display: none; }
 
-  /* Plakatið verður tvískipt: heitið vinstra megin, þær hægra megin */
-  .hero { min-height: calc(100svh - var(--nav-h)); padding-top: 2.5rem; }
+  /* Hetjan tvískipt: yfirlýsingin vinstra megin, þær hægra megin */
+  .hero { padding-block: 3.5rem 4rem; }
   .hero__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
-    align-items: end;
-    gap: 3rem;
-    padding-bottom: 3rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: 3.5rem;
   }
-  .hero__text { min-width: 0; }
-  .hero__mark { display: block; margin-bottom: 1.5rem; }
-  /* Höndin úr merkinu bendir á þær tvær. Speglað lárétt því í merkinu
-     bendir hún upp til vinstri, en myndin stendur hægra megin. */
+  .hero__word { font-size: clamp(4.2rem, 7.6vw, 7rem); }
+  .hero__cast { transform: rotate(1.2deg); }
+  .hero__cast img { aspect-ratio: 4 / 3.4; max-height: none; }
+
+  /* Höndin úr merkinu bendir á þær af spássíunni */
   .hero__hand {
+    display: block;
     position: absolute;
     z-index: 2;
-    width: clamp(92px, 9vw, 135px);
-    left: calc(56% - 7.5rem);
-    bottom: 30%;
-    margin: 0;
-    transform: scaleX(-1) rotate(-6deg);
+    width: clamp(84px, 7.5vw, 120px);
+    left: 51.5%;
+    bottom: 14%;
+    transform: scaleX(-1) rotate(-8deg);
     filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.6));
   }
-  .hero__word { font-size: clamp(4.6rem, 8.4vw, 8.4rem); }
-  .hero__cast { margin-top: 0; }
-  .hero__cast img { aspect-ratio: 4 / 5; object-position: 50% 22%; }
 
-  .epbar { grid-template-columns: 4.75rem minmax(0, 1fr) auto; gap: 1.5rem; padding: 1.25rem var(--gutter); }
-  .epbar__art { width: 4.75rem; height: 4.75rem; }
-  .epbar__title { font-size: 1.55rem; }
+  .shead { margin-bottom: 2.5rem; }
+  .shead h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
 
-  .shead { padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
-  .shead h2 { font-size: clamp(2.6rem, 4.5vw, 3.8rem); }
+  .feat { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: 2.5rem; padding: 2.5rem; }
 
-
-  .ep { grid-template-columns: 4.75rem minmax(0, 1fr) 10rem auto; align-items: center; gap: 0 1.75rem; padding-block: 1.3rem; }
+  .ep { grid-template-columns: 4.75rem minmax(0, 1fr) 10rem auto; align-items: center; gap: 0 1.5rem; padding: 1.1rem 1.4rem; }
   .ep__art { grid-row: 1; width: 4.75rem; height: 4.75rem; }
   .ep__body { grid-column: 2; grid-row: 1; }
   .ep__meta { grid-column: 3; grid-row: 1; flex-direction: column; align-items: flex-start; gap: 0.15rem; margin-top: 0; }
   .ep__go { grid-column: 4; grid-row: 1; }
   .ep__ext { display: grid; }
-  .ep__title { font-size: 1.2rem; -webkit-line-clamp: 2; line-clamp: 2; }
-  .epgroup { padding-top: 3rem; }
+  .ep__title { font-size: 1.15rem; -webkit-line-clamp: 2; line-clamp: 2; }
+  .epgroup { padding-top: 2.75rem; }
   .tools { width: auto; flex: 0 1 auto; }
 
-  .ticket { --pad: 2rem; --perf: 7rem; grid-template-columns: var(--perf) minmax(0, 1fr) auto; align-items: center; gap: 0 2rem; padding-block: 1.75rem; }
+  .ticket { grid-template-columns: 5.5rem minmax(0, 1fr) auto; align-items: center; gap: 0 1.75rem; padding: 1.75rem 2rem; }
   .ticket__buy {
     grid-column: 3; grid-row: 1;
     flex-direction: column;
     align-items: stretch;
     width: 13rem;
     margin-top: 0;
-    padding: 0 0 0 2rem;
+    padding: 0 0 0 1.75rem;
     border-top: none;
-    border-left: 1px dashed var(--paper-line);
+    border-left: 1px solid var(--line);
   }
-  .ticket--lead .ticket__buy { border-left-color: rgba(244, 240, 228, 0.3); }
   .ticket__price { margin-right: 0; }
-  .ticket__date b { font-size: 3.5rem; }
-  .ticket--lead { padding-block: 2.25rem; }
 
-  .products { grid-template-columns: repeat(4, 1fr); gap: 2.25rem 1.5rem; }
-  .product__name { font-size: 1.05rem; }
+  .products { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .product__name { font-size: 1.02rem; }
 
   .about { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 4rem; align-items: center; }
   .about__photo { order: 2; }
@@ -1698,49 +1674,36 @@ body[data-dock="true"] .toast { bottom: 6rem; }
   .signup { padding-block: clamp(4rem, 7vw, 6rem); }
   .signup__inner { gap: 4rem; }
 
-  .dock__inner {
-    grid-template-columns: 3.5rem minmax(0, 22rem) 1fr auto auto auto auto;
-    gap: 1.1rem;
-    padding-block: 0.8rem;
-  }
-  .dock__art { width: 3.5rem; height: 3.5rem; }
-  .dock__ctl { justify-self: center; gap: 0.5rem; }
-  .dock__skip { display: grid; }
-  .dock__rate, .dock__ext { display: grid; }
-  .dock__title { font-size: 0.95rem; }
-  body[data-dock="true"] { padding-bottom: 5.4rem; }
-
   .footer { padding-block: 4rem 2rem; }
   .footer__top { display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; }
   .footer__word { margin-bottom: 0; }
   .footer__cols { grid-template-columns: repeat(3, minmax(0, 14rem)); justify-content: end; gap: 3rem; }
+
+  .dock { left: 50%; right: auto; transform: translate(-50%, 130%); width: min(64rem, calc(100vw - 2rem)); }
+  .dock[data-open="true"] { transform: translate(-50%, 0); }
+  .dock__inner {
+    grid-template-columns: 3.4rem minmax(0, 20rem) 1fr auto auto auto auto;
+    gap: 1.1rem;
+    padding: 0.85rem 1.25rem;
+  }
+  .dock__art { width: 3.4rem; height: 3.4rem; }
+  .dock__ctl { justify-self: center; gap: 0.5rem; }
+  .dock__skip, .dock__rate, .dock__ext { display: grid; }
+  .dock__title { font-size: 0.95rem; }
+  body[data-dock="true"] { padding-bottom: 6.5rem; }
 }
 
-/* --------------------------------------------------------------------------
-   Lágir skjáir — venjuleg fartölva er 1440×900 eða 1366×768, og þá má
-   plakatið ekki vera hannað fyrir 1080 punkta hæð.
-   -------------------------------------------------------------------------- */
-
-@media (min-width: 900px) and (max-height: 900px) {
-  .hero { padding-top: 1.75rem; }
-  .hero__inner { padding-bottom: 2.25rem; gap: 2.5rem; }
-  .hero__word { font-size: clamp(3.6rem, 6.4vw, 6.2rem); }
-  .hero__lead { font-size: 1rem; margin-bottom: 1.35rem; max-width: 40ch; }
-  .hero__mark { margin-bottom: 1.1rem; }
-  .hero__cast img { aspect-ratio: 1 / 1; }
-  .hero__hand { width: clamp(76px, 7vw, 105px); bottom: 28%; left: calc(56% - 6.5rem); }
-}
-
-@media (min-width: 900px) and (max-height: 760px) {
-  .hero__word { font-size: clamp(3.1rem, 5.4vw, 4.9rem); }
-  .hero__lead { font-size: 0.96rem; margin-bottom: 1.1rem; }
-  .hero__cast img { aspect-ratio: 5 / 4; }
-  .hero__inner { padding-bottom: 1.75rem; }
+/* Lágir skjáir — venjuleg fartölva */
+@media (min-width: 900px) and (max-height: 820px) {
+  .hero { padding-block: 2.25rem 2.75rem; }
+  .hero__word { font-size: clamp(3.4rem, 6.2vw, 5.6rem); }
+  .hero__lead { margin-bottom: 1.25rem; }
+  .hero__cast img { aspect-ratio: 16 / 11; }
 }
 
 @media (min-width: 1200px) {
   .hero__lead { font-size: 1.2rem; }
-  .ep__title { font-size: 1.3rem; }
+  .ep__title { font-size: 1.25rem; }
 }
 
 /* --------------------------------------------------------------------------
@@ -1755,8 +1718,9 @@ body[data-dock="true"] .toast { bottom: 6rem; }
     transition-duration: 0.01ms !important;
   }
   .hero__line > span { transform: none; }
+  .marquee__track { animation: none; }
 }
 
 @media print {
-  .nav, .scrim, .cart, .toast, .signup, .dock { display: none !important; }
+  .nav, .scrim, .cart, .toast, .signup, .dock, .marquee { display: none !important; }
 }

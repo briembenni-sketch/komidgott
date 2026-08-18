@@ -95,36 +95,29 @@ neðan rati ekki í Google undir nafni hlaðvarpsins. **Fjarlægið hvort tveggj
 
 ## Hönnunin
 
-Cover-artið þeirra er þegar gott plakat — hreinn svartur, rjómaserif, bendandi
-hönd. Síðan byggir á því:
+Sama hönnunarmál og chessafterdark.is og betkastid.is: eitt djúpt, dökkt
+litaheimili með rafhreim, grótesk letur, stór rúnnun, pillur og glóandi
+skuggar — fært yfir á vörumerki Komið gott. Rjómalitur cover-artsins er
+textaliturinn, indígóliturinn rafhreimurinn og gula merkið fylgir
+viðburðunum. Höndin úr merkinu (rakin sem vektor úr myndinni sjálfri)
+bendir á þær tvær á plakatinu.
 
-- **Höndin** er ekki JPG-mynd heldur vektor sem var rakinn úr merkinu sjálfu
-  (þröskuldur, tengdir hlutar, marching squares, Douglas–Peucker). Hún er því
-  hnífskörp í hvaða stærð sem er, ólíkt myndinni sem varð mjúk í stækkun. Á
-  breiðum skjá stendur hún milli heitisins og myndarinnar og bendir á þær.
-- **Plakatið** er tvískipt á skjá: heitið vinstra megin, þær tvær hægra megin.
-  Það er hannað fyrir fartölvuhæð en ekki bara stóra skjái — sérstakar reglur
-  taka við undir 900 og 760 punkta hæð, og á síma er myndin skorin flatari
-  svo plakatið og þáttaborðinn rúmist á einum skjá.
-- **Þáttaborðinn** neðst á plakatinu sýnir nýjasta þáttinn og spilar hann.
-  Niðurtalningin að næsta viðburði er á viðburðasíðunni, þangað sem hún á heima.
-- **Þættirnir** bera allir cover-artið, sem er um leið spilunarhnappurinn.
-  Tónjafnari hreyfist á þeim þætti sem er í spilun.
-- **Safnið** raðast eftir þáttaröðum með fyrirsögn fyrir hverja röð og
-  sérþættina saman aftast — ekki í hráum tímaröð þar sem sérþættir fléttast
-  inn á milli. Síurnar telja hvað er í hverri röð.
-- **Veiturnar** (Spotify, Apple Podcasts, mbl.is) eru heill kafli á forsíðunni
-  með spjöldum, ekki bara tenglaröð í fæti.
-- **Viðburðir eru miðar** með rifgati og útstungum.
-- **Vörur** eru prentfletir með þrykktu merki, ekki litaðir ferningar.
+- **Hetjan**: pilla með nýjasta þættinum, heitið stórt, spilunarhnappur og
+  „Hlustaðu & fylgdu“-pillur — myndin af þeim í rúnnuðu spjaldi með glóð.
+- **Hlaupandi borði** undir hetjunni: „Nýr þáttur alla þriðjudaga“.
+- **Nýjasti þátturinn** er eitt stórt glóandi spjald með spilun.
+- **Þættir eru spjöld** með cover-arti sem er um leið spilunarhnappurinn;
+  tónjafnari hreyfist á þeim þætti sem er í spilun og safnið raðast eftir
+  þáttaröðum með sérþættina saman aftast.
+- **Spilarinn** er fljótandi, ávalur borði neðst með blur og glóð.
 
-Letur: Fraunces í fyrirsagnir (næsti ættingi letursins í merkinu), Archivo í
-texta, DM Mono í dagsetningar, verð og tímakóða.
+Letur: Bricolage Grotesque í fyrirsagnir, Hanken Grotesk í texta og
+Space Mono í dagsetningar, verð og tímakóða — sami leturstakkur og
+hönnunarmál og viðmiðunarsíðurnar nota.
 
-Útlitið er skrifað fyrir síma fyrst og stækkar upp. Prófað í 320, 390, 1366 og
-1440 px á öllum síðum: engin lárétt skrun, hver síða með nákvæmlega einn `h1`,
-allar myndir með `alt`, plakatið rúmast á skjánum á öllum stærðum. Stillingin
-„draga úr hreyfingu“ í stýrikerfinu slekkur á öllum hreyfingum.
+Útlitið er skrifað fyrir síma fyrst og stækkar upp. Prófað í 390 og 1440 px
+á öllum síðum: engin lárétt skrun og hver síða með nákvæmlega einn h1.
+Stillingin „draga úr hreyfingu“ slekkur á borðanum og öllum hreyfingum.
 
 ## Það sem er á síðunni
 
