@@ -19,7 +19,7 @@ geymslunnar, svo Vercel þarf hvorki byggingarskipun né stillingar.
 ```
 index.html        · forsíða (plakat með þeim tveimur og nýjasta þætti,
                     þáttalisti, veitur, þáttastjórnendur, næsti viðburður)
-thaettir.html     · þáttasafnið: lárétt röð fyrir hverja þáttaröð, sía og leit
+thaettir.html     · þáttasafnið: listi eftir þáttaröðum, sía og leit
 vidburdir.html    · viðburðir, niðurtalning og miðasala
 budin.html        · vefverslunin
 um.html           · Ólöf og Kristín, tölur um hlaðvarpið og póstlisti
@@ -100,8 +100,9 @@ textaliturinn, indígóliturinn rafhreimurinn og gula merkið fylgir
 viðburðunum. Höndin úr merkinu (rakin sem vektor úr myndinni sjálfri)
 bendir á þær tvær á plakatinu.
 
-- **Hetjan**: pilla með nýjasta þættinum, heitið stórt, spilunarhnappur og
-  „Hlustaðu & fylgdu“-pillur — myndin af þeim í rúnnuðu spjaldi með glóð.
+- **Hetjan**: heitið stórt með höndinni úr merkinu við hliðina, eins og á
+  cover-artinu, spilunarhnappur og „Hlustaðu & fylgdu“-pillur og myndin af
+  þeim í rúnnuðu spjaldi með glóð.
 - **Hlaupandi borði** undir hetjunni: „Nýr þáttur alla þriðjudaga“.
 - **Nýjasti þátturinn** er eitt stórt glóandi spjald með spilun.
 - **Þættir eru spjöld** með cover-arti sem er um leið spilunarhnappurinn;
@@ -122,7 +123,7 @@ Stillingin „draga úr hreyfingu“ slekkur á borðanum og öllum hreyfingum.
 | Síða | Hvað hún gerir |
 |---|---|
 | **Forsíða** | Plakat með þeim tveimur og nýjasta þætti neðst — hann spilast beint þaðan — sex nýlegir þættir, hlustunarveiturnar, þáttastjórnendur og næsti viðburður. Búðin er á sinni síðu |
-| **Þættir** | Allir 100 þættirnir í láréttum röðum eftir þáttaröðum, leitanlegir og spilanlegir af spjöldunum. Sían skrifast í slóðina svo hægt sé að deila henni |
+| **Þættir** | Allir 100 þættirnir í lista eftir þáttaröðum, leitanlegir og spilanlegir. Sían skrifast í slóðina svo hægt sé að deila henni |
 | **Viðburðir** | Niðurtalning að næsta viðburði, komandi viðburðir sem miðar, tenglar á Tix, listi yfir liðna viðburði |
 | **Búðin** | Vörur, stærðarval og karfa sem man sig milli heimsókna og milli síðna |
 | **Þáttastjórnendur** | Ólöf og Kristín, tölur um hlaðvarpið, veitutenglar og póstlisti |

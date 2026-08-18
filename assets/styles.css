@@ -423,11 +423,16 @@ li { list-style: none; }
   gap: 2.25rem;
 }
 
+/* Heitið og höndin saman, eins og á cover-artinu: textinn vinstra megin
+   og höndin bendir upp á hann neðan frá hægri */
+.hero__mark { display: flex; align-items: flex-end; margin-bottom: 1.1rem; }
+
 .hero__word {
+  flex: 0 1 auto;
+  min-width: 0;
   font-size: clamp(3.2rem, 15vw, 7.5rem);
   letter-spacing: -0.04em;
   line-height: 0.95;
-  margin-bottom: 1.1rem;
 }
 .hero__word i { font-style: normal; color: var(--electric-2); }
 
@@ -498,7 +503,14 @@ li { list-style: none; }
   color: var(--ink-soft);
 }
 
-.hero__hand { display: none; }
+/* Sama halla og stærðarhlutfall og í merkinu sjálfu */
+.hero__hand {
+  width: clamp(52px, 14vw, 110px);
+  margin-left: 0.5rem;
+  margin-bottom: 0.35rem;
+  transform: rotate(6deg);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.55));
+}
 
 /* Lítil pilla með þáttanúmeri — hlekkur á nýjasta þáttinn */
 .chip {
@@ -634,17 +646,30 @@ li { list-style: none; }
    Þáttalistinn — spjöld í röð
    -------------------------------------------------------------------------- */
 
-.filters { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.filters { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 
-.chip[data-season] { cursor: pointer; transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background-color 0.2s var(--ease); }
-.chip[data-season]:hover { color: var(--ink); border-color: var(--line-strong); }
-.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
-.chip i {
-  font-style: normal;
-  font-size: 0.64rem;
-  opacity: 0.65;
-  font-variant-numeric: tabular-nums;
+/* Flokkapillurnar efst í safninu: hreinn texti í pillu, valda pillan
+   lýsist upp — sama mál og valmyndin */
+.chip[data-season] {
+  min-height: 2.7rem;
+  padding: 0.55rem 1.2rem;
+  font-family: var(--body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease),
+              background-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
+.chip[data-season]:hover { color: var(--ink); border-color: var(--line-strong); background: rgba(244, 240, 228, 0.08); }
+.chip[aria-pressed="true"] {
+  background: var(--electric);
+  border-color: var(--electric);
+  color: #fff;
+  box-shadow: var(--glow);
+}
+.chip[aria-pressed="true"]:hover { color: #fff; border-color: var(--electric); background: var(--electric-2); }
 
 /* Tónjafnari — sést aðeins á þætti í spilun */
 .eq { display: none; align-items: flex-end; gap: 2px; height: 10px; }
@@ -866,174 +891,6 @@ li { list-style: none; }
   pointer-events: none;
 }
 .epsearch input::-webkit-search-cancel-button { filter: invert(1); opacity: 0.5; }
-
-/* --------------------------------------------------------------------------
-   Safnið sem efnisveita: lárétt röð fyrir hverja þáttaröð
-   -------------------------------------------------------------------------- */
-
-.rail { margin-bottom: 2.25rem; }
-.rail:last-child { margin-bottom: 0; }
-
-.rail__head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.4rem 0.9rem;
-  margin-bottom: 0.9rem;
-}
-.rail__head h2 {
-  font-size: clamp(1.35rem, 5vw, 1.8rem);
-  letter-spacing: -0.02em;
-}
-.rail__head .micro { color: var(--muted); }
-
-.rail__nav { display: none; margin-left: auto; gap: 0.35rem; }
-.rail__nav button {
-  display: grid;
-  place-items: center;
-  width: 2.4rem; height: 2.4rem;
-  background: rgba(244, 240, 228, 0.05);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background-color 0.2s var(--ease);
-}
-.rail__nav button:hover { color: var(--ink); border-color: rgba(93, 91, 255, 0.5); background: rgba(93, 91, 255, 0.12); }
-.rail__nav svg { width: 15px; height: 15px; }
-
-/* Röðin sjálf: lárétt skrun með snappi, spjöldin taka rúmlega tvö á síma */
-.rail__track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 42%;
-  gap: 0.7rem;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  /* Loft fyrir stækkunina á yfirsvifi svo spjöldin klippist ekki */
-  padding: 0.4rem 0.25rem 0.6rem;
-  margin-inline: -0.25rem;
-}
-.rail__track::-webkit-scrollbar { display: none; }
-
-/* Leit og stök þáttaröð birtast sem net í fullri breidd */
-.rail--grid .rail__track {
-  grid-auto-flow: row;
-  grid-auto-columns: auto;
-  grid-template-columns: repeat(2, 1fr);
-  overflow: visible;
-  scroll-snap-type: none;
-}
-
-/* Spjaldið: cover-artið fyllir flötinn, textinn liggur á skygging neðst */
-.card {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  border-radius: var(--r-sm);
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  scroll-snap-align: start;
-  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
-}
-.card:hover, .card:focus-within {
-  transform: scale(1.035);
-  border-color: rgba(93, 91, 255, 0.55);
-  box-shadow: var(--glow-lg), var(--shadow);
-  z-index: 2;
-}
-.card[data-current="true"] { border-color: rgba(93, 91, 255, 0.65); box-shadow: var(--glow); }
-
-.card__art {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s var(--ease);
-}
-.card:hover .card__art { transform: scale(1.06); }
-
-.card__shade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(8, 6, 15, 0.05) 30%, rgba(8, 6, 15, 0.55) 62%, rgba(8, 6, 15, 0.94));
-}
-
-.card__cue {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -70%);
-  display: grid;
-  place-items: center;
-  width: 3rem; height: 3rem;
-  background: var(--electric);
-  color: #fff;
-  border-radius: 999px;
-  box-shadow: var(--glow);
-  opacity: 0;
-  transition: opacity 0.2s var(--ease);
-  pointer-events: none;
-}
-.card:hover .card__cue,
-.card:focus-within .card__cue,
-.card[data-current="true"] .card__cue { opacity: 1; }
-.card__cue .i { width: 16px; height: 16px; }
-
-.card__info {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  display: grid;
-  gap: 0.25rem;
-  padding: 0.75rem 0.8rem 0.8rem;
-}
-.card__no {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.64rem;
-  color: var(--electric-2);
-}
-.card__no b { font-weight: 700; }
-.card__no > span:not(.eq) { color: var(--muted); }
-.card__title {
-  font-family: var(--display);
-  font-size: 0.9rem;
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.card__guest { color: var(--flag); letter-spacing: 0.1em; }
-
-/* Hlustunarstaðan liggur eftir neðri brún spjaldsins */
-.card::after {
-  content: "";
-  position: absolute;
-  left: 0; bottom: 0;
-  height: 3px;
-  width: var(--heard, 0%);
-  background: var(--electric-2);
-  z-index: 2;
-}
-
-/* Allt spjaldið er spilunarhnappurinn */
-.card__hit {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: transparent;
-  border: none;
-  border-radius: inherit;
-  cursor: pointer;
-  padding: 0;
-}
 
 /* --------------------------------------------------------------------------
    Hlustunarveitur — spjöld
@@ -1701,8 +1558,6 @@ body[data-dock="true"] .toast { bottom: 6.5rem; }
 
   .plats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .duo { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .rail__track { grid-auto-columns: 27%; gap: 0.85rem; }
-  .rail--grid .rail__track { grid-template-columns: repeat(3, 1fr); }
   .products { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
   .footer__cols { grid-template-columns: repeat(3, 1fr); }
 
@@ -1768,17 +1623,7 @@ body[data-dock="true"] .toast { bottom: 6.5rem; }
   .hero__cast { transform: rotate(1.2deg); }
   .hero__cast img { aspect-ratio: 4 / 3.4; max-height: none; }
 
-  /* Höndin úr merkinu bendir á þær af spássíunni */
-  .hero__hand {
-    display: block;
-    position: absolute;
-    z-index: 2;
-    width: clamp(84px, 7.5vw, 120px);
-    left: 51.5%;
-    bottom: 14%;
-    transform: scaleX(-1) rotate(-8deg);
-    filter: drop-shadow(0 14px 26px rgba(0, 0, 0, 0.6));
-  }
+  .hero__hand { width: clamp(84px, 6.5vw, 118px); margin-left: 0.75rem; margin-bottom: 0.6rem; }
 
   .shead { margin-bottom: 2.5rem; }
   .shead h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
@@ -1793,13 +1638,6 @@ body[data-dock="true"] .toast { bottom: 6.5rem; }
   .ep__ext { display: grid; }
   .ep__title { font-size: 1.15rem; -webkit-line-clamp: 2; line-clamp: 2; }
   .epgroup { padding-top: 2.75rem; }
-  .tools { width: auto; flex: 0 1 auto; }
-
-  .rail__nav { display: inline-flex; }
-  .rail__track { grid-auto-columns: 18.5%; gap: 1rem; }
-  .rail--grid .rail__track { grid-template-columns: repeat(5, 1fr); }
-  .rail { margin-bottom: 3rem; }
-  .card__title { font-size: 0.98rem; }
 
   .ticket { grid-template-columns: 5.5rem minmax(0, 1fr) auto; align-items: center; gap: 0 1.75rem; padding: 1.75rem 2rem; }
   .ticket__buy {
