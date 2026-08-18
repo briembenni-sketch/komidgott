@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Þættir — Komið gott</title>
+<title>Þættir · Komið gott</title>
 <meta name="description" content="Allt þáttasafn Komið gott, síað eftir þáttaröð. Nýr þáttur alla þriðjudaga.">
 <meta name="theme-color" content="#08060F">
 
@@ -12,7 +12,7 @@
 <meta name="robots" content="noindex, nofollow">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Þættir — Komið gott">
+<meta property="og:title" content="Þættir · Komið gott">
 <meta property="og:description" content="Allt þáttasafn Komið gott, síað eftir þáttaröð. Nýr þáttur alla þriðjudaga.">
 <meta property="og:image" content="assets/logo.jpg">
 <meta property="og:locale" content="is_IS">
@@ -70,29 +70,21 @@
 
 <section class="band wrap" style="padding-top:0">
   <div class="shead shead--tools">
-    <h2 class="vh">Sía, raða og leita í safninu</h2>
+    <h2 class="vh">Sía og leita í safninu</h2>
     <div class="filters" id="filters" role="group" aria-label="Sía eftir þáttaröð"></div>
 
-    <div class="tools">
-      <button class="sortbtn" id="sortBtn" type="button" aria-label="Röðun: Nýjast fyrst. Smelltu til að snúa við.">Nýjast fyrst</button>
-
-      <div class="epsearch">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4"/>
-        </svg>
-        <label class="vh" for="epSearch">Leita í þáttum</label>
-        <input id="epSearch" type="search" placeholder="Leita eftir efni eða gesti"
-               autocomplete="off" spellcheck="false" aria-describedby="epCount">
-      </div>
+    <div class="epsearch">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 4 4"/>
+      </svg>
+      <label class="vh" for="epSearch">Leita í þáttum</label>
+      <input id="epSearch" type="search" placeholder="Leita eftir efni eða gesti"
+             autocomplete="off" spellcheck="false" aria-describedby="epCount">
     </div>
   </div>
 
-  <ul class="eps" id="eplist"></ul>
+  <div id="rails"></div>
   <p class="micro epcount" id="epCount" role="status" aria-live="polite"></p>
-
-  <div class="eps__more">
-    <button class="btn btn--ghost" id="moreBtn" type="button">Hlaða fleiri þáttum</button>
-  </div>
 </section>
 </main>
 
@@ -133,7 +125,7 @@
 
     <div class="footer__base micro">
       <span>© 2026 Komið gott</span>
-      <span>Sýnidæmi — hönnun og smíði</span>
+      <span>Sýnidæmi</span>
     </div>
   </div>
 </footer>
@@ -155,7 +147,7 @@
       <b id="cartTotal">0 kr.</b>
     </div>
     <button class="btn btn--block" id="checkout" type="button">Ganga frá pöntun</button>
-    <p class="micro cart__fine">Sýnidæmi — engin greiðsla fer fram.</p>
+    <p class="micro cart__fine">Sýnidæmi, engin greiðsla fer fram.</p>
   </div>
 </aside>
 

@@ -19,7 +19,7 @@ geymslunnar, svo Vercel þarf hvorki byggingarskipun né stillingar.
 ```
 index.html        · forsíða (plakat með þeim tveimur og nýjasta þætti,
                     þáttalisti, veitur, þáttastjórnendur, næsti viðburður)
-thaettir.html     · þáttasafnið: 100 þættir, sía, röðun og leit
+thaettir.html     · þáttasafnið: lárétt röð fyrir hverja þáttaröð, sía og leit
 vidburdir.html    · viðburðir, niðurtalning og miðasala
 budin.html        · vefverslunin
 um.html           · Ólöf og Kristín, tölur um hlaðvarpið og póstlisti
@@ -74,12 +74,10 @@ síðunni: spólun, ±15 sekúndur, hraðastilling og tenging við spilunarstýr
 stýrikerfisins (læsiskjár og heyrnartól). Hljóðið kemur beint af straumnum,
 sömu skrár og Spotify og Apple sækja.
 
-Vefurinn er venjulegar síður en ekki eitt forrit, svo hljóðið stöðvast þegar
-skipt er um síðu. Staðan er geymd — hvaða þáttur og hvar hann stóð — og
-spilarinn tekur upp þráðinn á næstu síðu. Vafrar leyfa sjálfvirka spilun eftir
-síðuskipti aðeins hafi notandinn þegar spilað hljóð á léninu; annars bíður
-spilarinn tilbúinn með réttan þátt á réttum stað. Hversu langt er komið í
-hverjum þætti sést líka á cover-artinu í listanum.
+Spilarinn opnast aldrei af sjálfu sér, hann birtist fyrst þegar ýtt er á
+spila. Hlustunarstaðan í hverjum þætti er geymd í vafranum, svo þáttur
+heldur áfram þar sem frá var horfið þegar hann er spilaður aftur, og staðan
+sést á spjaldi hvers þáttar í safninu.
 
 **Ekki fullreynt:** spilunin var prófuð í vafra hér en sá vafri kemst hvorki
 á netið né styður AAC-hljóð, svo sjálf afspilunin er óreynd. Skráin sjálf var
@@ -124,7 +122,7 @@ Stillingin „draga úr hreyfingu“ slekkur á borðanum og öllum hreyfingum.
 | Síða | Hvað hún gerir |
 |---|---|
 | **Forsíða** | Plakat með þeim tveimur og nýjasta þætti neðst — hann spilast beint þaðan — sex nýlegir þættir, hlustunarveiturnar, þáttastjórnendur og næsti viðburður. Búðin er á sinni síðu |
-| **Þættir** | Allir 100 þættirnir, raðaðir eftir þáttaröðum, síaðir, leitanlegir og spilanlegir. Sían skrifast í slóðina svo hægt sé að deila henni |
+| **Þættir** | Allir 100 þættirnir í láréttum röðum eftir þáttaröðum, leitanlegir og spilanlegir af spjöldunum. Sían skrifast í slóðina svo hægt sé að deila henni |
 | **Viðburðir** | Niðurtalning að næsta viðburði, komandi viðburðir sem miðar, tenglar á Tix, listi yfir liðna viðburði |
 | **Búðin** | Vörur, stærðarval og karfa sem man sig milli heimsókna og milli síðna |
 | **Þáttastjórnendur** | Ólöf og Kristín, tölur um hlaðvarpið, veitutenglar og póstlisti |

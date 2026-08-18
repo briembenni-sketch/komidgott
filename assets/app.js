@@ -79,15 +79,12 @@
      Þættirnir spilast í vafranum, beint af straumnum. Spilarinn er einn
      borði neðst á síðunni og fylgir öllum síðum.
 
-     Vefurinn er venjulegar síður en ekki eitt forrit, svo hljóðið stöðvast
-     við að skipta um síðu. Staðan er því geymd: hvaða þáttur var í gangi og
-     hvar hann stóð. Við komu er reynt að halda áfram þar sem frá var horfið
-     — vafrar leyfa það aðeins hafi notandi þegar spilað hljóð á léninu, og
-     þá bíður spilarinn einfaldlega tilbúinn.
+     Spilarinn opnast aldrei af sjálfu sér: hann birtist fyrst þegar ýtt er
+     á spila. Hlustunarstaðan í hverjum þætti er geymd, svo þáttur heldur
+     áfram þar sem frá var horfið þegar hann er spilaður aftur.
      ==================================================================== */
 
-  var STATE_KEY = "kg-player-v1";
-  var POS_KEY   = "kg-pos-v1";
+  var POS_KEY = "kg-pos-v1";
 
   var player = {
     audio: null,
@@ -117,16 +114,6 @@
     if (t > 5 && t < player.audio.duration - 20) positions[player.ep.id] = Math.floor(t);
     else delete positions[player.ep.id];
     writeJSON(POS_KEY, positions);
-  }
-
-  function saveState() {
-    if (!player.ep) return;
-    writeJSON(STATE_KEY, {
-      id: player.ep.id,
-      t: Math.floor(player.audio ? player.audio.currentTime : 0),
-      rate: player.audio ? player.audio.playbackRate : 1,
-      playing: player.audio ? !player.audio.paused : false
-    });
   }
 
   function buildDock() {
@@ -223,8 +210,8 @@
 
     a.addEventListener("timeupdate", paintProgress);
     a.addEventListener("durationchange", paintProgress);
-    a.addEventListener("play", function () { paintPlaying(); saveState(); });
-    a.addEventListener("pause", function () { paintPlaying(); savePosition(); saveState(); });
+    a.addEventListener("play", paintPlaying);
+    a.addEventListener("pause", function () { paintPlaying(); savePosition(); });
     a.addEventListener("ended", function () {
       savePosition();
       var next = nextEpisode();
@@ -233,11 +220,11 @@
     });
     a.addEventListener("error", function () {
       player.dock.dataset.error = "true";
-      toast("Náði ekki í hljóðskrána — <b>prófaðu að opna þáttinn á Spotify</b>");
+      toast("Náði ekki í hljóðskrána. <b>Prófaðu að opna þáttinn á Spotify</b>");
     });
 
-    setInterval(function () { if (!a.paused) { savePosition(); saveState(); } }, 5000);
-    window.addEventListener("pagehide", function () { savePosition(); saveState(); });
+    setInterval(function () { if (!a.paused) savePosition(); }, 5000);
+    window.addEventListener("pagehide", savePosition);
 
     player.dock.addEventListener("click", function (ev) {
       var b = ev.target.closest("[data-act]");
@@ -276,7 +263,6 @@
     var r = RATES[(i + 1) % RATES.length];
     player.audio.playbackRate = r;
     btn.textContent = String(r).replace(".", ",") + "×";
-    saveState();
   }
 
   function nextEpisode() {
@@ -353,25 +339,7 @@
     savePosition();
     player.dock.dataset.open = "false";
     document.body.dataset.dock = "false";
-    try { window.localStorage.removeItem(STATE_KEY); } catch (err) {}
   }
-
-  /* Sami þáttur heldur áfram milli síðna */
-  (function restore() {
-    if (!EPISODES.length) return;
-    var s = readJSON(STATE_KEY, null);
-    if (!s || !byId[s.id]) return;
-    load(byId[s.id], s.t || 0);
-    if (s.rate && player.audio) {
-      player.audio.playbackRate = s.rate;
-      var rb = $(".dock__rate", player.dock);
-      if (rb) rb.textContent = String(s.rate).replace(".", ",") + "×";
-    }
-    if (s.playing) {
-      var p = player.audio.play();
-      if (p && p.catch) p.catch(function () { /* vafrinn vill snertingu fyrst */ });
-    }
-  })();
 
   /* Smellur á hvaða spilunarhnapp sem er, hvar sem hann stendur á síðunni */
   document.addEventListener("click", function (ev) {
@@ -424,10 +392,6 @@
   var featured = EPISODES[0];
 
   if (featured) {
-    /* Pillan í hetjunni */
-    var kick = $('.hero__kicker [data-f="code"]');
-    if (kick) kick.textContent = "Nýjast · " + featured.code + " · " + featured.dateText.replace(/ \d{4}$/, "");
-
     /* Spjaldið „Nýjasti þátturinn“ */
     var feat = $("#featured");
     if (feat) {
@@ -457,13 +421,15 @@
 
   /* ----------------------------------------------------------- ÞÁTTASAFN */
 
-  var listEl = $("#eplist");
+  /* Safnið er sett upp eins og efnisveita: ein lárétt röð fyrir hverja
+     þáttaröð og sérþættirnir í sinni röð. Leit og síupillur skipta yfir í
+     netið, þar sem allt sem passar sést í einu. */
 
-  if (listEl && EPISODES.length) {
-    var PAGE = 12;
-    var state = { filter: "all", q: "", sort: "new", shown: PAGE };
-    var filtersEl = $("#filters"), moreBtn = $("#moreBtn");
-    var searchEl = $("#epSearch"), countEl = $("#epCount"), sortBtn = $("#sortBtn");
+  var railsEl = $("#rails");
+
+  if (railsEl && EPISODES.length) {
+    var state = { filter: "all", q: "" };
+    var filtersEl = $("#filters"), searchEl = $("#epSearch"), countEl = $("#epCount");
 
     var seasons = [];
     EPISODES.forEach(function (e) {
@@ -472,8 +438,8 @@
     seasons.sort(function (a, b) { return b - a; });
 
     var FILTERS = [{ key: "all", label: "Allt", n: EPISODES.length }]
-      .concat(seasons.map(function (s) {
-        return { key: String(s), label: "Röð " + s, n: EPISODES.filter(function (e) { return e.season === s; }).length };
+      .concat(seasons.map(function (se) {
+        return { key: String(se), label: "Röð " + se, n: EPISODES.filter(function (e) { return e.season === se; }).length };
       }))
       .concat([{ key: "0", label: "Sérþættir", n: EPISODES.filter(function (e) { return !e.season; }).length }]);
 
@@ -483,116 +449,130 @@
         .toLowerCase().indexOf(q) >= 0;
     };
 
-    /* Röðun.
-
-       Straumurinn er í tímaröð og þar fléttast sérþættirnir inn á milli
-       þáttaraðanna. Það er rétt tímaröð en ljót yfirsýn, svo þegar allt
-       safnið er undir er raðað eftir þáttaröð: hver röð heil og í einu lagi,
-       sérþættirnir saman aftast. Leit og stök þáttaröð halda sig við tímaröð
-       innan sinnar sneiðar. */
-    var order = function (dir) {
-      return function (a, b) {
-        /* Sérþættirnir standa saman aftast, hvernig sem er raðað */
-        var sa = a.season ? 0 : 1, sb = b.season ? 0 : 1;
-        if (sa !== sb) return sa - sb;
-        if (!a.season) return dir * (a.date < b.date ? 1 : -1);
-        if (a.season !== b.season) return dir * (b.season - a.season);
-        return dir * (b.ep - a.ep);
-      };
-    };
-
-    var filtered = function () {
-      var q = state.q.trim().toLowerCase();
+    var ofSeason = function (key) {
       return EPISODES.filter(function (e) {
-        if (state.filter === "0" && e.season) return false;
-        if (state.filter !== "all" && state.filter !== "0" && String(e.season) !== state.filter) return false;
-        return matches(e, q);
-      }).sort(order(state.sort === "new" ? 1 : -1));
-    };
-
-    /* Fyrirsögn þáttaraðar skýtur sér inn þegar röðin skiptir um — aðeins
-       þegar allt safnið er undir og röðin er í tímaröð. */
-    var groupHead = function (e) {
-      if (!e.season) return '<li class="epgroup"><b>Sérþættir</b><span class="micro">Gestir, kosningaspecial og annað utan þáttaraða</span></li>';
-      var n = EPISODES.filter(function (x) { return x.season === e.season; }).length;
-      return '<li class="epgroup"><b>Þáttaröð ' + e.season + '</b><span class="micro">' + n + ' þættir</span></li>';
-    };
-
-    var renderEpisodes = function () {
-      var list = filtered();
-      var total = list.length;
-      var slice = list.slice(0, state.shown);
-      var grouped = state.filter === "all" && !state.q.trim();
-      var last = null;
-      var html = "";
-
-      slice.forEach(function (e) {
-        var key = e.season || 0;
-        if (grouped && key !== last) { html += groupHead(e); last = key; }
-        html += epItem(e);
+        return key === "0" ? !e.season : e.season === Number(key);
       });
+    };
 
-      listEl.innerHTML = total ? html
-        : '<li class="eps__empty">Enginn þáttur fannst. Prófaðu annað orð — eða skoðaðu allt safnið.</li>';
+    /* Eitt spjald. Allt spjaldið er spilunarhnappur. */
+    var card = function (e) {
+      var heard = positions[e.id];
+      var pct = heard && e.secs ? Math.min(100, heard / e.secs * 100) : 0;
 
-      moreBtn.hidden = state.shown >= total;
-      moreBtn.textContent = "Hlaða fleiri þáttum (" + Math.max(total - state.shown, 0) + " eftir)";
+      return '<li class="card" data-ep="' + e.id + '" style="--heard:' + pct + '%">' +
+          '<img class="card__art" src="' + COVER + '" width="600" height="600" alt="" loading="lazy">' +
+          '<span class="card__shade"></span>' +
+          '<span class="card__cue" data-icon>' + ICON.play + '</span>' +
+          '<span class="card__info">' +
+            '<span class="card__no data"><b>' + esc(e.code) + '</b><span>' + esc(e.lenShort) + '</span>' + ICON.eq + '</span>' +
+            '<span class="card__title">' + esc(e.title) + '</span>' +
+            (e.guest ? '<span class="card__guest micro">' + esc(e.guest) + '</span>' : '') +
+          '</span>' +
+          '<button class="card__hit" type="button" data-play="' + e.id + '" aria-label="Spila ' + esc(e.code) + ': ' + esc(e.title) + '"></button>' +
+        '</li>';
+    };
 
-      if (countEl) {
-        countEl.textContent = total
-          ? "Sýni " + Math.min(state.shown, total) + " af " + total + (total === 1 ? " þætti" : " þáttum")
-          : (state.q.trim() ? "Ekkert fannst við leitina" : "Enginn þáttur í þessari síu");
+    var railHead = function (title, sub, withNav) {
+      return '<header class="rail__head">' +
+          '<h2>' + title + '</h2>' +
+          (sub ? '<span class="micro">' + sub + '</span>' : '') +
+          (withNav
+            ? '<span class="rail__nav">' +
+                '<button type="button" data-rail="-1" aria-label="Fletta til baka í ' + title + '">' +
+                  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>' +
+                '</button>' +
+                '<button type="button" data-rail="1" aria-label="Fletta áfram í ' + title + '">' +
+                  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>' +
+                '</button>' +
+              '</span>'
+            : '') +
+        '</header>';
+    };
+
+    var rail = function (key) {
+      var eps = ofSeason(key);
+      if (!eps.length) return "";
+      var title = key === "0" ? "Sérþættir" : "Þáttaröð " + key;
+      var sub = key === "0" ? "Gestir og annað utan þáttaraða" : eps.length + " þættir";
+      return '<section class="rail">' +
+          railHead(title, sub, true) +
+          '<ul class="rail__track">' + eps.map(card).join("") + '</ul>' +
+        '</section>';
+    };
+
+    var grid = function (title, sub, eps) {
+      return '<section class="rail rail--grid">' +
+          railHead(title, sub, false) +
+          (eps.length
+            ? '<ul class="rail__track">' + eps.map(card).join("") + '</ul>'
+            : '<p class="eps__empty">Enginn þáttur fannst. Prófaðu annað orð eða skoðaðu allt safnið.</p>') +
+        '</section>';
+    };
+
+    var render = function () {
+      var q = state.q.trim().toLowerCase();
+
+      if (q) {
+        var hits = EPISODES.filter(function (e) { return matches(e, q); });
+        railsEl.innerHTML = grid("Leitarniðurstöður", "", hits);
+        if (countEl) countEl.textContent = hits.length
+          ? hits.length + (hits.length === 1 ? " þáttur fannst" : " þættir fundust")
+          : "Ekkert fannst við leitina";
+      } else if (state.filter !== "all") {
+        var eps = ofSeason(state.filter);
+        var title = state.filter === "0" ? "Sérþættir" : "Þáttaröð " + state.filter;
+        railsEl.innerHTML = grid(title, eps.length + (eps.length === 1 ? " þáttur" : " þættir"), eps);
+        if (countEl) countEl.textContent = "";
+      } else {
+        var keys = seasons.map(String).concat(["0"]);
+        railsEl.innerHTML = keys.map(rail).join("");
+        if (countEl) countEl.textContent = EPISODES.length + " þættir í safninu";
       }
       paintPlaying();
     };
 
-    filtersEl.innerHTML = FILTERS.map(function (s) {
-      return '<button class="chip" type="button" data-season="' + s.key + '" aria-pressed="' + (s.key === "all") + '">' +
-        s.label + '<i>' + s.n + '</i></button>';
+    filtersEl.innerHTML = FILTERS.map(function (f) {
+      return '<button class="chip" type="button" data-season="' + f.key + '" aria-pressed="' + (f.key === "all") + '">' +
+        f.label + '<i>' + f.n + '</i></button>';
     }).join("");
 
     filtersEl.addEventListener("click", function (ev) {
       var b = ev.target.closest("[data-season]");
       if (!b) return;
       state.filter = b.dataset.season;
-      state.shown = PAGE;
       $$("[data-season]", filtersEl).forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-      /* Staðan á að lifa af endurhleðslu og deilanlegan hlekk */
+      /* Stada sem lifir af endurhleðslu og deilanlegan hlekk */
       var url = new URL(location.href);
       if (state.filter === "all") url.searchParams.delete("rod");
       else url.searchParams.set("rod", state.filter);
       history.replaceState(null, "", url);
-      renderEpisodes();
+      render();
     });
-
-    moreBtn.addEventListener("click", function () { state.shown += PAGE; renderEpisodes(); });
 
     if (searchEl) {
       searchEl.addEventListener("input", function () {
         state.q = searchEl.value;
-        state.shown = PAGE;
-        renderEpisodes();
+        render();
       });
     }
 
-    if (sortBtn) {
-      sortBtn.addEventListener("click", function () {
-        state.sort = state.sort === "new" ? "old" : "new";
-        state.shown = PAGE;
-        sortBtn.textContent = state.sort === "new" ? "Nýjast fyrst" : "Elst fyrst";
-        sortBtn.setAttribute("aria-label", "Röðun: " + sortBtn.textContent + ". Smelltu til að snúa við.");
-        renderEpisodes();
-      });
-    }
+    /* Örvarnar fletta hverri röð um tæpa skjábreidd */
+    railsEl.addEventListener("click", function (ev) {
+      var b = ev.target.closest("[data-rail]");
+      if (!b) return;
+      var track = $(".rail__track", b.closest(".rail"));
+      if (track) track.scrollBy({ left: Number(b.dataset.rail) * track.clientWidth * 0.85, behavior: "smooth" });
+    });
 
     var fromUrl = new URL(location.href).searchParams.get("rod");
-    if (fromUrl && FILTERS.some(function (s) { return s.key === fromUrl; })) {
+    if (fromUrl && FILTERS.some(function (f) { return f.key === fromUrl; })) {
       state.filter = fromUrl;
       $$("[data-season]", filtersEl).forEach(function (x) {
         x.setAttribute("aria-pressed", String(x.dataset.season === fromUrl));
       });
     }
-    renderEpisodes();
+    render();
   }
 
   /* -------------------------------------------------------------- VÖRUR */
@@ -772,7 +752,7 @@
       if (b) bump(b.dataset.bump, Number(b.dataset.delta));
     });
     checkout.addEventListener("click", function () {
-      if (cart.length) toast("Hér tæki greiðslugáttin við — <b>sýnidæmi</b>");
+      if (cart.length) toast("Hér tæki greiðslugáttin við <b>(sýnidæmi)</b>");
     });
   }
 
@@ -809,7 +789,7 @@
       err.hidden = ok;
       input.setAttribute("aria-invalid", String(!ok));
       if (!ok) { input.focus(); return; }
-      toast("Skráð — <b>" + input.value.trim() + "</b> fær tilkynningu um næstu miðasölu");
+      toast("Skráð! <b>" + input.value.trim() + "</b> fær tilkynningu um næstu miðasölu");
       input.value = "";
       input.removeAttribute("aria-invalid");
     });
